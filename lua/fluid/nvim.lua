@@ -9,12 +9,18 @@ local M = {
     return self
   end,
 
-  augroup = function(self, name, opts)
-    vim.api.nvim_create_augroup(name, opts)
-    return self
-  end,
+  -- TODO: Better group management and handline...
+  -- augroup = function(self, name, opts)
+  --   vim.api.nvim_create_augroup(name, opts)
+  --   return self
+  -- end,
 
-  autocmd = function(self, event, opts)
+  autocmd = function(self, event, opts, group)
+    if group and type(group) == 'string' and #group > 0 then
+      local grp = vim.api.nvim_create_augroup(group, {})
+      opts.group = grp
+    end
+
     vim.api.nvim_create_autocmd(event, opts)
     return self
   end,
