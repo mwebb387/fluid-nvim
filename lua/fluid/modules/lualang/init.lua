@@ -1,8 +1,6 @@
 local M = {}
 
 function M:init()
-  self
-    -- Plugins
   if self:has('lsp') then -- also check module registration
     self
       :depends('lspconfig')
@@ -36,6 +34,7 @@ function M:setup(deps)
     }
 
     deps.lspconfig.lua_ls.setup(lsp)
+  end
 end
 
 return M
