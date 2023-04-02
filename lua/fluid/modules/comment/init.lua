@@ -1,9 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    :use('numToStr/Comment.nvim')
-    :depends('Comment')
+  self:depends_on('Comment').from('numToStr/Comment.nvim')
 end
 
 function M:setup(deps)

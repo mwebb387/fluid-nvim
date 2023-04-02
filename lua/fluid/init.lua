@@ -19,7 +19,7 @@ local module_meta = {
     ) ~= nil
   end,
 
-  depends = function(self, dep, name, is_plugin)
+  depends = function(self, dep, name)
     -- if type(dep) == 'string' then
     --   table.insert(self.dependencies, dep)
     -- end
@@ -27,13 +27,44 @@ local module_meta = {
     local dependency = {
       package = dep,
       name = name or dep,
-      is_plugin = is_plugin
     }
 
     table.insert(self.dependencies, dependency)
 
     -- TODO: Are there other dep types?
     return self
+  end,
+
+  depends_on = function(self, dep)
+    -- if type(dep) == 'string' then
+    --   table.insert(self.dependencies, dep)
+    -- end
+
+    local dependency = {
+      package = dep,
+      name = dep,
+    }
+
+    table.insert(self.dependencies, dependency)
+
+    -- TODO: Are there other dep types?
+    local depends_api = {}
+    function depends_api.from(plugin_spec)
+      plugman:add_plugin(plugin_spec)
+      return depends_api
+    end
+    function depends_api.as(name)
+      dependency.name = name
+      return depends_api
+    end
+    function depends_api.as_well_as(another_dep)
+      return self:depends_on(another_dep)
+    end
+    function depends_api.and_also()
+      return self
+    end
+
+    return depends_api
   end,
 
   use = function(self, ...)

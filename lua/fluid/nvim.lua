@@ -1,11 +1,11 @@
 local M = {
   map = function(self, mode, lhs, rhs, opts)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
     return self
   end,
 
   command = function(self, name, command, opts)
-    vim.api.nvim_create_user_command(name, command, opts)
+    vim.api.nvim_create_user_command(name, command, opts or {})
     return self
   end,
 
