@@ -1,6 +1,6 @@
 local M = {
   map = function(self, mode, lhs, rhs, opts)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
+    vim.keymap.set(mode, lhs, rhs, opts or {})
     return self
   end,
 

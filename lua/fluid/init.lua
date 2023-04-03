@@ -20,10 +20,6 @@ local module_meta = {
   end,
 
   depends = function(self, dep, name)
-    -- if type(dep) == 'string' then
-    --   table.insert(self.dependencies, dep)
-    -- end
-
     local dependency = {
       package = dep,
       name = name or dep,
@@ -36,10 +32,6 @@ local module_meta = {
   end,
 
   depends_on = function(self, dep)
-    -- if type(dep) == 'string' then
-    --   table.insert(self.dependencies, dep)
-    -- end
-
     local dependency = {
       package = dep,
       name = dep,
@@ -57,12 +49,11 @@ local module_meta = {
       dependency.name = name
       return depends_api
     end
-    function depends_api.as_well_as(another_dep)
+    function depends_api.and_also(another_dep)
       return self:depends_on(another_dep)
     end
-    function depends_api.and_also()
-      return self
-    end
+
+    setmetatable(depends_api, {_call = function() return self end})
 
     return depends_api
   end,
