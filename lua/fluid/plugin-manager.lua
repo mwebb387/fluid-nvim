@@ -2,7 +2,13 @@ local manager_path = "/site/pack/paqs/start/paq-nvim"
 local manager_url = "https://github.com/savq/paq-nvim.git"
 
 local M = {
-  plugins = { "savq/paq-nvim" }
+  plugins = {
+    'savq/paq-nvim',
+
+    -- TODO: Make sure we want/need these as defaults always
+    'nvim-lua/popup.nvim',
+    'nvim-lua/plenary.nvim'
+  }
 }
 
 function M.bootstrap()

@@ -1,10 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    -- Plugins
-    :use(':TimUntersberger/neogit')
-    :depends('neogit')
+  self:depends_on('neogit').from('TimUntersberger/neogit')
 end
 
 function M:setup(deps)
