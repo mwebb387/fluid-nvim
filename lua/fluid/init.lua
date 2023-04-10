@@ -53,7 +53,7 @@ local module_meta = {
       return self:depends_on(another_dep)
     end
 
-    setmetatable(depends_api, {_call = function() return self end})
+    setmetatable(depends_api, { __index = self })
 
     return depends_api
   end,
