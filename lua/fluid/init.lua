@@ -146,7 +146,9 @@ local M = {
       config.init(self)
     end
 
-    -- TODO: other config stuff?
+    -- Setup base config
+    local nvim = require('fluid.nvim')
+    require('fluid.config-default').setup(nvim)
 
     -- Run module init methods
     for _, mod in ipairs(self.config.modules) do

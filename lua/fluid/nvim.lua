@@ -37,6 +37,18 @@ local M = {
   off = function(self, key)
     vim.opt[key] = false
     return self
+  end,
+  append = function (self, key, val)
+    vim.opt[key]:append(val)
+    return self
+  end,
+  prepend = function (self, key, val)
+    vim.opt[key]:prepend(val)
+    return self
+  end,
+  remove = function (self, key, val)
+    vim.opt[key]:remove(val)
+    return self
   end
 }
 
@@ -49,6 +61,19 @@ local nvim_meta = {
     return self:off(opt_key)
   end,
 
+  __call = function(self, ...)
+    for _, opt in ipairs({...}) do
+      if type(opt) == 'string' then
+        if string.sub(opt, 1, 2) == 'no' then
+          self:off(string.sub(opt, 3))
+        else
+          self:on(opt)
+        end
+      end
+    end
+
+    return self
+  end,
 }
 
 setmetatable(M, nvim_meta)

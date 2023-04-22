@@ -4,6 +4,7 @@ function M:init()
   self
     -- Plugins
     :use(
+      'catppuccin/nvim',
       'EdenEast/nightfox.nvim',
       'talha-akram/noctis.nvim',
       'rose-pine/neovim')
