@@ -5,8 +5,11 @@ function M:init()
     -- Plugins
     :use(
       'catppuccin/nvim',
+      'rebelot/kanagawa.nvim',
       'EdenEast/nightfox.nvim',
       'talha-akram/noctis.nvim',
+      'maxmx03/fluoromachine.nvim',
+      'folke/tokyonight.nvim',
       'rose-pine/neovim')
 
     :depends('rose-pine', 'rosepine')
