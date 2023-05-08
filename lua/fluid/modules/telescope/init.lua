@@ -22,6 +22,7 @@ function M:setup(deps)
   deps.nvim
     :map('n', '<leader>ff', '<cmd>Telescope find_files theme=ivy<CR>')
     :map('n', '<leader>fb', '<cmd>Telescope buffers theme=ivy<CR>')
+    :map('n', '<leader>b', '<cmd>Telescope buffers theme=ivy<CR>')
     :map('n', '<leader>fg', '<cmd>Telescope live_grep theme=ivy<CR>')
     :map('n', '<leader>fh', '<cmd>Telescope help_tags theme=ivy<CR>')
     :map('n', '<leader>fo', '<cmd>Telescope oldfiles theme=ivy<CR>')
