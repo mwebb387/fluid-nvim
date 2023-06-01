@@ -1,0 +1,74 @@
+*fluid-nvim.txt*  Neovim configuration using fluent syntax
+*fluid-nvim*
+
+==============================================================================
+CONTENTS                                                *fluid-nvim-contents*
+
+  INTRO   |fluid-nvim-intro|
+  MODULES |fluid-nvim-modules|
+
+
+==============================================================================
+INTRO                                                      *fluid-nvim-intro*
+
+Fluid-nivm is a framework for expressive and "fluid" Neovim configuration
+using fluent syntax
+
+
+==============================================================================
+MODULES                                                  *fluid-nvim-modules*
+
+All modules in fluid-nvim are "opt-in" and they must be explicitly loaded in
+your config.
+
+Here is a list of the current modules:
+
+  asyncrun
+  autopairs
+  cmp
+  comment
+  coq
+  csharp
+  css
+  deno
+  devicons
+  diffview
+  dirbuf
+  dirvish
+  dressing
+  emmet
+  fennel
+  fsharp
+  fterm
+  fugitive
+  fzf
+  gitsigns
+  hop
+  images
+  lazygit
+  leap
+  lsp
+  lualang
+  neogit
+  neorg
+  netrw
+  nullls
+  nvimtree
+  oil
+  quickfix
+  statusline
+  surround
+  tailwindcss
+  telescope
+  theme
+  treesitter
+  typescript
+  undotree
+  vifm
+  vimcompletesme
+  vimslash
+  whichkey
+  winbar
+  yue
+
+vim:tw=78:ft=help:
