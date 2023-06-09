@@ -23,52 +23,53 @@ your config.
 
 Here is a list of the current modules:
 
-  asyncrun
-  autopairs
-  cmp
-  comment
-  coq
-  csharp
-  css
-  deno
-  devicons
-  diffview
-  dirbuf
-  dirvish
-  dressing
-  emmet
-  fennel
-  fsharp
-  fterm
-  fugitive
-  fzf
-  gitsigns
-  hop
-  images
-  lazygit
-  leap
-  lsp
-  lualang
-  neogit
-  neorg
-  netrw
-  nullls
-  nvimtree
-  oil
-  quickfix
-  statusline
-  surround
-  tailwindcss
-  telescope
-  theme
-  treesitter
-  typescript
-  undotree
-  vifm
-  vimcompletesme
-  vimslash
-  whichkey
-  winbar
-  yue
+  - asyncrun        |fluid-module-asyncrun|
+  - autopairs
+  - cmp
+  - comment
+  - coq
+  - csharp
+  - css
+  - deno
+  - devicons
+  - diffview
+  - dirbuf
+  - dirvish
+  - dressing
+  - emmet
+  - fennel
+  - fsharp
+  - fterm
+  - fugitive
+  - fzf
+  - gitsigns
+  - hop
+  - images
+  - lazygit
+  - leap
+  - lsp
+  - lualang
+  - neogit
+  - neorg
+  - netrw
+  - nullls
+  - nvimtree
+  - oil
+  - quickfix
+  - statusline
+  - surround
+  - tailwindcss
+  - telescope
+  - theme
+  - treesitter
+  - typescript
+  - undotree
+  - vifm
+  - vimcompletesme
+  - vimslash
+  - whichkey
+  - winbar
+  - yue
+
 
 vim:tw=78:ft=help:

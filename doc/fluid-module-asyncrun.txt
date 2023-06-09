@@ -1,0 +1,25 @@
+*fluid-module-asyncrun* Fluid module implementing the Asyncrun plugin
+
+==============================================================================
+INTRO                                           *fluid-module-asyncrun-intro*
+
+ This mdoule adds the 'skywind3000/asyncrun.vim' plugin (see
+ https://github.com/skywind3000/asyncrun.vim) along with some helper commands
+ for external processes.
+
+
+==============================================================================
+USAGE                                           *fluid-module-asyncrun-usage*
+>
+  require 'fluid':asyncrun()
+
+
+==============================================================================
+COMMANDS                                     *fluid-module-asyncrun-commands*
+
+:Rg     Asyncronously run the external application from `vim.o.grepprg`
+
+:Mk     Asyncronously run the external application from `vim.o.makeprg`
+
+
+vim:tw=78:ft=help:
