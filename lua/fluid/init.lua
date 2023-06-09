@@ -137,9 +137,10 @@ local M = {
   end,
 
   setup = function(self, config)
-    -- TODO: enable once plugin functionality is implemented...
+    -- Bootstrap the plugin manager
     plugman.bootstrap()
 
+    -- Handle custom config (if supplied)
     if config and type(config) == 'function' then
       config(self)
     elseif config and type(config) == 'table' and config.init and type(config.init) == 'function' then
