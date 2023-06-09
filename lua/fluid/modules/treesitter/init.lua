@@ -40,10 +40,12 @@ function M:init()
   -- plugin register treesitter
   self
     -- Plugins
-    :use('nvim-treesitter/nvim-treesitter')
+    -- :use('nvim-treesitter/nvim-treesitter')
 
     -- Dependencies
-    :depends('nvim-treesitter.configs', 'treesitter')
+    :depends_on('nvim-treesitter.configs')
+      .as('treesitter')
+      .from('nvim-treesitter/nvim-treesitter')
 
     -- Config based on opts
     :highlight(self:has('highlight'))

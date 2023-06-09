@@ -1,9 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    :use('ggandor/leap.nvim')
-    :depends('leap')
+  self:depends_on('leap').from('ggandor/leap.nvim')
 end
 
 function M:setup(deps)

@@ -4,7 +4,7 @@ function M:init()
   self
     -- Plugins
     :depends_on('netrw').from('prichrd/netrw.nvim')
-    .and_also('fluid.nvim').as('nvim')
+    :depends_on('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

@@ -1,9 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    :use('phaazon/hop.nvim')
-    :depends('hop')
+  self:depends_on('hop').from('phaazon/hop.nvim')
 end
 
 function M:setup(deps)

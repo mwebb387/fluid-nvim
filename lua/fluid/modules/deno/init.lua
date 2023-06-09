@@ -3,9 +3,9 @@ local M = {}
 function M:init()
   if self:has('lsp') then
     self
-      :depends('lspconfig')
-      :depends('lsp')
-      :depends('cmp_nvim_lsp', 'cmp') -- opt-in completion?
+      :depends_on('lspconfig')
+      :depends_on('lsp')
+      :depends_on('cmp_nvim_lsp').as('cmp') -- opt-in completion?
   end
 end
 

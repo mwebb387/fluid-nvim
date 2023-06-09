@@ -3,8 +3,7 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :use('stevearc/oil.nvim')
-    :depends('oil')
+    :depends_on('oil').from('stevearc/oil.nvim')
 end
 
 function M:setup(deps)

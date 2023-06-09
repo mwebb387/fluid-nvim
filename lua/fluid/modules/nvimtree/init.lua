@@ -3,8 +3,9 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :use('kyazdani42/nvim-tree.lua')
-    :depends('nvim-tree', 'nvimtree')
+    :depends_on('nvim-tree')
+      .as('nvimtree')
+      .from('kyazdani42/nvim-tree.lua')
 end
 
 function M:setup(deps)

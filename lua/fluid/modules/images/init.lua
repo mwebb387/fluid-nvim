@@ -1,10 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    -- Plugins
-    :use('samodostal/image.nvim')
-    :depends('image')
+  self:depends_on('image').from('samodostal/image.nvim')
 end
 
 function M:setup(deps)

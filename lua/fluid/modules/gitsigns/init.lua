@@ -1,10 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    -- Plugins
-    :use('lewis6991/gitsigns.nvim')
-    :depends('gitsigns')
+  self:depends_on('gitsigns').from('lewis6991/gitsigns.nvim')
 end
 
 function M:setup(deps)

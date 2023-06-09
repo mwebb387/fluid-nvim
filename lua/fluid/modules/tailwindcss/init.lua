@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init(fluid)
-  self:depends('lspconfig')
+  self:depends_on('lspconfig')
 end
 
 function M:setup(deps)

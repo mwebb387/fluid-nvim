@@ -12,7 +12,7 @@ function M:init()
       'folke/tokyonight.nvim',
       'rose-pine/neovim')
 
-    :depends('rose-pine', 'rosepine')
+    :depends_on('rose-pine').as('rosepine')
 end
 
 function M:setup(deps)

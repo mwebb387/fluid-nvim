@@ -4,8 +4,8 @@ function M:init()
   -- print('init for winbar')
 
   self
-    :depends('fluidline')
-    :depends('nvim-web-devicons', 'icons')
+    :depends_on('fluidline')
+    :depends_on('nvim-web-devicons').as('icons')
 end
 
 function M:setup(deps)

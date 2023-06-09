@@ -19,18 +19,6 @@ local module_meta = {
     ) ~= nil
   end,
 
-  depends = function(self, dep, name)
-    local dependency = {
-      package = dep,
-      name = name or dep,
-    }
-
-    table.insert(self.dependencies, dependency)
-
-    -- TODO: Are there other dep types?
-    return self
-  end,
-
   depends_on = function(self, dep)
     local dependency = {
       package = dep,
@@ -48,9 +36,6 @@ local module_meta = {
     function depends_api.as(name)
       dependency.name = name
       return depends_api
-    end
-    function depends_api.and_also(another_dep)
-      return self:depends_on(another_dep)
     end
 
     setmetatable(depends_api, { __index = self })

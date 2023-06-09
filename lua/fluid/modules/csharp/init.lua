@@ -12,10 +12,10 @@ function M:init(fluid)
   if self:has('lsp') then -- also check module registration
     self
       :use('Hoffs/omnisharp-extended-lsp.nvim')
-      :depends('lspconfig')
-      :depends('omnisharp_extended')
-      :depends('lsp')
-      :depends('cmp_nvim_lsp', 'cmp')
+      :depends_on('lspconfig')
+      :depends_on('omnisharp_extended')
+      :depends_on('lsp')
+      :depends_on('cmp_nvim_lsp').as('cmp')
   end
 end
 

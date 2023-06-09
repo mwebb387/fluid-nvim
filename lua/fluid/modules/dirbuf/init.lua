@@ -1,10 +1,7 @@
 local M = {}
 
 function M:init()
-  self
-    -- Plugins
-    :use('elihunter173/dirbuf.nvim')
-    :depends('dirbuf')
+  self:depends_on('dirbuf').from('elihunter173/dirbuf.nvim')
 end
 
 function M:setup(deps)

@@ -13,7 +13,7 @@ local M = {}
 function M:init()
   -- print('init for statusline')
 
-  self:depends('fluidline')
+  self:depends_on('fluidline')
 end
 
 function M:setup(deps)
