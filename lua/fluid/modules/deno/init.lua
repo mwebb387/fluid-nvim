@@ -4,7 +4,7 @@ function M:init()
   if self:has('lsp') then
     self
       :depends_on('lspconfig')
-      :depends_on('lsp')
+      :depends_on('fluid.modules.lsp.util').as('lsp')
       :depends_on('cmp_nvim_lsp').as('cmp') -- opt-in completion?
   end
 end

@@ -14,7 +14,7 @@ function M:init(fluid)
       :use('Hoffs/omnisharp-extended-lsp.nvim')
       :depends_on('lspconfig')
       :depends_on('omnisharp_extended')
-      :depends_on('lsp')
+      :depends_on('fluid.modules.lsp.util').as('lsp')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
 end
