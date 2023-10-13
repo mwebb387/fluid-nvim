@@ -4,6 +4,7 @@ function M:init(fluid)
   self
     -- Plugins
     :use('jlcrochet/vim-razor')
+    :depends_on('fluid.nvim').as('nvim')
 
   if self:has('treesitter') then -- also check module registration
     fluid:treesitter():option('lang:c_sharp')
@@ -17,6 +18,7 @@ function M:init(fluid)
       :depends_on('fluid.modules.lsp.util').as('lsp')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
+
 end
 
 function M:setup(deps)
@@ -37,6 +39,16 @@ function M:setup(deps)
     }
 
     deps.lspconfig.omnisharp.setup(lsp)
+  end
+
+  if self:has('fold') then
+    deps.nvim:autocmd('FileType', {
+      pattern = 'cs',
+      callback = function()
+        vim.opt.foldmethod = 'marker'
+        vim.opt.foldmarker = '{,}'
+      end
+    })
   end
 end
 

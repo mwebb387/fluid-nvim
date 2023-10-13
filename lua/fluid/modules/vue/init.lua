@@ -2,7 +2,9 @@ local M = {}
 
 function M:init(fluid)
   if self:has('treesitter') then -- also check module registration
-    fluid:treesitter():option('lang:typescript')
+    fluid:treesitter():option('lang:vue')
+  else
+    self:use('posva/vim-vue')
   end
 
   if self:has('lsp') then -- also check module registration
@@ -20,8 +22,7 @@ function M:setup(deps)
       on_attach = deps.lsp.on_attach,
     }
 
-    -- deps.lspconfig.tsserver.setup(lsp)
-    deps.lspconfig.vtsls.setup(lsp)
+    deps.lspconfig.volar.setup(lsp)
   end
 end
 
