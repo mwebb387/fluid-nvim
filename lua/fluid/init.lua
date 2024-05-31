@@ -86,7 +86,7 @@ local M = {
   current_module = {},
 
   module = function(self, name)
-    for _, mod in ipairs(self.config) do
+    for _, mod in ipairs(self.config.modules) do
       if mod.name == name then
         self.current_module = mod
         return self

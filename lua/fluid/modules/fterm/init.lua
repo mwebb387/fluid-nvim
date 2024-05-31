@@ -11,7 +11,7 @@ local function nextTerminal()
   if #termBufs > 0 then
     vim.api.nvim_win_set_buf(0, termBufs[1])
   else
-    vim.fn.termopen('powershell')
+    vim.fn.termopen('pwsh')
   end
 end
 
@@ -22,7 +22,7 @@ end
 
 local M = {
   config = {
-    cmd = 'powershell'
+    cmd = 'pwsh'
   }
 }
 
@@ -38,10 +38,10 @@ function M:setup(deps)
     :map('t', '<M-`>', ':<c-\\><c-n>:FTermToggle<CR>')
     :command('FTermToggle', function() deps.FTerm.toggle() end)
     :command('NextTerminal', nextTerminal)
-    :command('Powershell', function() termOpenAndRun('powershell') end)
-    :command('DotnetWatchDev', function() termOpenAndRun('powershell Dotnet-Watch-Dev') end)
-    :command('NpmRun', function() termOpenAndRun('powershell Npm-Run') end)
-    :command('NpmStart', function() termOpenAndRun('powershell Npm-Start') end)
+    :command('Powershell', function() termOpenAndRun('pwsh') end)
+    :command('DotnetWatchDev', function() termOpenAndRun('pwsh Dotnet-Watch-Dev') end)
+    :command('NpmRun', function() termOpenAndRun('pwsh Npm-Run') end)
+    :command('NpmStart', function() termOpenAndRun('pwsh Npm-Start') end)
 
   deps.FTerm.setup(self.config)
 end
