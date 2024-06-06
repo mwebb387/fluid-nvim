@@ -1,17 +1,9 @@
 local plugman = require'fluid.plugin-manager'
-
-local function find(list, fn)
-  for _, opt in ipairs(list) do
-    if fn(opt) then
-      return opt
-    end
-  end
-  return nil
-end
+local util = require'fluid.util'
 
 local module_meta = {
   has = function(self, option)
-    return find(
+    return util.find(
       self.options,
       function(opt)
         return opt == option

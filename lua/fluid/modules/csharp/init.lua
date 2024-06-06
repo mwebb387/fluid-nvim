@@ -15,7 +15,7 @@ function M:init(fluid)
       :use('Hoffs/omnisharp-extended-lsp.nvim')
       :depends_on('lspconfig')
       :depends_on('omnisharp_extended')
-      :depends_on('fluid.modules.lsp.util').as('lsp')
+      :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
 
@@ -34,7 +34,7 @@ function M:setup(deps)
       cmd = {'omnisharp.exe'},
       capabilities = deps.cmp.default_capabilities(),
       enable_roslyn_analyzers = true,
-      on_attach = deps.lsp.on_attach,
+      on_attach = deps.lsp_util.on_attach,
       handlers = handlers
     }
 
