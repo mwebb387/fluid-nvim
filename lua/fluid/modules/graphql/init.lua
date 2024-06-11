@@ -24,10 +24,12 @@ function M:setup(deps)
 
     deps.lsp:addServerConfig({
       name = "graphql",
-      version = "graphql-language-service-cli --version", -- TODO: Get version cmd
-      install = "npm install -g graphql-language-service-cli",
-      update = "npm upgrade -g graphql-language-service-cli",
-      remove = "npm uninstall -g graphql-language-service-cli",
+      package = 'graphql-language-service-cli',
+      manager = 'node'
+      -- version = "graphql-language-service-cli --version", -- TODO: Get version cmd
+      -- install = "npm install -g graphql-language-service-cli",
+      -- update = "npm upgrade -g graphql-language-service-cli",
+      -- remove = "npm uninstall -g graphql-language-service-cli",
     })
     deps.lspconfig.graphql.setup(lsp)
   end

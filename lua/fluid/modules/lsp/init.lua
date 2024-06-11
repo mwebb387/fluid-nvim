@@ -11,6 +11,12 @@ local M = {
 --  update = "npm upgrade -g server-name",
 --  remove = "npm uninstall -g server-name",
 -- }
+
+-- cfg should be in the following format {
+--  name = "server name",
+--  package = "package name"
+--  manager = nil|'node'
+-- }
 function M:addServerConfig(cfg)
   table.insert(self.servers, cfg)
 end
@@ -27,48 +33,53 @@ function M:getServerNames()
   return names
 end
 
-function M:installServer(name)
+function M:installServer(name, syspackman)
   if name == 'all' then
     for _, value in ipairs(self.servers) do
-      vim.system(value.install)
+      syspackman:install(value.package, value.manager)
     end
   else
     local server = self:findServer(name)
     if (server ~= nil) then
-      vim.system(server.install)
+      syspackman:install(server.package, server.manager)
     end
   end
 end
 
-function M:updateServer(name)
+function M:updateServer(name, syspackman)
   if name == 'all' then
     for _, value in ipairs(self.servers) do
-      vim.system(value.update)
+      syspackman:update(value.package, value.manager)
     end
   else
     local server = self:findServer(name)
     if (server ~= nil) then
-      vim.system(server.update)
+      syspackman:update(server.package, server.manager)
     end
   end
 end
 
-function M:removeServer(name)
+function M:removeServer(name, syspackman)
   if name == 'all' then
     for _, value in ipairs(self.servers) do
-      vim.system(value.remove)
+      syspackman:remove(value.package, value.manager)
     end
   else
     local server = self:findServer(name)
     if (server ~= nil) then
-      vim.system(server.remove)
+      syspackman:remove(server.package, server.manager)
     end
   end
 end
 
-function M:init()
+function M:init(fluid)
   self:use('neovim/nvim-lspconfig')
   self:depends_on('fluid.nvim').as('nvim')
+
+  if self:has('server_management') then
+    fluid:syspackman() -- make sure system package manager is loaded
+    self:depends_on('fluid.modules.syspackman').as('syspackman')
+  end
 end
 
 function M:setup(deps)
@@ -79,28 +90,30 @@ function M:setup(deps)
     vim.fn.sign_define('DiagnosticSignWarn', {text = '', texthl = 'DiagnosticSignWarn'})
   end
 
-  local autoCompleteOpts = function()
-    local names = self:getServerNames()
-    table.insert(names, 1, 'all')
-    return names
+  if self:has('server_management') then
+    local autoCompleteOpts = function()
+      local names = self:getServerNames()
+      table.insert(names, 1, 'all')
+      return names
+    end
+
+    deps.nvim
+      :command('FluidInstallLanguageServer', function(input)
+        self:installServer(input.args or 'all', deps.syspackman)
+      end, {nargs = 1, complete = autoCompleteOpts})
+
+      :command('FluidUpdateLanguageServer', function(input)
+        self:updateServer(input.args or 'all', deps.syspackman)
+      end, {nargs = 1, complete = autoCompleteOpts})
+
+      :command('FluidRemoveLanguageServer', function(input)
+        self:removeServer(input.args or 'all', deps.syspackman)
+      end, {nargs = 1, complete = autoCompleteOpts})
+
+      :command('FluidListLanguageServers', function()
+        vim.print(self:getServerNames())
+      end, {nargs = 0})
   end
-
-  deps.nvim
-    :command('FluidInstallLanguageServer', function(input)
-      self:installServer(input.args or 'all')
-    end, {nargs = 1, complete = autoCompleteOpts})
-
-    :command('FluidUpdateLanguageServer', function(input)
-      self:updateServer(input.args or 'all')
-    end, {nargs = 1, complete = autoCompleteOpts})
-
-    :command('FluidRemoveLanguageServer', function(input)
-      self:removeServer(input.args or 'all')
-    end, {nargs = 1, complete = autoCompleteOpts})
-
-    :command('FluidListLanguageServers', function()
-      vim.print(self:getServerNames())
-    end, {nargs = 0})
 end
 
 return M

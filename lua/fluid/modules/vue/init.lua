@@ -25,10 +25,12 @@ function M:setup(deps)
 
     deps.lsp:addServerConfig({
       name = "volar",
-      version = "volar --version", -- TODO: Get version cmd
-      install = "npm install -g @vue/language-server",
-      update = "npm upgrade -g @vue/language-server",
-      remove = "npm uninstall -g @vue/language-server",
+      package = '@vue/language-server',
+      manager = 'node'
+      -- version = "volar --version", -- TODO: Get version cmd
+      -- install = "npm install -g @vue/language-server",
+      -- update = "npm upgrade -g @vue/language-server",
+      -- remove = "npm uninstall -g @vue/language-server",
     })
 
     deps.lspconfig.volar.setup(lsp)

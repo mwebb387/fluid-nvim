@@ -24,10 +24,12 @@ function M:setup(deps)
 
     deps.lsp:addServerConfig({
       name = "svelte",
-      version = "svelte --version", -- TODO: Get version cmd
-      install = "npm install -g svelte-language-server",
-      update = "npm upgrade -g svelte-language-server",
-      remove = "npm uninstall -g svelte-language-server",
+      package = 'svelte-language-server',
+      manager = 'node'
+      -- version = "svelte --version", -- TODO: Get version cmd
+      -- install = "npm install -g svelte-language-server",
+      -- update = "npm upgrade -g svelte-language-server",
+      -- remove = "npm uninstall -g svelte-language-server",
     })
 
     deps.lspconfig.svelte.setup(lsp)

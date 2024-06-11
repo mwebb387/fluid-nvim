@@ -22,11 +22,9 @@ function M:setup(deps)
     }
 
     deps.lsp:addServerConfig({
-      name = "html",
-      version = "vscode-html-language-server --version", -- TODO: Get version cmd
-      install = "npm install -g vscode-langservers-extracted",
-      update = "npm upgrade -g vscode-langservers-extracted",
-      remove = "npm uninstall -g vscode-langservers-extracted"
+      name = "cssls",
+      package = 'vscode-langservers-extracted',
+      manager = 'node'
     })
 
     deps.lspconfig.cssls.setup(lsp)

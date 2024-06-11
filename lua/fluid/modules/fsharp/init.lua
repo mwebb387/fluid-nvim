@@ -23,10 +23,11 @@ function M:setup(deps)
 
     deps.lsp:addServerConfig({
       name = "FsAutoComplete",
-      version = "fsautocomplete --version", -- TODO: Get version cmd
-      install = "dotnet tool install --global fsautocomplete",
-      update = "dotnet tool update --global fsautocomplete",
-      remove = "dotnet tool uninstall --global fsautocomplete",
+      package = 'fsautocomplete',
+      manager = 'dotnet'
+      -- install = "dotnet tool install --global fsautocomplete",
+      -- update = "dotnet tool update --global fsautocomplete",
+      -- remove = "dotnet tool uninstall --global fsautocomplete",
     })
 
     deps.lspconfig.fsautocomplete.setup(lsp)

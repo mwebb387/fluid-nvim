@@ -23,10 +23,12 @@ function M:setup(deps)
 
     deps.lsp:addServerConfig({
       name = "vtsls",
-      version = "vtsls --version", -- TODO: Get version cmd
-      install = "npm install -g @vtsls/language-server",
-      update = "npm upgrade -g @vtsls/language-server",
-      remove = "npm uninstall -g @vtsls/language-server",
+      package = '@vtsls/language-server',
+      manager = 'node'
+      -- version = "vtsls --version", -- TODO: Get version cmd
+      -- install = "npm install -g @vtsls/language-server",
+      -- update = "npm upgrade -g @vtsls/language-server",
+      -- remove = "npm uninstall -g @vtsls/language-server",
     })
 
     -- deps.lspconfig.tsserver.setup(lsp)
