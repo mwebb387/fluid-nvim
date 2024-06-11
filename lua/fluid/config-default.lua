@@ -30,6 +30,12 @@ function M.setup(nvim)
   nvim
       :set('completeopt', 'menuone,noinsert,noselect')
       :set('omnifunc', 'syntaxcomplete#Complete')
+
+  -- Nvim Help
+  nvim:autocmd('FileType', {
+    pattern = 'help',
+    command = 'set conceallevel=0'
+  })
 end
 
 return M

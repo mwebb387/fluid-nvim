@@ -2,7 +2,7 @@ local M = {}
 
 function M:init(fluid)
   if self:has('treesitter') then -- also check module registration
-    fluid:treesitter():option('lang:css')
+    fluid:treesitter():option('lang:html')
   end
 
   if self:has('lsp') then -- also check module registration
@@ -12,6 +12,7 @@ function M:init(fluid)
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
+
 end
 
 function M:setup(deps)
@@ -29,7 +30,7 @@ function M:setup(deps)
       remove = "npm uninstall -g vscode-langservers-extracted"
     })
 
-    deps.lspconfig.cssls.setup(lsp)
+    deps.lspconfig.html.setup(lsp)
   end
 end
 

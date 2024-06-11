@@ -27,6 +27,16 @@ function M:set_and_run_cmd(cmd_fwd, cmd_back, run_back)
 end
 
 function M:init()
+  if self:has('tab') then
+    self:set_cur_cmd('tabnext', 'tabprevious')
+  elseif self:has('qf') or self:has('quickfix') then
+    self:set_cur_cmd('cnext', 'cprevious')
+  elseif self:has('loc') or self:has('locationlist') then
+    self:set_cur_cmd('lnext', 'lprevious')
+  elseif self:has('win') or self:has('window') then
+    self:set_cur_cmd('wincmd w', 'wincmd W')
+  end
+
   self:depends_on('fluid.nvim').as('nvim')
 end
 
@@ -39,9 +49,9 @@ function M:setup(deps)
     :map('n', '<c-u>', '<c-u>zz')
     :map('n', '<c-f>', '<c-f>zz')
     :map('n', '<c-b>', '<c-b>zz')
-    :map('n', '<tab>', '<c-w>w')
+    :map('n', '<CR>', '<c-w>w')
     :map('n', '<s-tab>', '<c-w>W')
-    :map('n', '<CR>', ':b#<CR>')
+    :map('n', '<BS>', ':b#<CR>')
 
   -- ; Next/Previous maps
     :map('n', ']b', function() self:set_and_run_cmd('bnext', 'bprevious') end)
@@ -52,9 +62,8 @@ function M:setup(deps)
     :map('n', '[q', function() self:set_and_run_cmd('cnext', 'cprevious', true) end)
     :map('n', ']l', function() self:set_and_run_cmd('lnext', 'lprevious') end)
     :map('n', '[l', function() self:set_and_run_cmd('lnext', 'lprevious', true) end)
-    -- TODO: How to handle window switching...
-    -- :map('n', ']w', function() self:set_and_run_cmd('<c-w>w', '<c-w>W') end)
-    -- :map('n', '[w', function() self:set_and_run_cmd('<c-w>w', '<c-w>W', true) end)
+    :map('n', ']w', function() self:set_and_run_cmd('wincmd w', 'wincmd W') end)
+    :map('n', '[w', function() self:set_and_run_cmd('wincmd w', 'wincmd W', true) end)
 
     :map('n', ';', function() self:run_cur_cmd_fwd() end)
     :map('n', ',', function() self:run_cur_cmd_back() end)
