@@ -3,8 +3,8 @@ local function on_attach(client, bufnr)
     return vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
 
-  local buf_option = function(...)
-    return vim.api.nvim_buf_set_option(bufnr, ...)
+  local buf_option = function(name, value)
+    return vim.api.nvim_set_option_value(name, value, { buf = bufnr })
   end
 
   buf_option("omnifunc", "v:lua.vim.lsp.omnifunc")
