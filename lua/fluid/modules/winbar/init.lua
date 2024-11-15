@@ -1,10 +1,11 @@
 local M = {}
 
-function M:init()
+function M:init(fluid)
   -- print('init for winbar')
 
+  fluid:fluidline()
   self
-    :depends_on('fluidline')
+    :depends_on('fluid.modules.fluidline').as('fluidline')
     :depends_on('nvim-web-devicons').as('icons')
 end
 

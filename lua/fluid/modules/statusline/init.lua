@@ -10,10 +10,11 @@
 
 local M = {}
 
-function M:init()
+function M:init(fluid)
   -- print('init for statusline')
 
-  self:depends_on('fluidline')
+  fluid:fluidline()
+  self:depends_on('fluid.modules.fluidline').as('fluidline')
 end
 
 function M:setup(deps)
