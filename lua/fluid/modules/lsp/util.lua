@@ -28,8 +28,6 @@ local function on_attach(client, bufnr)
   buf_keymap("i", "<C-l>", "<cmd>lua vim.lsp.buf.completion()<CR>", opts)
   buf_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   buf_keymap("n", "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  buf_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  buf_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   buf_keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
 

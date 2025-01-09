@@ -2,8 +2,12 @@ local M = {
   config = {
     keymap = {
       builtin = {
-        ['ctrl-d'] = 'preview-page-down',
-        ['ctrl-u'] = 'preview-page-up',
+        ['c-f'] = 'preview-page-down',
+        ['c-b'] = 'preview-page-up',
+      },
+      fzf = {
+        ['ctrl-f'] = 'preview-page-down',
+        ['ctrl-b'] = 'preview-page-up',
       }
     }
   }

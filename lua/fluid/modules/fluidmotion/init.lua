@@ -1,7 +1,8 @@
 local M = {
   -- TODO: options for starting mode
   n_cmd = 'bnext',
-  N_cmd = 'bprevious'
+  N_cmd = 'bprevious',
+  log = false
 }
 
 function M:set_cur_cmd(cmd_fwd, cmd_back)
@@ -10,10 +11,12 @@ function M:set_cur_cmd(cmd_fwd, cmd_back)
 end
 
 function M:run_cur_cmd_fwd()
+  vim.print('n_cmd = ' .. self.n_cmd)
   vim.cmd(self.n_cmd)
 end
 
 function M:run_cur_cmd_back()
+  vim.print('N_cmd = ' .. self.N_cmd)
   vim.cmd(self.N_cmd)
 end
 
@@ -37,6 +40,8 @@ function M:init()
     self:set_cur_cmd('wincmd w', 'wincmd W')
   end
 
+  if self:has('log') then self.log = true end
+
   self:depends_on('fluid.nvim').as('nvim')
 end
 
@@ -48,7 +53,7 @@ function M:setup(deps)
     :map('n', '<c-d>', '<c-d>zz')
     :map('n', '<c-u>', '<c-u>zz')
     :map('n', '<c-f>', '<c-f>zz')
-    :map('n', '<c-b>', '<c-b>zz')
+    -- :map('n', '<c-b>', '<c-b>zz')
     :map('n', '<CR>', '<c-w>w')
     :map('n', '<s-CR>', '<c-w>W')
     :map('n', '<BS>', ':b#<CR>')
@@ -56,8 +61,8 @@ function M:setup(deps)
   -- ; Next/Previous maps
     :map('n', ']b', function() self:set_and_run_cmd('bnext', 'bprevious') end)
     :map('n', '[b', function() self:set_and_run_cmd('bnext', 'bprevious', true) end)
-    :map('n', ']d', function() self:set_and_run_cmd('lua vim.diagnostic.goto_next', 'lua vim.diagnostic.goto_next') end)
-    :map('n', ']d', function() self:set_and_run_cmd('lua vim.diagnostic.goto_next', 'lua vim.diagnostic.goto_next', true) end)
+    :map('n', ']d', function() self:set_and_run_cmd('lua vim.diagnostic.goto_next()', 'lua vim.diagnostic.goto_prev()') end)
+    :map('n', '[d', function() self:set_and_run_cmd('lua vim.diagnostic.goto_next()', 'lua vim.diagnostic.goto_prev()', true) end)
     :map('n', ']l', function() self:set_and_run_cmd('lnext', 'lprevious') end)
     :map('n', '[l', function() self:set_and_run_cmd('lnext', 'lprevious', true) end)
     :map('n', ']q', function() self:set_and_run_cmd('cnext', 'cprevious') end)
@@ -69,8 +74,8 @@ function M:setup(deps)
     :map('n', ']z', function() self:set_and_run_cmd('zj', 'zk') end)
     :map('n', '[z', function() self:set_and_run_cmd('zj', 'zk', true) end)
 
-    :map('n', '<a-j>', function() self:run_cur_cmd_fwd() end)
-    :map('n', '<a-k>', function() self:run_cur_cmd_back() end)
+    :map('n', '<leader>n', function() self:run_cur_cmd_fwd() end)
+    :map('n', '<leader>p', function() self:run_cur_cmd_back() end)
 end
 
 return M

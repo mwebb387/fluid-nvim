@@ -27,8 +27,8 @@ function M:setup(deps)
     :map("n", "gh;", function() harpoon:list():select(8) end)
 
     -- Toggle previous & next buffers stored within Harpoon list
-    :map("n", "<leader>n", function() harpoon:list():prev() end)
-    :map("n", "<leader>p", function() harpoon:list():next() end)
+    :map("n", "<leader>hn", function() harpoon:list():prev() end)
+    :map("n", "<leader>hp", function() harpoon:list():next() end)
 end
 
 return M
