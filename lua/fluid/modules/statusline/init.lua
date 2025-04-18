@@ -20,7 +20,6 @@ end
 function M:setup(deps)
   -- local opt = h.option
 
-  -- opt:set('laststatus', 3)
   vim.opt.laststatus = 3
 
   _G.SLSpell = function()
@@ -29,12 +28,12 @@ function M:setup(deps)
     if vim.o.spell then
       return tostring(fl
           :highlight 'Error'
-          :append ' 暈 ')
+          :append ' 󰓆 ')
     end
 
     return tostring(fl
         :highlight 'NonText'
-        :append ' 暈 ')
+        :append ' 󰓆 ')
   end
 
   _G.SLGitBranch = function()
@@ -54,7 +53,7 @@ function M:setup(deps)
   _G.SLLSPServer = function()
     local fl = deps.fluidline:new()
 
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_clients({bufnr = 0})
 
     if clients and #clients > 0 then
       local clientNames = {}
