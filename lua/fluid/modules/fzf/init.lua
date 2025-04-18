@@ -33,9 +33,13 @@ function M:setup(deps)
     deps.nvim:map('n', '<C-p>', '<cmd>FzfLua git_files<CR>')
     deps.nvim:map('n', '<leader>ff', '<cmd>FzfLua files<CR>')
     deps.nvim:map('n', '<leader>fb', '<cmd>FzfLua buffers<CR>')
-    deps.nvim:map('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>')
     deps.nvim:map('n', '<leader>fh', '<cmd>FzfLua helptags<CR>')
     deps.nvim:map('n', '<leader>fo', '<cmd>FzfLua oldfiles<CR>')
+
+    -- Grep
+    deps.nvim:map('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>')
+    deps.nvim:map('n', '<leader>fG', '<cmd>FzfLua grep_last<CR>')
+    deps.nvim:map('v', '<leader>fg', '<cmd>FzfLua grep_visual<CR>')
   end
 end
 
