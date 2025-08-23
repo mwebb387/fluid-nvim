@@ -17,7 +17,7 @@ function M.setup(nvim)
 
     -- Searching
   nvim('ignorecase')
-      :set('path', '.,,**')
+      :append('path', '**')
       :set('wildignore', 'obj/**,bin/**,node_modules/**,CMS/**')
       :set('grepprg', 'rg --vimgrep --no-heading --smart-case --')
       :set('grepformat', '%f:%l:%c:%m,%f:%l:%m')

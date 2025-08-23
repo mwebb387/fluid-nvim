@@ -31,6 +31,7 @@ function M:setup(deps)
 
     -- Keymaps
     deps.nvim:map('n', '<C-p>', '<cmd>FzfLua git_files<CR>')
+    deps.nvim:map('n', '<M-p>', '<cmd>FzfLua args<CR>')
     deps.nvim:map('n', '<leader>ff', '<cmd>FzfLua files<CR>')
     deps.nvim:map('n', '<leader>fb', '<cmd>FzfLua buffers<CR>')
     deps.nvim:map('n', '<leader>fh', '<cmd>FzfLua helptags<CR>')

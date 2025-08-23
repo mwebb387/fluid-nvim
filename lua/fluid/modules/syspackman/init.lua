@@ -58,7 +58,15 @@ function M:init()
       self.config.sys.cmd = 'scoop'
       self.config.sys.update = 'update'
     end
+  elseif vim.fn.has('linux') then
+    self.config.sys = {
+      cmd = 'sudo apt',
+      install = 'install',
+      update = 'upgrade',
+      remove = 'uninstall'
+    }
   end
+
 
   -- TODO: Unix/Mac
 
