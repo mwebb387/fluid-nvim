@@ -75,6 +75,7 @@ end
 function M:init(fluid)
   self:use('neovim/nvim-lspconfig')
   self:depends_on('fluid.nvim').as('nvim')
+  self:depends_on('fluid.modules.lsp.util').as('lsp_util')
 
   if self:has('server_management') then
     fluid:syspackman() -- make sure system package manager is loaded
@@ -83,6 +84,11 @@ function M:init(fluid)
 end
 
 function M:setup(deps)
+  vim.lsp.config('*', {
+    root_markers = {'.git'},
+    on_attach = deps.lsp_util.on_attach,
+  })
+
   if self:has('icons') then
     vim.diagnostic.config({
       signs = {

@@ -59,6 +59,10 @@ local function on_attach(client, bufnr)
   if client.name == 'omnisharp' then
     print('loading omnisharp stuff from on_attach')
 
+    buf_keymap("n", "gd", "<cmd>lua require('omnisharp_extended').lsp_definition()<cr>", opts)
+    buf_keymap("n", "gr", "<cmd>lua require('omnisharp_extended').lsp_references()<cr>", opts)
+    buf_keymap("n", "gr", "<cmd>lua require('omnisharp_extended').lsp_implementation()<cr>", opts)
+
     client.server_capabilities.semanticTokensProvider.full = vim.empty_dict()
     client.server_capabilities.semanticTokensProvider.range = true
 

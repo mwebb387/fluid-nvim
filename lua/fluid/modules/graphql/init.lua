@@ -19,7 +19,6 @@ function M:setup(deps)
   if self:has('lsp') then
     local lsp = {
       capabilities = deps.cmp.default_capabilities(),
-      on_attach = deps.lsp_util.on_attach,
     }
 
     deps.lsp:addServerConfig({

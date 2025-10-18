@@ -25,19 +25,10 @@ end
 
 function M:setup(deps)
   if self:has('lsp') then
-    local handlers = {
-      ['textDocument/publishDiagnostics'] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics,
-        { virtual_text = false }),
-      ['textDocument/definition'] = deps.omnisharp_extended.handler
-    }
-
     local lsp = {
       cmd = {'omnisharp.exe'},
       capabilities = deps.cmp.default_capabilities(),
       enable_roslyn_analyzers = true,
-      on_attach = deps.lsp_util.on_attach,
-      handlers = handlers
     }
 
     deps.lspconfig.omnisharp.setup(lsp)
@@ -49,6 +40,7 @@ function M:setup(deps)
       callback = function()
         vim.opt.foldmethod = 'marker'
         vim.opt.foldmarker = '{,}'
+        vim.opt.foldlevel = 99
       end
     })
   end
