@@ -19,8 +19,7 @@ function M.setup(nvim)
   nvim('ignorecase')
       :append('path', '**')
       :set('wildignore', 'obj/**,bin/**,node_modules/**,CMS/**')
-      :set('grepprg', 'rg --vimgrep --no-heading --smart-case --')
-      :set('grepformat', '%f:%l:%c:%m,%f:%l:%m')
+      :set('shellpipe', '>')
 
   -- Tab settings
   nvim('expandtab', 'autoindent')

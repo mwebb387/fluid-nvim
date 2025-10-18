@@ -8,6 +8,8 @@ function M:init(fluid)
 
   if self:has('treesitter') then -- also check module registration
     fluid:treesitter():option('lang:c_sharp')
+  else
+    self:use('OrangeT/vim-csharp')
   end
 
   if self:has('lsp') then -- also check module registration
