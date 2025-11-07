@@ -3,7 +3,6 @@ local M = {}
 function M:init()
   if self:has('lsp') then -- also check module registration
     self
-      :depends_on('lspconfig')
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
@@ -29,11 +28,11 @@ function M:setup(deps)
 
     local lsp = {
       capabilities = deps.cmp.default_capabilities(), -- TODO: Opt-in for cmp?
-      on_attach = deps.lsp_util.on_attach,
       settings = settings
     }
 
-    deps.lspconfig.lua_ls.setup(lsp)
+    vim.lsp.config('lua_ls', lsp)
+    vim.lsp.enable('lua_ls')
   end
 end
 

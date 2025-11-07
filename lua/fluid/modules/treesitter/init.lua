@@ -38,14 +38,19 @@ end
 
 function M:init()
   -- plugin register treesitter
+  -- vim.print("Registering treesitter module")
+  -- vim.print("Options: ")
+  -- vim.print(self.options)
+
   self
     -- Plugins
-    -- :use('nvim-treesitter/nvim-treesitter')
+    -- :use({'nvim-treesitter/nvim-treesitter', branch = 'master'})
 
     -- Dependencies
     :depends_on('nvim-treesitter.configs')
       .as('treesitter')
-      .from('nvim-treesitter/nvim-treesitter')
+      .from({'nvim-treesitter/nvim-treesitter', branch = 'master'})
+
 
     -- Config based on opts
     :highlight(self:has('highlight'))

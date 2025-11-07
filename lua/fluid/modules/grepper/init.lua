@@ -8,7 +8,6 @@ end
 function M:setup(deps)
   -- Keymaps
   deps.nvim
-    :map('n', '<leader>g', '<cmd>Grepper -tool rg<CR>')
     :map('n', '<leader>gg', '<cmd>Grepper -tool rg<CR>')
     :map('n', '<leader>G', '<cmd>Grepper -tool rg -cword -noprompt<CR>')
     :map('n', '<leader>gb', '<cmd>Grepper -tool rg -buffer<CR>')

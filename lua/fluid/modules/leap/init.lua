@@ -5,7 +5,7 @@ function M:init()
 end
 
 function M:setup(deps)
-  deps.leap.add_default_mappings()
+  -- deps.leap.add_default_mappings()
 end
 
 return M

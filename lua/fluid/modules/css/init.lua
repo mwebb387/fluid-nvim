@@ -25,7 +25,6 @@ function M:setup(deps)
       manager = 'node'
     })
 
-    -- deps.lspconfig.cssls.setup(lsp)
     vim.lsp.config('cssls', lsp)
     vim.lsp.enable('cssls')
   end

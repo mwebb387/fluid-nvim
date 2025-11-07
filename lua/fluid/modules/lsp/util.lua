@@ -1,15 +1,16 @@
 local function on_attach(client, bufnr)
-  local buf_keymap = function(...)
-    return vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
+  -- local buf_keymap = function(...)
+  --   return vim.api.nvim_buf_set_keymap(bufnr, ...)
+  -- end
+  local buf_keymap = vim.keymap.set;
 
   local buf_option = function(name, value)
     return vim.api.nvim_set_option_value(name, value, { buf = bufnr })
   end
 
-  buf_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- buf_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  local opts = {noremap = true, silent = true}
+  local opts = {buffer = true, noremap = true, silent = true}
   buf_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -25,15 +26,16 @@ local function on_attach(client, bufnr)
   buf_keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_keymap("n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_keymap("i", "<C-l>", "<cmd>lua vim.lsp.buf.completion()<CR>", opts)
   buf_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   buf_keymap("n", "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   buf_keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
 
-  if client.server_capabilities.goto_definition then
-    buf_option("tagfunc", "v:lua.vim.lsp.tagfunc")
-  end
+  -- if client.server_capabilities.goto_definition then
+  --   buf_option("tagfunc", "v:lua.vim.lsp.tagfunc")
+  -- end
 
   if client.server_capabilities.document_formatting then
     buf_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)

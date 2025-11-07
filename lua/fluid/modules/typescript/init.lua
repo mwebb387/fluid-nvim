@@ -7,7 +7,6 @@ function M:init(fluid)
 
   if self:has('lsp') then -- also check module registration
     self
-      :depends_on('lspconfig')
       :depends_on('fluid.modules.lsp').as('lsp')
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
   end

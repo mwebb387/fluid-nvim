@@ -7,7 +7,6 @@ function M:init(fluid)
 
   if self:has('lsp') then -- also check module registration
     self
-      :depends_on('lspconfig')
       :depends_on('fluid.modules.lsp').as('lsp')
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
@@ -30,7 +29,8 @@ function M:setup(deps)
       -- update = "npm upgrade -g graphql-language-service-cli",
       -- remove = "npm uninstall -g graphql-language-service-cli",
     })
-    deps.lspconfig.graphql.setup(lsp)
+    vim.lsp.config('graphql', lsp)
+    vim.lsp.enable('graphql')
   end
 end
 
