@@ -162,38 +162,119 @@ Fluid includes 71 modules covering various aspects of Neovim functionality:
 
 ## Configuration Examples
 
+### Real-World Configuration
+Here's a comprehensive example based on an actual Fluid configuration:
+
+```lua
+vim.cmd.packadd 'fluid'
+require 'fluid'
+-- UI
+  :theme()
+    :option('rose-pine')
+  :devicons()
+  :dressing()
+  :statusline()
+  :winbar()
+
+-- Nvim
+  :quickfix()
+
+-- Editor
+  :comment()
+  :autopairs()
+  :cmp()
+  :fluidfiles()
+  :lsp()
+    :options('icons', 'server_management')
+  :surround()
+  :treesitter()
+    :option('highlight', 'indent')
+  :qbuf()
+  :undotree()
+  :vimslash()
+  :ai()
+
+-- Motion
+  :aerial()
+  :fluidmotion()
+    :options('win', 'log')
+  :leap()
+
+-- Languages
+  :csharp()
+    :options('treesitter', 'lsp', 'fold')
+  :css()
+    :options('treesitter', 'lsp')
+  :emmet()
+  :fsharp()
+    :options('lsp')
+  :html()
+  :lualang()
+    :options('lsp')
+  :markdown()
+  :typescript()
+    :options('treesitter', 'lsp')
+  :tailwindcss()
+
+-- Tools
+  :copilot()
+  :dispatch()
+  
+  -- Git
+  :gitsigns()
+  :fugitive()
+  
+  -- System
+  :syspackman()
+    :options('scoop')
+  
+  -- File Management
+  :oil()
+  
+  -- Search
+  :fzf()
+  :grepper()
+  
+  -- Database
+  :dadbod()
+    :options('ui', 'completion')
+  
+  -- Terminal
+  :fterm()
+
+  :setup()
+```
+
 ### Basic Setup
 ```lua
-require('fluid'):setup(function(f)
-  f:telescope()
-    :lsp()
-    :treesitter()  
-    :cmp()
-end)
+vim.cmd.packadd 'fluid'
+require 'fluid'
+  :lsp()
+  :treesitter()
+  :cmp()
+  :telescope()
+  :setup()
 ```
 
-### Advanced Setup with Options
+### Language Development Setup
 ```lua
-require('fluid'):setup(function(f)
-  f:lsp():options('icons', 'server_management')
-    :treesitter():highlight(true):incremental_selection(true)
-    :telescope()
-    :cmp()
-    :gitsigns()
-    :aerial()
-end)
-```
-
-### Language-Specific Configuration
-```lua
-require('fluid'):setup(function(f)
-  f:lsp():options('server_management')
-    :typescript()
-    :csharp()
-    :css()
-    :html()
-    :treesitter():ensure_installed('typescript', 'c_sharp', 'css', 'html')
-end)
+vim.cmd.packadd 'fluid'
+require 'fluid'
+  :lsp():options('icons', 'server_management')
+  :treesitter():option('highlight', 'indent')
+  :cmp()
+  
+  -- Language support
+  :typescript():options('treesitter', 'lsp')
+  :csharp():options('treesitter', 'lsp', 'fold')
+  :css():options('treesitter', 'lsp')
+  :html()
+  
+  -- Tools
+  :copilot()
+  :gitsigns()
+  :oil()
+  :setup()
 ```
 
 ## Module Documentation
