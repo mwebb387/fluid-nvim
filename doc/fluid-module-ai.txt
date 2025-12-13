@@ -1,0 +1,39 @@
+*fluid-module-ai.txt* Fluid module for AI assistance integration
+*fluid-module-ai*
+
+==============================================================================
+INTRO                                                  *fluid-module-ai-intro*
+
+This module integrates AI coding assistants into Neovim, providing intelligent
+code completion, generation, and assistance capabilities. Currently integrates
+with OpenCode for enhanced AI-powered development workflows.
+
+==============================================================================
+USAGE                                                  *fluid-module-ai-usage*
+
+Basic usage: >
+  require('fluid'):ai()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-ai-dependencies*
+
+Plugins installed:
+  • sudo-tee/opencode.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                  *fluid-module-ai-functionality*
+
+The AI module provides:
+  • Integration with OpenCode AI assistant
+  • AI-powered code completion and generation
+  • Intelligent code suggestions and improvements
+  • Context-aware programming assistance
+  • Enhanced development workflow with AI capabilities
+
+The module sets up the OpenCode plugin with default configuration to provide
+seamless AI assistance within your Neovim editing environment.
+
+vim:tw=78:ft=help:

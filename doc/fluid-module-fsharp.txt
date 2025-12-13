@@ -1,0 +1,70 @@
+*fluid-module-fsharp.txt* Fluid module for F# development support
+*fluid-module-fsharp*
+
+==============================================================================
+INTRO                                                *fluid-module-fsharp-intro*
+
+This module provides F# development support including syntax highlighting
+and LSP integration with FsAutoComplete. Enables comprehensive F# development
+within Neovim with IntelliSense and language server capabilities.
+
+==============================================================================
+USAGE                                                *fluid-module-fsharp-usage*
+
+Basic usage: >
+  require('fluid'):fsharp()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-fsharp-dependencies*
+
+Plugins installed:
+  • philt/vim-fsharp
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-fsharp-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: fsautocomplete (FsAutoComplete)
+  • Package: fsautocomplete
+  • Manager: dotnet
+  • CMP capabilities integration
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-fsharp-functionality*
+
+The fsharp module provides:
+  • F# syntax highlighting and file type support
+  • LSP integration with FsAutoComplete language server
+  • IntelliSense and code completion
+  • Type checking and error detection
+  • Code navigation and symbol lookup
+  • Integration with .NET tooling
+
+F# language server features:
+  • Type information and hover documentation
+  • Function signature help
+  • Go-to-definition and find references
+  • Symbol search and workspace navigation
+  • Error checking and diagnostics
+  • Code completion with type inference
+  • Refactoring suggestions
+
+File type support:
+  • .fs files (F# source code)
+  • .fsi files (F# signature files)
+  • .fsx files (F# script files)
+
+The module automatically configures FsAutoComplete when the LSP module
+is available, providing a complete F# development experience with modern
+language server capabilities.
+
+Requirements:
+  • .NET SDK installed
+  • fsautocomplete tool (installed via dotnet tool)
+
+vim:tw=78:ft=help:

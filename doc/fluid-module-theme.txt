@@ -1,0 +1,49 @@
+*fluid-module-theme.txt* Fluid module for color scheme management
+*fluid-module-theme*
+
+==============================================================================
+INTRO                                                  *fluid-module-theme-intro*
+
+This module provides color scheme management with multiple theme options.
+Includes popular themes and configures Rose Pine as the default theme
+with customization options.
+
+==============================================================================
+USAGE                                                  *fluid-module-theme-usage*
+
+Basic usage: >
+  require('fluid'):theme()
+
+With specific theme: >
+  require('fluid'):theme('catppuccin')
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-theme-dependencies*
+
+Plugins installed:
+  • catppuccin/nvim
+  • rebelot/kanagawa.nvim  
+  • EdenEast/nightfox.nvim
+  • talha-akram/noctis.nvim
+  • maxmx03/fluoromachine.nvim
+  • folke/tokyonight.nvim
+  • rose-pine/neovim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                  *fluid-module-theme-functionality*
+
+The theme module provides:
+  • Multiple color scheme options
+  • Rose Pine configuration as default
+  • True color support enabling
+  • Customizable theme selection
+  • Disabled italics in Rose Pine moon variant
+
+Available themes: catppuccin, kanagawa, nightfox, noctis, fluoromachine,
+tokyonight, rose-pine. Defaults to Rose Pine moon variant with disabled
+italics for better readability.
+
+vim:tw=78:ft=help:

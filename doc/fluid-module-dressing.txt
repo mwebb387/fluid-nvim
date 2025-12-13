@@ -1,0 +1,63 @@
+*fluid-module-dressing.txt* Fluid module for enhanced UI elements
+*fluid-module-dressing*
+
+==============================================================================
+INTRO                                              *fluid-module-dressing-intro*
+
+This module integrates stevearc/dressing.nvim to provide enhanced UI elements
+for Neovim's built-in interfaces. Dressing improves the appearance and
+functionality of input dialogs, selection menus, and other UI components.
+
+==============================================================================
+USAGE                                              *fluid-module-dressing-usage*
+
+Basic usage: >
+  require('fluid'):dressing()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-dressing-dependencies*
+
+Plugins installed:
+  • stevearc/dressing.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-dressing-functionality*
+
+The dressing module provides:
+  • Enhanced vim.ui.select interface
+  • Improved vim.ui.input dialogs
+  • Better visual styling for UI elements
+  • Integration with telescope and other pickers
+  • Customizable UI component behavior
+  • Consistent styling across different interfaces
+
+UI improvements:
+  • Better-looking input prompts
+  • Enhanced selection menus
+  • Telescope integration for selections
+  • Floating window styling
+  • Consistent visual appearance
+  • Improved keyboard navigation
+
+Enhanced interfaces:
+  • LSP code action menus
+  • File picker dialogs
+  • Command palette interfaces
+  • Plugin configuration dialogs
+  • Any plugin using vim.ui.select/input
+
+The module automatically enhances Neovim's built-in UI functions with
+better styling and functionality, making interactions more visually
+appealing and user-friendly without requiring changes to existing
+plugins or workflows.
+
+Integration benefits:
+  • Seamless enhancement of existing interfaces
+  • No configuration required for basic improvements
+  • Automatic telescope integration when available
+  • Consistent styling across all UI elements
+
+vim:tw=78:ft=help:

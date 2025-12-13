@@ -1,0 +1,67 @@
+*fluid-module-markdown.txt* Fluid module for Markdown rendering and editing
+*fluid-module-markdown*
+
+==============================================================================
+INTRO                                              *fluid-module-markdown-intro*
+
+This module integrates MeanderingProgrammer/render-markdown.nvim to provide
+enhanced Markdown rendering within Neovim. Offers real-time preview and
+improved visual representation of Markdown documents.
+
+==============================================================================
+USAGE                                              *fluid-module-markdown-usage*
+
+Basic usage: >
+  require('fluid'):markdown()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-markdown-dependencies*
+
+Plugins installed:
+  • MeanderingProgrammer/render-markdown.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+CONFIGURATION                              *fluid-module-markdown-configuration*
+
+Default configuration:
+  • Anti-conceal: disabled (shows raw markdown syntax)
+  • File types: markdown, opencode_output, vimwiki
+  • Real-time rendering enabled
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-markdown-functionality*
+
+The markdown module provides:
+  • Real-time Markdown rendering in buffers
+  • Enhanced visual representation of Markdown elements
+  • Support for multiple Markdown-like file types
+  • Improved editing experience with visual feedback
+  • Integration with documentation workflows
+
+Markdown rendering features:
+  • Headers with proper styling and hierarchy
+  • Code blocks with syntax highlighting
+  • Lists with proper indentation and bullets
+  • Links with visual indicators
+  • Tables with formatted display
+  • Images and media embedding
+  • Emphasis and formatting visualization
+
+Supported file types:
+  • .md, .markdown files (standard Markdown)
+  • opencode_output files (AI tool output)
+  • .wiki files (VimWiki format)
+
+The module enhances the Markdown editing experience by providing:
+  • Visual feedback while editing
+  • Better document structure understanding
+  • Improved readability of Markdown content
+  • Support for documentation and note-taking workflows
+
+The anti-conceal setting is disabled, allowing users to see the raw
+Markdown syntax while still benefiting from enhanced visual rendering.
+
+vim:tw=78:ft=help:

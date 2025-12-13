@@ -1,0 +1,52 @@
+*fluid-module-typescript.txt* Fluid module for TypeScript development
+*fluid-module-typescript*
+
+==============================================================================
+INTRO                                             *fluid-module-typescript-intro*
+
+This module provides TypeScript development support including syntax
+highlighting via treesitter and LSP integration with vtsls (Vue TypeScript
+Language Service) for enhanced editing and type checking.
+
+==============================================================================
+USAGE                                             *fluid-module-typescript-usage*
+
+Basic usage: >
+  require('fluid'):typescript()
+
+==============================================================================
+DEPENDENCIES                               *fluid-module-typescript-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP and treesitter integration)
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                             *fluid-module-typescript-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: vtsls (Vue TypeScript Language Service)
+  • Package: @vtsls/language-server
+  • Manager: node
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: typescript
+
+==============================================================================
+FUNCTIONALITY                             *fluid-module-typescript-functionality*
+
+The typescript module provides:
+  • TypeScript syntax highlighting via treesitter
+  • LSP integration with vtsls language server
+  • Type checking and IntelliSense
+  • Code completion and navigation
+  • Error detection and diagnostics
+  • Modern TypeScript feature support
+
+The module automatically configures vtsls when the LSP module is available,
+providing comprehensive TypeScript development capabilities.
+
+vim:tw=78:ft=help:

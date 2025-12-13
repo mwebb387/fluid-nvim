@@ -1,0 +1,65 @@
+*fluid-module-fugitive.txt* Fluid module for Git integration
+*fluid-module-fugitive*
+
+==============================================================================
+INTRO                                               *fluid-module-fugitive-intro*
+
+This module integrates tpope/vim-fugitive to provide comprehensive Git
+integration within Neovim. Fugitive is a Git wrapper that enables Git
+operations, status management, and version control workflows.
+
+==============================================================================
+USAGE                                               *fluid-module-fugitive-usage*
+
+Basic usage: >
+  require('fluid'):fugitive()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-fugitive-dependencies*
+
+Plugins installed:
+  • tpope/vim-fugitive
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-fugitive-functionality*
+
+The fugitive module provides:
+  • Comprehensive Git integration
+  • Git status and diff viewing
+  • Commit and branch management
+  • Merge conflict resolution
+  • Git history browsing
+  • Repository navigation
+
+Core fugitive commands (when available):
+  :Git                  Run git commands
+  :G                    Git command shortcut
+  :Gstatus              View git status (interactive)
+  :Gdiff                View file differences
+  :Gcommit              Create commits
+  :Gblame               View file blame information
+  :Glog                 Browse git history
+  :Gbrowse              Open files in web browser
+
+Git workflow features:
+  • Interactive staging from status window
+  • Diff viewing with syntax highlighting  
+  • Branch switching and creation
+  • Commit authoring with proper editor
+  • Merge conflict resolution tools
+  • Integration with quickfix for git operations
+
+The status window provides:
+  • Visual staging/unstaging with '-' key
+  • File navigation and editing
+  • Commit creation from status buffer
+  • Diff viewing for selected files
+  • Integration with other fugitive commands
+
+Fugitive enhances Git workflows by providing powerful, text-based
+interfaces for all common Git operations without leaving Neovim.
+
+vim:tw=78:ft=help:

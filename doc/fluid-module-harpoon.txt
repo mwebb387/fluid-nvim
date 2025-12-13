@@ -1,0 +1,75 @@
+*fluid-module-harpoon.txt* Fluid module for file navigation bookmarks
+*fluid-module-harpoon*
+
+==============================================================================
+INTRO                                                *fluid-module-harpoon-intro*
+
+This module integrates ThePrimeagen/harpoon (v2) to provide fast file
+navigation through bookmarked files. Harpoon allows marking important
+files for instant access and navigation within projects.
+
+==============================================================================
+USAGE                                                *fluid-module-harpoon-usage*
+
+Basic usage: >
+  require('fluid'):harpoon()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-harpoon-dependencies*
+
+Plugins installed:
+  • ThePrimeagen/harpoon (branch: harpoon2)
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-harpoon-keymaps*
+
+Harpoon management:
+  <leader>ha        Add current file to harpoon list
+  <leader>hh        Toggle harpoon quick menu
+
+File navigation (using home row keys):
+  ghf               Navigate to harpoon file 1
+  ghd               Navigate to harpoon file 2
+  ghs               Navigate to harpoon file 3
+  gha               Navigate to harpoon file 4
+  ghj               Navigate to harpoon file 5
+  ghk               Navigate to harpoon file 6
+  ghl               Navigate to harpoon file 7
+  gh;               Navigate to harpoon file 8
+
+List navigation:
+  <leader>hn        Previous file in harpoon list
+  <leader>hp        Next file in harpoon list
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-harpoon-functionality*
+
+The harpoon module provides:
+  • File bookmarking system for quick navigation
+  • Instant access to frequently used files
+  • Quick menu for managing bookmarked files
+  • Sequential navigation through bookmark list
+  • Keyboard-driven file switching workflow
+
+Harpoon workflow:
+  • Mark important files with <leader>ha
+  • Access quick menu with <leader>hh
+  • Jump directly to files using gh + home row keys
+  • Navigate sequentially with <leader>hn/hp
+  • Manage bookmarks through interactive menu
+
+Key benefits:
+  • Eliminates need for tree navigation
+  • Faster than fuzzy finding for known files
+  • Maintains consistent file order
+  • Project-specific bookmark lists
+  • Minimal cognitive overhead
+
+The module uses Harpoon v2 (harpoon2 branch) and provides an efficient
+alternative to traditional file navigation methods, especially useful
+for developers who work with a core set of files repeatedly.
+
+vim:tw=78:ft=help:

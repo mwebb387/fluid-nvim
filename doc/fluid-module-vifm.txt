@@ -1,0 +1,42 @@
+*fluid-module-vifm.txt* Fluid module for Vifm file manager integration
+*fluid-module-vifm*
+
+==============================================================================
+INTRO                                                    *fluid-module-vifm-intro*
+
+This module integrates vifm/vifm.vim to provide Vifm file manager
+integration within Neovim. Enables using the powerful Vifm terminal
+file manager directly from the editor.
+
+==============================================================================
+USAGE                                                    *fluid-module-vifm-usage*
+
+Basic usage: >
+  require('fluid'):vifm()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-vifm-dependencies*
+
+Plugins installed:
+  • vifm/vifm.vim
+
+External requirements:
+  • vifm (file manager application)
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                    *fluid-module-vifm-functionality*
+
+The vifm module provides:
+  • Vifm file manager integration
+  • Terminal-based file operations
+  • Dual-pane file browsing
+  • Advanced file management capabilities
+  • Integration with Neovim workflows
+
+The module enables using Vifm's powerful file management features
+within Neovim for comprehensive file operations.
+
+vim:tw=78:ft=help:

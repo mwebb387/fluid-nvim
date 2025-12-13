@@ -1,0 +1,41 @@
+*fluid-module-syspackman.txt* Fluid module for system package management
+*fluid-module-syspackman*
+
+==============================================================================
+INTRO                                            *fluid-module-syspackman-intro*
+
+This module provides system package management capabilities with support for
+multiple package managers across different platforms. Enables installing,
+updating, and removing system packages from within Neovim.
+
+==============================================================================
+USAGE                                            *fluid-module-syspackman-usage*
+
+Basic usage: >
+  require('fluid'):syspackman()
+
+==============================================================================
+DEPENDENCIES                              *fluid-module-syspackman-dependencies*
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-syspackman-functionality*
+
+The syspackman module provides:
+  • Cross-platform package management
+  • Support for multiple package managers
+  • Install, update, and uninstall operations
+  • Automatic platform detection
+
+Supported package managers:
+  • Windows: winget, scoop
+  • Linux: apt, pacman
+  • Node.js: npm
+  • .NET: dotnet tool
+
+The module automatically detects the platform and available package
+managers, providing unified interface for system package operations.
+
+vim:tw=78:ft=help:

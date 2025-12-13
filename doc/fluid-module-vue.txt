@@ -1,0 +1,51 @@
+*fluid-module-vue.txt* Fluid module for Vue.js development support
+*fluid-module-vue*
+
+==============================================================================
+INTRO                                                    *fluid-module-vue-intro*
+
+This module provides Vue.js development support including syntax highlighting
+via treesitter and LSP integration with Volar language server for Vue
+Single File Component development.
+
+==============================================================================
+USAGE                                                    *fluid-module-vue-usage*
+
+Basic usage: >
+  require('fluid'):vue()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-vue-dependencies*
+
+Plugins installed:
+  • posva/vim-vue (fallback if treesitter not available)
+
+Internal dependencies:
+  • lspconfig
+  • fluid.modules.lsp (if LSP enabled)  
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-vue-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: volar (Vue Language Server)
+  • Package: @vue/language-server
+  • Manager: node
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: vue
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-vue-functionality*
+
+The vue module provides:
+  • Vue.js syntax highlighting via treesitter
+  • LSP integration with Volar language server
+  • Vue Single File Component support
+  • Template, script, and style section support
+  • TypeScript integration in Vue files
+  • Component IntelliSense and validation
+
+vim:tw=78:ft=help:

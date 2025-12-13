@@ -1,0 +1,83 @@
+*fluid-module-fterm.txt* Fluid module for floating terminal
+*fluid-module-fterm*
+
+==============================================================================
+INTRO                                                  *fluid-module-fterm-intro*
+
+This module integrates numToStr/FTerm.nvim to provide a floating terminal
+interface with PowerShell integration and development workflow commands.
+Includes custom terminal management and project-specific commands.
+
+==============================================================================
+USAGE                                                  *fluid-module-fterm-usage*
+
+Basic usage: >
+  require('fluid'):fterm()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-fterm-dependencies*
+
+Plugins installed:
+  • numToStr/FTerm.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+COMMANDS                                          *fluid-module-fterm-commands*
+
+Terminal commands:
+  :FTermToggle           Toggle floating terminal
+  :NextTerminal          Open or switch to next terminal buffer
+  :Powershell            Open new PowerShell terminal
+  :DotnetWatchDev        Run dotnet watch in development mode
+  :NpmRun                Execute npm run command
+  :NpmStart              Execute npm start command
+
+==============================================================================
+KEYMAPS                                          *fluid-module-fterm-keymaps*
+
+Normal mode:
+  <M-`>             Toggle floating terminal
+  <M-t>             Toggle floating terminal (alternative)
+
+Terminal mode:
+  <M-`>             Close floating terminal
+  <M-t>             Close floating terminal (alternative)
+  <M-j>             Switch to next buffer from terminal
+  <M-k>             Switch to previous buffer from terminal
+  <M-n>             Exit terminal mode to normal mode
+
+==============================================================================
+FUNCTIONALITY                                  *fluid-module-fterm-functionality*
+
+The fterm module provides:
+  • Floating terminal window with FTerm
+  • PowerShell integration by default
+  • Terminal buffer management and navigation
+  • Development workflow automation commands
+  • Quick terminal access from normal and terminal modes
+
+Terminal features:
+  • Floating terminal overlay
+  • Terminal buffer reuse and management
+  • PowerShell as default shell
+  • Quick toggle access
+  • Terminal mode navigation shortcuts
+
+Development commands:
+  • .NET development with watch mode
+  • npm workflow integration
+  • Custom PowerShell script execution
+  • Project-specific terminal commands
+
+The module is particularly useful for:
+  • Quick access to terminal without leaving editor
+  • Running development servers and build processes
+  • Managing multiple terminal sessions
+  • Integrating with .NET and Node.js workflows
+
+Configuration uses PowerShell (pwsh) as the default terminal command,
+making it suitable for Windows development environments.
+
+vim:tw=78:ft=help:

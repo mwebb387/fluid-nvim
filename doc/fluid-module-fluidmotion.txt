@@ -1,0 +1,83 @@
+*fluid-module-fluidmotion.txt* Fluid module for enhanced navigation
+*fluid-module-fluidmotion*
+
+==============================================================================
+INTRO                                           *fluid-module-fluidmotion-intro*
+
+This module provides enhanced navigation and motion capabilities with
+configurable next/previous commands for different contexts like buffers,
+quickfix, location lists, tabs, and more.
+
+==============================================================================
+USAGE                                           *fluid-module-fluidmotion-usage*
+
+Basic usage: >
+  require('fluid'):fluidmotion()
+
+Options for initialization context:
+  • tab - Tab navigation mode
+  • qf/quickfix - Quickfix navigation mode  
+  • loc/locationlist - Location list navigation mode
+  • win/window - Window navigation mode
+  • log - Enable logging
+
+==============================================================================
+DEPENDENCIES                               *fluid-module-fluidmotion-dependencies*
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                       *fluid-module-fluidmotion-keymaps*
+
+General motions:
+  H                 Move to beginning of line (^)
+  L                 Move to end of line ($)
+  <C-d>             Scroll down and center
+  <C-u>             Scroll up and center
+  <C-f>             Page down and center
+  <CR>              Next window
+  <S-CR>            Previous window
+  <BS>              Switch to alternate buffer
+
+Context-specific navigation:
+  ]b / [b           Next/previous buffer
+  ]d / [d           Next/previous diagnostic
+  ]l / [l           Next/previous location list item
+  ]q / [q           Next/previous quickfix item
+  ]t / [t           Next/previous tab
+  ]w / [w           Next/previous window
+  ]z / [z           Next/previous fold
+
+Dynamic commands:
+  <leader>n         Execute current forward command
+  <leader>p         Execute current backward command
+
+==============================================================================
+FUNCTIONALITY                           *fluid-module-fluidmotion-functionality*
+
+The fluidmotion module provides:
+  • Context-aware navigation commands
+  • Dynamic command switching based on mode
+  • Enhanced motion mappings for common operations
+  • Consistent interface for different navigation contexts
+  • Optional logging for debugging navigation commands
+
+Navigation contexts:
+  • Buffer navigation (bnext/bprevious)
+  • Quickfix navigation (cnext/cprevious)
+  • Location list navigation (lnext/lprevious)
+  • Tab navigation (tabnext/tabprevious)
+  • Window navigation (wincmd w/W)
+  • Diagnostic navigation (vim.diagnostic)
+  • Fold navigation (zj/zk)
+
+Dynamic command system:
+  • set_cur_cmd() - Set current forward/backward commands
+  • run_cur_cmd_fwd/back() - Execute current commands
+  • set_and_run_cmd() - Set and execute in one operation
+
+The module adapts its behavior based on initialization options, making
+<leader>n and <leader>p context-aware for the current navigation mode.
+
+vim:tw=78:ft=help:

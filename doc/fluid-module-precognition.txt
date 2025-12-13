@@ -1,0 +1,42 @@
+*fluid-module-precognition.txt* Fluid module for motion hints and learning
+*fluid-module-precognition*
+
+==============================================================================
+INTRO                                            *fluid-module-precognition-intro*
+
+This module integrates tris203/precognition.nvim to provide motion hints
+and learning assistance. Displays available motions to help improve Vim
+navigation skills and efficiency.
+
+==============================================================================
+USAGE                                            *fluid-module-precognition-usage*
+
+Basic usage: >
+  require('fluid'):precognition()
+
+==============================================================================
+DEPENDENCIES                              *fluid-module-precognition-dependencies*
+
+Plugins installed:
+  • tris203/precognition.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                        *fluid-module-precognition-keymaps*
+
+Precognition controls:
+  <leader>p         Toggle precognition hints
+  <leader>P         Peek at available motions
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-precognition-functionality*
+
+The precognition module provides:
+  • Motion hints and guidance
+  • Vim navigation learning assistance
+  • Visual feedback for efficient movements
+  • Toggleable motion discovery interface
+
+vim:tw=78:ft=help:

@@ -1,0 +1,66 @@
+*fluid-module-lazygit.txt* Fluid module for LazyGit integration
+*fluid-module-lazygit*
+
+==============================================================================
+INTRO                                                *fluid-module-lazygit-intro*
+
+This module integrates kdheepak/lazygit.nvim to provide LazyGit terminal
+user interface integration within Neovim. LazyGit offers a powerful,
+terminal-based Git interface with visual workflows.
+
+==============================================================================
+USAGE                                                *fluid-module-lazygit-usage*
+
+Basic usage: >
+  require('fluid'):lazygit()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-lazygit-dependencies*
+
+Plugins installed:
+  • kdheepak/lazygit.nvim
+
+External tools required:
+  • lazygit (terminal Git UI application)
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-lazygit-functionality*
+
+The lazygit module provides:
+  • LazyGit TUI integration within Neovim
+  • Full-featured Git operations interface
+  • Visual Git workflow management
+  • Terminal-based Git operations
+  • Seamless editor integration
+
+LazyGit features (when available):
+  • Visual staging and unstaging
+  • Interactive commit creation
+  • Branch management and switching
+  • Merge conflict resolution
+  • Git history browsing with diffs
+  • Stash management
+  • Remote repository operations
+  • Rebase and merge operations
+
+LazyGit TUI provides:
+  • Keyboard-driven Git workflows
+  • Visual representation of repository state
+  • Side-by-side diff viewing
+  • Interactive staging hunks
+  • Commit message editing
+  • Branch visualization
+  • File tree navigation
+
+The module loads the LazyGit integration plugin, enabling access to
+LazyGit's powerful terminal interface directly from within Neovim,
+providing a comprehensive Git workflow solution.
+
+Requirements:
+  • LazyGit binary installed and available in PATH
+  • Terminal emulator with proper color support
+
+vim:tw=78:ft=help:

@@ -1,0 +1,42 @@
+*fluid-module-coq.txt* Fluid module for coq completion engine
+*fluid-module-coq*
+
+==============================================================================
+INTRO                                                  *fluid-module-coq-intro*
+
+This module is designed to integrate ms-jpq/coq_nvim, a fast completion
+engine for Neovim with extensive language support and smart completion
+features. Currently under development and not yet implemented.
+
+==============================================================================
+USAGE                                                  *fluid-module-coq-usage*
+
+Basic usage: >
+  require('fluid'):coq()
+
+Note: This module is currently incomplete and not functional.
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-coq-dependencies*
+
+Planned plugins:
+  • ms-jpq/coq_nvim (branch: coq)
+  • ms-jpq/coq.artifacts (branch: artifacts)
+
+Internal dependencies:
+  • None (planned)
+
+==============================================================================
+STATUS                                                *fluid-module-coq-status*
+
+This module is currently under development (TODO status).
+The implementation is incomplete and the module is not functional.
+
+When completed, this module will provide:
+  • Fast completion engine
+  • Smart completion suggestions
+  • Multiple language support
+  • Snippet integration
+  • Customizable completion behavior
+
+vim:tw=78:ft=help:

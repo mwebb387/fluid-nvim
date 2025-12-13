@@ -1,0 +1,35 @@
+*fluid-module-tailwindcss.txt* Fluid module for Tailwind CSS support
+*fluid-module-tailwindcss*
+
+==============================================================================
+INTRO                                            *fluid-module-tailwindcss-intro*
+
+This module provides Tailwind CSS development support by enabling the
+Tailwind CSS language server when LSP configuration is available. Offers
+utility-first CSS development assistance.
+
+==============================================================================
+USAGE                                            *fluid-module-tailwindcss-usage*
+
+Basic usage: >
+  require('fluid'):tailwindcss()
+
+==============================================================================
+DEPENDENCIES                              *fluid-module-tailwindcss-dependencies*
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-tailwindcss-functionality*
+
+The tailwindcss module provides:
+  • Tailwind CSS language server integration
+  • Utility class completion and validation
+  • CSS-in-JS and template literal support
+  • Tailwind-specific IntelliSense
+
+The module enables the tailwindcss LSP server when LSP configuration
+is detected, providing Tailwind CSS development support.
+
+vim:tw=78:ft=help:

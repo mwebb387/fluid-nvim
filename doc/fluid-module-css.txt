@@ -1,0 +1,63 @@
+*fluid-module-css.txt* Fluid module for CSS development support
+*fluid-module-css*
+
+==============================================================================
+INTRO                                                  *fluid-module-css-intro*
+
+This module provides CSS development support including syntax highlighting
+via treesitter and LSP integration with the CSS language server for enhanced
+editing capabilities, IntelliSense, and validation.
+
+==============================================================================
+USAGE                                                  *fluid-module-css-usage*
+
+Basic usage: >
+  require('fluid'):css()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-css-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP and treesitter integration)
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-css-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: cssls (CSS Language Server)
+  • Package: vscode-langservers-extracted
+  • Manager: node
+  • CMP capabilities integration
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: css
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-css-functionality*
+
+The css module provides:
+  • CSS syntax highlighting via treesitter
+  • LSP integration with CSS language server
+  • IntelliSense and autocompletion for CSS properties
+  • CSS validation and error checking
+  • Hover documentation for CSS properties
+  • Code formatting and organization
+  • Support for modern CSS features
+
+Language server features:
+  • Property name completion
+  • Value completion for CSS properties
+  • Color picker integration
+  • CSS validation and linting
+  • Hover information for properties and values
+  • Go-to-definition for CSS classes and IDs
+
+The module automatically configures the CSS language server when the LSP
+module is available, providing a complete CSS development experience.
+
+vim:tw=78:ft=help:

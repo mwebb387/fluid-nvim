@@ -1,0 +1,39 @@
+*fluid-module-yue.txt* Fluid module for Yuescript language support
+*fluid-module-yue*
+
+==============================================================================
+INTRO                                                    *fluid-module-yue-intro*
+
+This module integrates pigpigyyy/Yuescript-vim to provide syntax highlighting
+and language support for Yuescript, a MoonScript-like language that compiles
+to Lua with enhanced features and improved syntax.
+
+==============================================================================
+USAGE                                                    *fluid-module-yue-usage*
+
+Basic usage: >
+  require('fluid'):yue()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-yue-dependencies*
+
+Plugins installed:
+  • pigpigyyy/Yuescript-vim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                    *fluid-module-yue-functionality*
+
+The yue module provides:
+  • Yuescript syntax highlighting
+  • File type detection for .yue files
+  • Basic language support and indentation
+  • Integration with Yuescript development workflow
+
+Yuescript is a modern language that compiles to Lua, offering improved
+syntax and features over traditional MoonScript while maintaining
+compatibility with Lua ecosystems.
+
+vim:tw=78:ft=help:

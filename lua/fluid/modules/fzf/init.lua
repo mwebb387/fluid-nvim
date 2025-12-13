@@ -20,6 +20,8 @@ function M:init()
     self:depends_on('fzf-lua')
       .from('ibhagwan/fzf-lua')
       .as('fzf_lua')
+  else
+    self:use('junegunn/fzf.vim')
   end
 
   self:depends_on('fluid.nvim').as('nvim')
@@ -41,6 +43,15 @@ function M:setup(deps)
     deps.nvim:map('n', '<leader>fg', '<cmd>FzfLua live_grep<CR>')
     deps.nvim:map('n', '<leader>fG', '<cmd>FzfLua grep_last<CR>')
     deps.nvim:map('v', '<leader>fg', '<cmd>FzfLua grep_visual<CR>')
+
+  else
+    -- Keymaps
+    deps.nvim:map('n', '<C-p>', '<cmd>GFiles<CR>')
+    deps.nvim:map('n', '<M-p>', '<cmd>Files<CR>')
+    deps.nvim:map('n', '<M-b>', '<cmd>Buffers<CR>')
+
+    -- Grep
+    deps.nvim:map('n', '<leader>fg', '<cmd>RG<CR>')
   end
 end
 

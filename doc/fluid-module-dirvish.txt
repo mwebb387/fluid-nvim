@@ -1,0 +1,56 @@
+*fluid-module-dirvish.txt* Fluid module for directory navigation
+*fluid-module-dirvish*
+
+==============================================================================
+INTRO                                               *fluid-module-dirvish-intro*
+
+This module integrates justinmk/vim-dirvish to provide a minimal and fast
+directory browser for Neovim. Dirvish offers a simple, buffer-based
+approach to directory navigation without heavyweight file manager features.
+
+==============================================================================
+USAGE                                               *fluid-module-dirvish-usage*
+
+Basic usage: >
+  require('fluid'):dirvish()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-dirvish-dependencies*
+
+Plugins installed:
+  • justinmk/vim-dirvish
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-dirvish-functionality*
+
+The dirvish module provides:
+  • Lightweight directory browsing
+  • Buffer-based directory navigation
+  • Simple file operations
+  • Fast directory listing
+  • Minimal interface without clutter
+  • Integration with Vim's built-in commands
+
+Core features:
+  • Browse directories in regular buffers
+  • Navigate using standard Vim motions
+  • Open files and directories with Enter
+  • Use Vim commands on directory listings
+  • Filter and search directory contents
+  • No complex UI or heavyweight features
+
+Dirvish philosophy:
+  • Leverage Vim's existing capabilities
+  • Minimal feature set for maximum speed
+  • Buffer-based approach for consistency
+  • Simple and predictable behavior
+  • Focus on core directory navigation needs
+
+The module provides essential directory browsing functionality without
+the complexity of full-featured file managers, making it ideal for users
+who prefer simple, fast directory navigation.
+
+vim:tw=78:ft=help:

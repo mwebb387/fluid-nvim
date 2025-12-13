@@ -1,0 +1,66 @@
+*fluid-module-dadbod.txt* Fluid module for database integration
+*fluid-module-dadbod*
+
+==============================================================================
+INTRO                                                *fluid-module-dadbod-intro*
+
+This module integrates tpope/vim-dadbod to provide database connectivity and
+SQL execution capabilities directly within Neovim. Includes optional UI and
+completion extensions for enhanced database interaction.
+
+==============================================================================
+USAGE                                                *fluid-module-dadbod-usage*
+
+Basic usage: >
+  require('fluid'):dadbod()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-dadbod-dependencies*
+
+Plugins installed:
+  • tpope/vim-dadbod
+  • kristijanhusak/vim-dadbod-ui (if ui option enabled)
+  • kristijanhusak/vim-dadbod-completion (if completion option enabled)
+
+Internal dependencies:
+  • None
+
+==============================================================================
+CONFIGURATION                                *fluid-module-dadbod-configuration*
+
+Default database connections:
+  • master: sqlserver://localhost/BizStreamMaster
+  • youthcenter: sqlserver://localhost/YouthCenter_Local
+
+The module sets up vim.g.dbs with predefined database connections that can
+be used with the dadbod commands.
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-dadbod-functionality*
+
+The dadbod module provides:
+  • SQL execution against multiple database types
+  • Database connection management
+  • Query result display within Neovim
+  • Optional UI for database browsing (with ui option)
+  • SQL completion and syntax highlighting (with completion option)
+
+Supported database types:
+  • PostgreSQL
+  • MySQL/MariaDB
+  • SQLite
+  • SQL Server
+  • Oracle
+  • MongoDB (basic support)
+
+Database operations:
+  • Execute SQL queries and see results
+  • Connect to multiple databases simultaneously
+  • Browse database schemas and tables (with UI)
+  • Export query results
+  • SQL syntax completion and validation
+
+The module comes preconfigured with local SQL Server connections but can be
+customized to connect to any supported database system.
+
+vim:tw=78:ft=help:

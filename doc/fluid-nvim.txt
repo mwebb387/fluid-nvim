@@ -1,75 +1,219 @@
-*fluid-nvim.txt*  Neovim configuration using fluent syntax
+*fluid-nvim.txt*  Neovim configuration framework using fluent syntax
 *fluid-nvim*
 
 ==============================================================================
 CONTENTS                                                *fluid-nvim-contents*
 
-  INTRO   |fluid-nvim-intro|
-  MODULES |fluid-nvim-modules|
+  INTRO           |fluid-nvim-intro|
+  INSTALLATION    |fluid-nvim-installation|
+  USAGE           |fluid-nvim-usage|
+  CONFIGURATION   |fluid-nvim-configuration|
+  MODULES         |fluid-nvim-modules|
+  API             |fluid-nvim-api|
 
 
 ==============================================================================
 INTRO                                                      *fluid-nvim-intro*
 
-Fluid-nivm is a framework for expressive and "fluid" Neovim configuration
-using fluent syntax
+Fluid-nvim is a framework for expressive and "fluid" Neovim configuration
+using fluent syntax. It provides a modular approach to Neovim configuration
+with a chainable API that makes configuration files more readable and 
+maintainable.
+
+Key features:
+  • Fluent, chainable API for configuration
+  • Modular plugin architecture with opt-in modules  
+  • Automatic plugin management and installation
+  • Dependency resolution between modules
+  • Clean separation of concerns
+
+
+==============================================================================
+INSTALLATION                                        *fluid-nvim-installation*
+
+1. Clone fluid-nvim to your Neovim configuration directory: >
+
+    git clone https://github.com/yourusername/fluid-nvim \
+      ~/.config/nvim/pack/config/opt/fluid
+
+2. Add fluid-nvim to your init.lua: >
+
+    vim.opt.rtp:prepend('~/.config/nvim/pack/config/opt/fluid')
+    
+    local fluid = require('fluid')
+    fluid:setup(function(f)
+      -- Your configuration here
+    end)
+
+
+==============================================================================
+USAGE                                                        *fluid-nvim-usage*
+
+Basic usage involves calling modules and options using fluid's chainable API: >
+
+    local fluid = require('fluid')
+    fluid:setup(function(f)
+      f:telescope()
+        :lsp()
+        :treesitter()
+    end)
+
+Modules can be configured with options: >
+
+    f:lsp():options('icons', 'server_management')
+      :telescope()
+
+The fluent syntax supports multiple operators:
+  • Function call: `f:module()`
+  • Addition: `f + module`  
+  • Modulo: `f % module`
+  • Division: `f / module`
+  • Multiplication for options: `f * option`
+  • Subtraction for options: `f - option`
+
+
+==============================================================================
+CONFIGURATION                                        *fluid-nvim-configuration*
+
+Fluid-nvim uses a two-phase setup:
+
+1. **Init Phase**: Modules declare dependencies and plugins
+2. **Setup Phase**: Modules configure their functionality
+
+Each module can define:
+  • `init()` - Called during the init phase to set up dependencies
+  • `setup(deps)` - Called after plugins are installed with resolved deps
+  • `options` - Available configuration options  
+  • `dependencies` - Required modules or packages
+
+Default configuration is applied from `config-default.lua` which sets up
+basic Neovim options like split behavior, line numbers, and completion.
 
 
 ==============================================================================
 MODULES                                                  *fluid-nvim-modules*
 
-All modules in fluid-nvim are "opt-in" and they must be explicitly loaded in
-your config.
+All modules in fluid-nvim are "opt-in" and must be explicitly loaded in
+your configuration. Each module provides specific functionality and may
+have configurable options.
 
-Here is a list of the current modules:
+Available modules:
 
-  - asyncrun        |fluid-module-asyncrun|
-  - autopairs
-  - cmp
-  - comment
-  - coq
-  - csharp
-  - css
-  - deno
-  - devicons
-  - diffview
-  - dirbuf
-  - dirvish
-  - dressing
-  - emmet
-  - fennel
-  - fsharp
-  - fterm
-  - fugitive
-  - fzf
-  - gitsigns
-  - hop
-  - images
-  - lazygit
-  - leap
-  - lsp
-  - lualang
-  - neogit
-  - neorg
-  - netrw
-  - nullls
-  - nvimtree
-  - oil
-  - quickfix
-  - statusline
-  - surround
-  - tailwindcss
-  - telescope
-  - theme
-  - treesitter
-  - typescript
-  - undotree
-  - vifm
-  - vimcompletesme
-  - vimslash
-  - whichkey
-  - winbar
-  - yue
+  - aerial          |fluid-module-aerial|          Code outline
+  - ai              |fluid-module-ai|              AI integration
+  - arrow           |fluid-module-arrow|           Quick navigation
+  - asyncrun        |fluid-module-asyncrun|        Async command execution
+  - autopairs       |fluid-module-autopairs|       Auto bracket pairs
+  - buffish         |fluid-module-buffish|         Buffer management
+  - cmp             |fluid-module-cmp|             Completion engine
+  - comment         |fluid-module-comment|         Code commenting
+  - copilot         |fluid-module-copilot|         GitHub Copilot
+  - coq             |fluid-module-coq|             COQ completion
+  - csharp          |fluid-module-csharp|          C# language support
+  - css             |fluid-module-css|             CSS language support
+  - dadbod          |fluid-module-dadbod|          Database integration
+  - deno            |fluid-module-deno|            Deno runtime support
+  - devdocs         |fluid-module-devdocs|         Documentation lookup
+  - devicons        |fluid-module-devicons|        File type icons
+  - diffview        |fluid-module-diffview|        Git diff viewer
+  - dirbuf          |fluid-module-dirbuf|          Directory buffer
+  - dirvish         |fluid-module-dirvish|         Directory browser
+  - dispatch        |fluid-module-dispatch|        Command dispatcher
+  - dressing        |fluid-module-dressing|        UI improvements
+  - emmet           |fluid-module-emmet|           HTML/CSS expansion
+  - fennel          |fluid-module-fennel|          Fennel language support
+  - fluidfiles      |fluid-module-fluidfiles|      File management
+  - fluidline       |fluid-module-fluidline|       Status line
+  - fluidmotion     |fluid-module-fluidmotion|     Enhanced motion
+  - fsharp          |fluid-module-fsharp|          F# language support
+  - fterm           |fluid-module-fterm|           Floating terminal
+  - fugitive        |fluid-module-fugitive|        Git integration
+  - fzf             |fluid-module-fzf|             Fuzzy finder
+  - gitsigns        |fluid-module-gitsigns|        Git status in gutter
+  - graphql         |fluid-module-graphql|         GraphQL support
+  - grepper         |fluid-module-grepper|         Enhanced search
+  - harpoon         |fluid-module-harpoon|         File bookmarks
+  - hop             |fluid-module-hop|             Quick navigation
+  - html            |fluid-module-html|            HTML language support
+  - images          |fluid-module-images|          Image viewing
+  - lazygit         |fluid-module-lazygit|         LazyGit integration
+  - leap            |fluid-module-leap|            Motion plugin
+  - lsp             |fluid-module-lsp|             LSP configuration
+  - lualang         |fluid-module-lualang|         Lua language support
+  - markdown        |fluid-module-markdown|        Markdown support
+  - neogit          |fluid-module-neogit|          Git interface
+  - neorg           |fluid-module-neorg|           Organization tool
+  - netrw           |fluid-module-netrw|           File explorer
+  - nvimtree        |fluid-module-nvimtree|        File tree
+  - oil             |fluid-module-oil|             File management
+  - polyglot        |fluid-module-polyglot|        Multi-language pack
+  - portal          |fluid-module-portal|          Quick jumps
+  - precognition    |fluid-module-precognition|    Motion hints
+  - qbuf            |fluid-module-qbuf|            Buffer management
+  - quickfix        |fluid-module-quickfix|        Quickfix enhancements
+  - rest            |fluid-module-rest|            REST client
+  - statusline      |fluid-module-statusline|      Status line config
+  - surround        |fluid-module-surround|        Text objects
+  - svelte          |fluid-module-svelte|          Svelte framework
+  - syspackman      |fluid-module-syspackman|      Package management
+  - tailwindcss     |fluid-module-tailwindcss|     Tailwind CSS support
+  - telescope       |fluid-module-telescope|       Fuzzy finder
+  - theme           |fluid-module-theme|           Color scheme
+  - treesitter      |fluid-module-treesitter|      Syntax highlighting
+  - typescript      |fluid-module-typescript|      TypeScript support
+  - undotree        |fluid-module-undotree|        Undo visualization
+  - vifm            |fluid-module-vifm|            File manager
+  - vimcompletesme  |fluid-module-vimcompletesme|  Simple completion
+  - vimslash        |fluid-module-vimslash|        Search enhancements
+  - vimwiki         |fluid-module-vimwiki|         Wiki functionality
+  - vue             |fluid-module-vue|             Vue.js support
+  - whichkey        |fluid-module-whichkey|        Key binding help
+  - winbar          |fluid-module-winbar|          Window bar
+  - yue             |fluid-module-yue|             Yue language support
+
+
+==============================================================================
+API                                                          *fluid-nvim-api*
+
+The fluid API provides methods for configuring Neovim and managing modules.
+
+                                                              *fluid:setup()*
+fluid:setup({config})
+    Initialize fluid-nvim with the given configuration function or table.
+    
+    Parameters: ~
+        {config} (function|table) Configuration function that receives the
+                 fluid instance, or a table with an `init` function.
+
+                                                             *fluid:module()*
+fluid:module({name})
+    Load and configure a module by name.
+    
+    Parameters: ~
+        {name} (string) The module name to load.
+        
+    Returns: ~
+        fluid instance for chaining
+
+                                                             *fluid:option()*
+fluid:option({name})
+    Add an option to the current module.
+    
+    Parameters: ~
+        {name} (string) The option name to enable.
+        
+    Returns: ~
+        fluid instance for chaining
+
+                                                            *fluid:options()*
+fluid:options({...})
+    Add multiple options to the current module.
+    
+    Parameters: ~
+        {...} (string) Variable number of option names.
+        
+    Returns: ~
+        fluid instance for chaining
 
 
 vim:tw=78:ft=help:

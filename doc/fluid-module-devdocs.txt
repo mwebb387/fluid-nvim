@@ -1,0 +1,57 @@
+*fluid-module-devdocs.txt* Fluid module for devdocs integration
+*fluid-module-devdocs*
+
+==============================================================================
+INTRO                                              *fluid-module-devdocs-intro*
+
+This module integrates luckasRanarison/nvim-devdocs to provide access to
+DevDocs documentation directly within Neovim. DevDocs offers offline-capable
+API documentation for hundreds of programming languages and frameworks.
+
+==============================================================================
+USAGE                                              *fluid-module-devdocs-usage*
+
+Basic usage: >
+  require('fluid'):devdocs()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-devdocs-dependencies*
+
+Plugins installed:
+  • luckasRanarison/nvim-devdocs
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-devdocs-functionality*
+
+The devdocs module provides:
+  • Access to DevDocs API documentation
+  • Offline documentation browsing
+  • Search functionality across multiple languages
+  • Integration with Neovim's help system
+  • Support for hundreds of programming languages and frameworks
+
+Supported documentation sources:
+  • JavaScript, TypeScript, Node.js
+  • Python, Django, Flask
+  • HTML, CSS, Sass, Less
+  • React, Vue, Angular
+  • Ruby, Rails, Go, Rust
+  • Java, Kotlin, Scala
+  • C, C++, C#, .NET
+  • PHP, Laravel, Symfony
+  • And hundreds more
+
+Features:
+  • Fast search across documentation
+  • Offline access to downloaded docs
+  • Language-aware suggestions
+  • Integration with Neovim workflows
+  • Multiple documentation formats supported
+
+The module sets up nvim-devdocs with default configuration, enabling seamless
+access to comprehensive API documentation without leaving your editor.
+
+vim:tw=78:ft=help:

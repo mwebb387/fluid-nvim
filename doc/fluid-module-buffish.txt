@@ -1,0 +1,45 @@
+*fluid-module-buffish.txt* Fluid module for buffish buffer navigator
+*fluid-module-buffish*
+
+==============================================================================
+INTRO                                            *fluid-module-buffish-intro*
+
+This module integrates mong8se/buffish.nvim to provide a fast buffer
+navigation interface. Buffish creates a lightweight popup window for quick
+buffer switching and management with keyboard shortcuts.
+
+==============================================================================
+USAGE                                            *fluid-module-buffish-usage*
+
+Basic usage: >
+  require('fluid'):buffish()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-buffish-dependencies*
+
+Plugins installed:
+  • mong8se/buffish.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                        *fluid-module-buffish-keymaps*
+
+Global mappings:
+  <A-p>             Open buffish buffer navigator
+  <A-b>             Follow buffer shortcut (quick navigation)
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-buffish-functionality*
+
+The buffish module provides:
+  • Fast buffer navigation with popup interface
+  • Keyboard shortcuts for buffer switching
+  • Lightweight buffer management
+  • Quick buffer access without heavyweight UI
+
+The buffish navigator shows a list of open buffers in a popup window,
+allowing for quick selection and navigation between them.
+
+vim:tw=78:ft=help:

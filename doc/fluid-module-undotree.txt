@@ -1,0 +1,39 @@
+*fluid-module-undotree.txt* Fluid module for undo tree visualization
+*fluid-module-undotree*
+
+==============================================================================
+INTRO                                               *fluid-module-undotree-intro*
+
+This module integrates mbbill/undotree to provide visual undo tree
+navigation. Enables branching undo history visualization and navigation
+through complex editing sessions.
+
+==============================================================================
+USAGE                                               *fluid-module-undotree-usage*
+
+Basic usage: >
+  require('fluid'):undotree()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-undotree-dependencies*
+
+Plugins installed:
+  • mbbill/undotree
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-undotree-functionality*
+
+The undotree module provides:
+  • Visual undo tree representation
+  • Branching undo history navigation
+  • Persistent undo state visualization
+  • Advanced undo/redo operations
+  • Historical editing session recovery
+
+The module loads undotree with default configuration, enabling advanced
+undo management and visualization capabilities.
+
+vim:tw=78:ft=help:

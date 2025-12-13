@@ -1,0 +1,59 @@
+*fluid-module-leap.txt* Fluid module for motion navigation with Leap
+*fluid-module-leap*
+
+==============================================================================
+INTRO                                                  *fluid-module-leap-intro*
+
+This module integrates ggandor/leap.nvim to provide enhanced motion
+navigation with bidirectional search capabilities. Leap offers fast
+cursor movement using character sequences and visual feedback.
+
+==============================================================================
+USAGE                                                  *fluid-module-leap-usage*
+
+Basic usage: >
+  require('fluid'):leap()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-leap-dependencies*
+
+Plugins installed:
+  • ggandor/leap.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                  *fluid-module-leap-functionality*
+
+The leap module provides:
+  • Bidirectional motion search
+  • Character sequence-based navigation
+  • Enhanced cursor positioning
+  • Fast buffer movement capabilities
+  • Visual motion feedback
+
+Leap navigation features:
+  • Two-character search sequences
+  • Bidirectional searching (forward and backward)
+  • Visual hints and feedback
+  • Precise cursor positioning
+  • Cross-window jumping capabilities
+  • Smart target selection
+
+The module loads leap.nvim without default mappings enabled, allowing
+for custom keybinding configuration. Leap provides an efficient
+alternative to traditional search-based navigation with enhanced
+visual feedback and bidirectional capabilities.
+
+Note: Default mappings are commented out in the setup, requiring manual
+configuration of keybindings if desired. This provides flexibility in
+choosing leap navigation triggers that fit individual workflows.
+
+Leap is designed to be:
+  • Faster than traditional search
+  • More precise than word-based motions
+  • Visually intuitive with character hints
+  • Efficient for cross-buffer navigation
+
+vim:tw=78:ft=help:

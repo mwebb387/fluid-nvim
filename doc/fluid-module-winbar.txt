@@ -1,0 +1,37 @@
+*fluid-module-winbar.txt* Fluid module for window bar configuration
+*fluid-module-winbar*
+
+==============================================================================
+INTRO                                                 *fluid-module-winbar-intro*
+
+This module provides custom winbar configuration using the fluidline builder
+and devicons integration. Creates a window bar showing relative filename
+and file type icon for better file identification.
+
+==============================================================================
+USAGE                                                 *fluid-module-winbar-usage*
+
+Basic usage: >
+  require('fluid'):winbar()
+
+==============================================================================
+DEPENDENCIES                                   *fluid-module-winbar-dependencies*
+
+Internal dependencies:
+  • fluid.modules.fluidline
+  • nvim-web-devicons
+
+==============================================================================
+FUNCTIONALITY                                 *fluid-module-winbar-functionality*
+
+The winbar module provides:
+  • Custom window bar with file information
+  • Relative filename display
+  • File type icon integration
+  • Clean, minimal winbar appearance
+  • Per-window file identification
+
+The winbar displays the relative filename with appropriate file type
+icon for enhanced visual file identification in each window.
+
+vim:tw=78:ft=help:

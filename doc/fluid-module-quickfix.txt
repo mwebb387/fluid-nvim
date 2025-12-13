@@ -1,0 +1,41 @@
+*fluid-module-quickfix.txt* Fluid module for enhanced quickfix management
+*fluid-module-quickfix*
+
+==============================================================================
+INTRO                                              *fluid-module-quickfix-intro*
+
+This module integrates kevinhwang91/nvim-bqf to provide enhanced quickfix
+list functionality with better navigation and management. Includes toggle
+functionality for efficient quickfix workflow.
+
+==============================================================================
+USAGE                                              *fluid-module-quickfix-usage*
+
+Basic usage: >
+  require('fluid'):quickfix()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-quickfix-dependencies*
+
+Plugins installed:
+  • kevinhwang91/nvim-bqf
+
+Internal dependencies:
+  • None
+
+==============================================================================
+KEYMAPS                                        *fluid-module-quickfix-keymaps*
+
+Quickfix management:
+  <leader>q         Toggle quickfix list open/close
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-quickfix-functionality*
+
+The quickfix module provides:
+  • Enhanced quickfix list interface
+  • Smart quickfix toggle functionality
+  • Improved navigation and management
+  • Better quickfix list user experience
+
+vim:tw=78:ft=help:

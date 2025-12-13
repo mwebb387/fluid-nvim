@@ -1,0 +1,41 @@
+*fluid-module-qbuf.txt* Fluid module for buffer quickfix integration
+*fluid-module-qbuf*
+
+==============================================================================
+INTRO                                                    *fluid-module-qbuf-intro*
+
+This module integrates ayoubelmhamdi/qbuf.nvim to provide buffer-to-quickfix
+list integration. Enables managing buffers through the quickfix interface
+for enhanced workflow efficiency.
+
+==============================================================================
+USAGE                                                    *fluid-module-qbuf-usage*
+
+Basic usage: >
+  require('fluid'):qbuf()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-qbuf-dependencies*
+
+Plugins installed:
+  • ayoubelmhamdi/qbuf.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                              *fluid-module-qbuf-keymaps*
+
+Buffer operations:
+  <leader>b         Populate quickfix with buffers and open
+
+==============================================================================
+FUNCTIONALITY                                    *fluid-module-qbuf-functionality*
+
+The qbuf module provides:
+  • Buffer list integration with quickfix
+  • Enhanced buffer management workflow
+  • Quickfix-based buffer navigation
+  • Efficient buffer switching interface
+
+vim:tw=78:ft=help:

@@ -1,0 +1,84 @@
+*fluid-module-emmet.txt* Fluid module for HTML/CSS abbreviation expansion
+*fluid-module-emmet*
+
+==============================================================================
+INTRO                                                *fluid-module-emmet-intro*
+
+This module integrates mattn/emmet-vim to provide Emmet abbreviation expansion
+for HTML, XML, CSS, and other web technologies. Emmet allows rapid markup
+generation using CSS-like abbreviations.
+
+==============================================================================
+USAGE                                                *fluid-module-emmet-usage*
+
+Basic usage: >
+  require('fluid'):emmet()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-emmet-dependencies*
+
+Plugins installed:
+  • mattn/emmet-vim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+CONFIGURATION                                *fluid-module-emmet-configuration*
+
+Key mappings:
+  • Leader key: <A-e> (Alt+e)
+
+To use Emmet expansion, type an abbreviation followed by <A-e>, (Alt+e then comma).
+
+==============================================================================
+KEYMAPS                                          *fluid-module-emmet-keymaps*
+
+Default Emmet mappings (using <A-e> as leader):
+  <A-e>,            Expand abbreviation
+  <A-e>;            Expand word under cursor
+  <A-e>u            Update tag
+  <A-e>d            Balance tag (inward)
+  <A-e>D            Balance tag (outward)
+  <A-e>n            Next edit point
+  <A-e>N            Previous edit point
+  <A-e>i            Update image size
+  <A-e>m            Merge lines
+  <A-e>k            Remove tag
+  <A-e>j            Split/join tag
+  <A-e>/            Toggle comment
+  <A-e>I            Image encode
+  <A-e>a            Make anchor from URL
+  <A-e>A            Make quoted text from URL
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-emmet-functionality*
+
+The emmet module provides:
+  • HTML/XML abbreviation expansion
+  • CSS abbreviation expansion
+  • Rapid markup generation
+  • Tag manipulation and navigation
+  • Lorem ipsum text generation
+  • Image size detection and insertion
+  • URL to link conversion
+
+Emmet abbreviation examples:
+  • div.container>ul.nav>li*3>a → Full HTML structure
+  • p{Click me} → <p>Click me</p>
+  • ul>li.item$*5 → Numbered list items
+  • div#header+div.content+div#footer → Page structure
+  • m10 → margin: 10px; (in CSS context)
+
+Supported file types:
+  • HTML, XHTML, XML
+  • CSS, SCSS, Sass, Less
+  • JSX, TSX (React components)
+  • Vue templates
+  • Handlebars, Mustache templates
+
+The module enables rapid web development by converting short abbreviations
+into complete markup structures, significantly speeding up HTML and CSS
+authoring workflows.
+
+vim:tw=78:ft=help:

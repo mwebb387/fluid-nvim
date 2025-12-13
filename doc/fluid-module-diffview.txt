@@ -1,0 +1,56 @@
+*fluid-module-diffview.txt* Fluid module for git diff visualization
+*fluid-module-diffview*
+
+==============================================================================
+INTRO                                              *fluid-module-diffview-intro*
+
+This module integrates sindrets/diffview.nvim to provide enhanced git diff
+visualization and merge conflict resolution. Offers a tabbed interface for
+comparing file changes and managing git operations.
+
+==============================================================================
+USAGE                                              *fluid-module-diffview-usage*
+
+Basic usage: >
+  require('fluid'):diffview()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-diffview-dependencies*
+
+Plugins installed:
+  • sindrets/diffview.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-diffview-functionality*
+
+The diffview module provides:
+  • Enhanced git diff visualization
+  • Side-by-side file comparison
+  • Merge conflict resolution interface
+  • Git history browsing with diffs
+  • Tabbed interface for multiple comparisons
+  • Integration with git workflows
+
+Core features:
+  • View git diffs in dedicated tabs
+  • Compare file changes across commits
+  • Resolve merge conflicts interactively
+  • Browse git history with visual diffs
+  • Support for staged and unstaged changes
+  • Three-way merge conflict resolution
+
+Diffview commands (when available):
+  • :DiffviewOpen - Open diff view for current changes
+  • :DiffviewClose - Close all diff views
+  • :DiffviewToggleFiles - Toggle file panel
+  • :DiffviewFocusFiles - Focus file panel
+  • :DiffviewRefresh - Refresh diff view
+
+The module loads diffview.nvim with default configuration, providing
+powerful git diff capabilities for better version control workflow
+management within Neovim.
+
+vim:tw=78:ft=help:

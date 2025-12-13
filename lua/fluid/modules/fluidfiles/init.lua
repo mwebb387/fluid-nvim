@@ -86,8 +86,8 @@ function M:setup(deps)
     end,
   })
 
-  deps.nvim:map('n', '<leader>aa', ':argadd | argdedupe<CR>', {silent = true})
-    :map('n', '<c-p>', ':Fd ')
+  deps.nvim:map({'n', 't'}, '<M-a>', '<cmd>RgFiles<CR>', { silent = true })
+    :map('n', '<leader>aa', ':argadd | argdedupe<CR>', {silent = true})
     :map('n', '<leader>ad', ':argd<CR>', {silent = true})
     :map('n', '<leader>aD', ':%argd<CR>', {silent = true})
     :map('n', '<leader>al', ':arglocal<CR>', {silent = true})

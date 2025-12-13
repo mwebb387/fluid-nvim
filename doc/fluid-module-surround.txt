@@ -1,0 +1,39 @@
+*fluid-module-surround.txt* Fluid module for text surrounding operations
+*fluid-module-surround*
+
+==============================================================================
+INTRO                                               *fluid-module-surround-intro*
+
+This module integrates kylechui/nvim-surround to provide text surrounding
+operations. Enables adding, changing, and deleting surrounding characters
+like quotes, brackets, and tags with intuitive keybindings.
+
+==============================================================================
+USAGE                                               *fluid-module-surround-usage*
+
+Basic usage: >
+  require('fluid'):surround()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-surround-dependencies*
+
+Plugins installed:
+  • kylechui/nvim-surround
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-surround-functionality*
+
+The surround module provides:
+  • Text surrounding operations (add, change, delete)
+  • Support for quotes, brackets, parentheses, tags
+  • Visual mode surrounding capabilities
+  • Intuitive keybinding patterns
+  • Customizable surrounding characters
+
+The module loads nvim-surround with default configuration, enabling
+efficient text manipulation with surrounding characters.
+
+vim:tw=78:ft=help:

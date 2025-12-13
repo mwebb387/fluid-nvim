@@ -1,0 +1,59 @@
+*fluid-module-deno.txt* Fluid module for Deno JavaScript runtime support
+*fluid-module-deno*
+
+==============================================================================
+INTRO                                                  *fluid-module-deno-intro*
+
+This module provides LSP integration for Deno, the secure JavaScript and
+TypeScript runtime. Configures the Deno language server with appropriate
+root detection and manual startup for Deno-specific projects.
+
+==============================================================================
+USAGE                                                  *fluid-module-deno-usage*
+
+Basic usage: >
+  require('fluid'):deno()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-deno-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP integration)
+
+Internal dependencies:
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-deno-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: denols (Deno Language Server)
+  • Root markers: deno.json, deno.jsonp
+  • Autostart: false (manual activation)
+  • CMP capabilities integration
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-deno-functionality*
+
+The deno module provides:
+  • Deno-specific LSP integration
+  • TypeScript and JavaScript support with Deno APIs
+  • Project detection via deno.json/deno.jsonp files
+  • Import resolution for Deno modules
+  • Built-in Deno standard library support
+  • Deno-specific linting and formatting
+
+Deno language server features:
+  • IntelliSense for Deno APIs and standard library
+  • Import suggestions for Deno modules
+  • Type checking with Deno's TypeScript compiler
+  • Hover documentation for Deno APIs
+  • Code formatting using deno fmt
+  • Linting with deno lint rules
+  • Go-to-definition for imports and symbols
+
+The server requires manual activation (autostart is disabled) and only
+activates in projects containing deno.json or deno.jsonp configuration files.
+
+vim:tw=78:ft=help:

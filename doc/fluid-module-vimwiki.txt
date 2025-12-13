@@ -1,0 +1,46 @@
+*fluid-module-vimwiki.txt* Fluid module for personal wiki system
+*fluid-module-vimwiki*
+
+==============================================================================
+INTRO                                                *fluid-module-vimwiki-intro*
+
+This module integrates vimwiki/vimwiki to provide a personal wiki system
+within Neovim. Enables creating and managing interconnected notes with
+wiki-style linking and organization.
+
+==============================================================================
+USAGE                                                *fluid-module-vimwiki-usage*
+
+Basic usage: >
+  require('fluid'):vimwiki()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-vimwiki-dependencies*
+
+Plugins installed:
+  • vimwiki/vimwiki
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-vimwiki-keymaps*
+
+VimWiki operations:
+  glx               Toggle list item (custom mapping)
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-vimwiki-functionality*
+
+The vimwiki module provides:
+  • Personal wiki system with linked pages
+  • Markdown-style note-taking
+  • Wiki-style page linking and navigation
+  • Task list management with toggle functionality
+  • Hierarchical page organization
+  • Export capabilities to various formats
+
+The module adds a custom keybinding for toggling list items and enables
+the full VimWiki functionality for personal knowledge management.
+
+vim:tw=78:ft=help:

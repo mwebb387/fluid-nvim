@@ -1,0 +1,66 @@
+*fluid-module-csharp.txt* Fluid module for C# development support
+*fluid-module-csharp*
+
+==============================================================================
+INTRO                                              *fluid-module-csharp-intro*
+
+This module provides comprehensive C# development support including syntax
+highlighting, LSP integration with OmniSharp, Razor template support, and
+enhanced development tools for .NET projects.
+
+==============================================================================
+USAGE                                              *fluid-module-csharp-usage*
+
+Basic usage: >
+  require('fluid'):csharp()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-csharp-dependencies*
+
+Plugins installed:
+  • jlcrochet/vim-razor (Razor template support)
+  • Hoffs/omnisharp-extended-lsp.nvim (if LSP module enabled)
+  • OrangeT/vim-csharp (fallback if treesitter not available)
+
+Internal dependencies:
+  • fluid.nvim
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+  • omnisharp_extended (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                              *fluid-module-csharp-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: omnisharp
+  • Roslyn analyzers enabled
+  • CMP capabilities integration
+  • Automatic server startup
+
+Folding Configuration (when fold option is enabled):
+  • Method: marker-based folding
+  • Markers: { and }
+  • Level: 99 (unfold by default)
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-csharp-functionality*
+
+The csharp module provides:
+  • Razor template syntax highlighting and support
+  • C# syntax highlighting (via treesitter or fallback plugin)
+  • LSP integration with OmniSharp server
+  • Enhanced LSP capabilities via omnisharp-extended
+  • Automatic dotnet compiler setup for .cs files
+  • Code folding with C#-appropriate markers
+  • IntelliSense and code completion
+  • Real-time error checking and diagnostics
+
+File type support:
+  • .cs files (C# source code)
+  • .razor files (Razor templates)
+  • .cshtml files (Razor pages)
+
+The module automatically configures the dotnet compiler for C# files and
+sets up appropriate folding methods for better code navigation.
+
+vim:tw=78:ft=help:

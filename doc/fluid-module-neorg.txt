@@ -1,0 +1,85 @@
+*fluid-module-neorg.txt* Fluid module for Neorg note-taking system
+*fluid-module-neorg*
+
+==============================================================================
+INTRO                                                  *fluid-module-neorg-intro*
+
+This module integrates nvim-neorg/neorg to provide a comprehensive
+note-taking and organization system. Neorg offers structured document
+authoring with linking, task management, and workspace organization.
+
+==============================================================================
+USAGE                                                  *fluid-module-neorg-usage*
+
+Basic usage: >
+  require('fluid'):neorg()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-neorg-dependencies*
+
+Plugins installed:
+  • nvim-neorg/neorg
+
+Treesitter parsers:
+  • norg (Neorg syntax)
+  • norg_meta (Neorg metadata)
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+CONFIGURATION                                *fluid-module-neorg-configuration*
+
+Default workspaces:
+  • work: ~/.norg/work
+
+Enabled modules:
+  • core.defaults - Basic functionality
+  • core.norg.dirman - Directory management
+  • core.norg.completion - nvim-cmp integration
+  • core.norg.concealer - Syntax concealing
+  • core.norg.qol.toc - Table of contents
+
+==============================================================================
+KEYMAPS                                          *fluid-module-neorg-keymaps*
+
+Lazy loading:
+  <leader>LN        Load and initialize Neorg (one-time setup)
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-neorg-functionality*
+
+The neorg module provides:
+  • Structured note-taking system
+  • Document linking and cross-references
+  • Task management and GTD workflows
+  • Workspace organization
+  • Table of contents generation
+  • Completion integration with nvim-cmp
+
+Neorg features:
+  • Hierarchical document structure
+  • Inter-document linking system
+  • Task and project management
+  • Calendar and scheduling integration
+  • Export capabilities
+  • Modular plugin architecture
+
+Document capabilities:
+  • Structured markup with semantic meaning
+  • Code block support with syntax highlighting
+  • Mathematical notation and equations
+  • Tables and data organization
+  • Media embedding and references
+
+The module uses lazy loading - Neorg is initialized only when <leader>LN
+is pressed, reducing startup time while providing full functionality
+when needed. After initialization, the loading keybind is removed.
+
+Neorg provides a powerful alternative to traditional note-taking with:
+  • Structured document authoring
+  • GTD (Getting Things Done) methodology support
+  • Cross-platform compatibility
+  • Extensible module system
+
+vim:tw=78:ft=help:

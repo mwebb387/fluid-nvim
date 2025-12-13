@@ -1,0 +1,76 @@
+*fluid-module-html.txt* Fluid module for HTML development support
+*fluid-module-html*
+
+==============================================================================
+INTRO                                                  *fluid-module-html-intro*
+
+This module provides HTML development support including syntax highlighting
+via treesitter and LSP integration with SuperHTML language server for
+enhanced editing, validation, and completion capabilities.
+
+==============================================================================
+USAGE                                                  *fluid-module-html-usage*
+
+Basic usage: >
+  require('fluid'):html()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-html-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP and treesitter integration)
+
+External tools:
+  • superhtml (installed via scoop package manager)
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-html-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: superhtml (SuperHTML Language Server)
+  • Package: superhtml
+  • Manager: scoop
+  • CMP capabilities integration
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: html
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-html-functionality*
+
+The html module provides:
+  • HTML syntax highlighting via treesitter
+  • LSP integration with SuperHTML language server
+  • Tag completion and validation
+  • Attribute suggestions and validation
+  • Document structure analysis
+  • HTML5 standard compliance checking
+
+SuperHTML language server features:
+  • Intelligent HTML tag completion
+  • Attribute name and value suggestions
+  • Real-time HTML validation
+  • Document structure analysis
+  • Accessibility checking
+  • Modern HTML5 feature support
+  • Integration with web standards
+
+Supported file types:
+  • .html files
+  • .htm files
+  • HTML embedded in templates
+
+The module automatically configures SuperHTML when the LSP module is
+available, providing modern HTML development capabilities with enhanced
+validation and completion features.
+
+Requirements:
+  • Scoop package manager (Windows)
+  • SuperHTML language server package
+
+vim:tw=78:ft=help:

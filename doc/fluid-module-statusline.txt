@@ -1,0 +1,43 @@
+*fluid-module-statusline.txt* Fluid module for custom statusline configuration
+*fluid-module-statusline*
+
+==============================================================================
+INTRO                                             *fluid-module-statusline-intro*
+
+This module provides a custom statusline implementation using the fluidline
+builder. Creates a comprehensive statusline with file info, LSP status, git
+branch, and position indicators.
+
+==============================================================================
+USAGE                                             *fluid-module-statusline-usage*
+
+Basic usage: >
+  require('fluid'):statusline()
+
+==============================================================================
+DEPENDENCIES                               *fluid-module-statusline-dependencies*
+
+Internal dependencies:
+  • fluid.modules.fluidline
+
+==============================================================================
+FUNCTIONALITY                             *fluid-module-statusline-functionality*
+
+The statusline module provides:
+  • Custom statusline with comprehensive information
+  • File type and buffer information display
+  • LSP server status and client names
+  • Git branch integration (via gitsigns)
+  • Spell checking indicator
+  • Position and percentage indicators
+  • Global statusline (laststatus=3)
+
+The statusline displays:
+  • File type, flags (modified, readonly, preview, quickfix)
+  • Buffer number
+  • Spell checking status
+  • Active LSP servers
+  • Git branch name
+  • Line:column position and percentage
+
+vim:tw=78:ft=help:

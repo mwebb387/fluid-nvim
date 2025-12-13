@@ -1,0 +1,69 @@
+*fluid-module-lualang.txt* Fluid module for Lua language development
+*fluid-module-lualang*
+
+==============================================================================
+INTRO                                               *fluid-module-lualang-intro*
+
+This module provides Lua language development support with LSP integration
+using lua_ls (Lua Language Server). Configured specifically for Neovim
+Lua development with proper workspace and diagnostics settings.
+
+==============================================================================
+USAGE                                               *fluid-module-lualang-usage*
+
+Basic usage: >
+  require('fluid'):lualang()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-lualang-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP integration)
+
+Internal dependencies:
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                               *fluid-module-lualang-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: lua_ls (Lua Language Server)
+  • Version: LuaJIT
+  • Diagnostics: vim global enabled
+  • Workspace: Neovim runtime files included
+  • Telemetry: disabled
+  • CMP capabilities integration
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-lualang-functionality*
+
+The lualang module provides:
+  • Lua language server integration
+  • Neovim-specific Lua development support
+  • IntelliSense for vim APIs and functions
+  • Type checking and diagnostics
+  • Completion for Neovim Lua development
+  • Workspace awareness of runtime files
+
+Lua language server features:
+  • Syntax checking and error detection
+  • Code completion with type information
+  • Hover documentation for functions
+  • Go-to-definition and find references
+  • Symbol search and navigation
+  • Neovim API autocompletion
+  • Plugin development support
+
+Neovim-specific configuration:
+  • LuaJIT version targeting
+  • vim global variable recognition
+  • Runtime file library integration
+  • Diagnostic configuration for Neovim Lua
+  • Disabled telemetry for privacy
+
+The module is specifically configured for Neovim plugin and configuration
+development, providing comprehensive Lua language support with proper
+integration of Neovim's runtime environment and APIs.
+
+vim:tw=78:ft=help:

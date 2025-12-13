@@ -1,0 +1,80 @@
+*fluid-module-fluidfiles.txt* Fluid module for enhanced file operations
+*fluid-module-fluidfiles*
+
+==============================================================================
+INTRO                                            *fluid-module-fluidfiles-intro*
+
+This module provides enhanced file operations and project management using
+ripgrep and fd. Includes session management, argument list operations, and
+file finding capabilities with quickfix integration.
+
+==============================================================================
+USAGE                                            *fluid-module-fluidfiles-usage*
+
+Basic usage: >
+  require('fluid'):fluidfiles()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-fluidfiles-dependencies*
+
+External tools required:
+  • rg (ripgrep) - for file searching
+  • fd - for file finding with completion
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+COMMANDS                                      *fluid-module-fluidfiles-commands*
+
+File operations:
+  :RgFiles {pattern} [type]    Search files by pattern and optional type
+  :RgAllFiles {type}          List all files of specified type
+  :Fd {pattern}               Edit file with fd completion
+
+==============================================================================
+KEYMAPS                                      *fluid-module-fluidfiles-keymaps*
+
+File operations:
+  <M-a>             Search files with ripgrep (normal/terminal mode)
+
+Argument list operations:
+  <leader>aa        Add current file to argument list and dedupe
+  <leader>ad        Remove current file from argument list
+  <leader>aD        Clear entire argument list
+  <leader>al        Make argument list local to tab
+  <leader>ag        Make argument list global
+  <leader>an        Go to next argument
+  <leader>ao        Load session file
+
+Number mappings:
+  <leader>1-9       Jump to argument 1-9
+  <leader>0         Jump to argument 10
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-fluidfiles-functionality*
+
+The fluidfiles module provides:
+  • File searching with ripgrep integration
+  • Quickfix list population from search results
+  • Session management with git project detection
+  • Argument list management and navigation
+  • Tab-aware session handling
+  • File completion using fd
+
+Session management:
+  • Automatic session saving on VimLeave
+  • Session loading based on git repository detection
+  • Sessions stored in .vim/session.vim within project root
+  • Optional autoload of sessions on VimEnter
+
+File searching features:
+  • Pattern-based file finding with ripgrep
+  • File type filtering support
+  • Quickfix integration for search results
+  • Fast file navigation and opening
+
+The module enhances project workflow by providing intelligent file
+operations and persistent session management tied to git repositories.
+
+vim:tw=78:ft=help:

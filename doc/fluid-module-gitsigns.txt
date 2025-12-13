@@ -1,0 +1,48 @@
+*fluid-module-gitsigns.txt* Fluid module for git integration signs
+*fluid-module-gitsigns*
+
+==============================================================================
+INTRO                                              *fluid-module-gitsigns-intro*
+
+This module integrates lewis6991/gitsigns.nvim to provide Git integration
+directly in the editor. It shows git diff information in the sign column,
+highlights changed lines, and provides commands for staging and navigation.
+
+==============================================================================
+USAGE                                              *fluid-module-gitsigns-usage*
+
+Basic usage: >
+  require('fluid'):gitsigns()
+
+==============================================================================
+DEPENDENCIES                              *fluid-module-gitsigns-dependencies*
+
+Plugins installed:
+  • lewis6991/gitsigns.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-gitsigns-functionality*
+
+The gitsigns module provides:
+  • Git status indicators in the sign column
+  • Line highlighting for added, modified, and deleted lines
+  • Hunk navigation and preview
+  • Inline blame information
+  • Stage and unstage hunks directly from the editor
+  • Reset hunks to undo changes
+  • Integration with Neovim's built-in diff capabilities
+
+Visual indicators:
+  • Added lines: Highlighted with add sign in gutter
+  • Modified lines: Highlighted with change sign in gutter  
+  • Deleted lines: Indicated with delete sign in gutter
+  • Current line blame information available on demand
+
+The module uses default gitsigns configuration, providing comprehensive Git
+integration without requiring additional setup. All standard gitsigns
+commands and features are available through the plugin's default interface.
+
+vim:tw=78:ft=help:

@@ -1,0 +1,49 @@
+*fluid-module-svelte.txt* Fluid module for Svelte development support
+*fluid-module-svelte*
+
+==============================================================================
+INTRO                                                *fluid-module-svelte-intro*
+
+This module provides Svelte development support including syntax highlighting
+via treesitter and LSP integration with the Svelte language server for
+component development and editing capabilities.
+
+==============================================================================
+USAGE                                                *fluid-module-svelte-usage*
+
+Basic usage: >
+  require('fluid'):svelte()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-svelte-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP and treesitter integration)
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                                *fluid-module-svelte-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: svelte (Svelte Language Server)
+  • Package: svelte-language-server
+  • Manager: node
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: svelte
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-svelte-functionality*
+
+The svelte module provides:
+  • Svelte syntax highlighting via treesitter
+  • LSP integration with Svelte language server
+  • Component development support
+  • TypeScript integration in Svelte files
+  • Svelte-specific IntelliSense and validation
+
+vim:tw=78:ft=help:

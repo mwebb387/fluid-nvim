@@ -1,0 +1,39 @@
+*fluid-module-vimslash.txt* Fluid module for enhanced search highlighting
+*fluid-module-vimslash*
+
+==============================================================================
+INTRO                                               *fluid-module-vimslash-intro*
+
+This module integrates junegunn/vim-slash to provide enhanced search
+highlighting and behavior. Improves the search experience with better
+visual feedback and automatic highlight clearing.
+
+==============================================================================
+USAGE                                               *fluid-module-vimslash-usage*
+
+Basic usage: >
+  require('fluid'):vimslash()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-vimslash-dependencies*
+
+Plugins installed:
+  • junegunn/vim-slash
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-vimslash-functionality*
+
+The vimslash module provides:
+  • Enhanced search highlighting
+  • Automatic highlight clearing after search
+  • Improved search visual feedback
+  • Better search result navigation
+  • Cleaner search experience
+
+The module improves the default Vim search behavior with automatic
+highlight management and enhanced visual feedback.
+
+vim:tw=78:ft=help:

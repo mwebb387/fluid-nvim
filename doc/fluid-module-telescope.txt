@@ -1,0 +1,91 @@
+*fluid-module-telescope.txt* Fluid module for telescope fuzzy finder
+*fluid-module-telescope*
+
+==============================================================================
+INTRO                                          *fluid-module-telescope-intro*
+
+This module integrates nvim-telescope/telescope.nvim to provide a powerful
+fuzzy finder interface for files, buffers, git objects, diagnostics, and
+more. Uses the ivy theme for a clean, horizontal layout.
+
+==============================================================================
+USAGE                                          *fluid-module-telescope-usage*
+
+Basic usage: >
+  require('fluid'):telescope()
+
+==============================================================================
+DEPENDENCIES                            *fluid-module-telescope-dependencies*
+
+Plugins installed:
+  • nvim-telescope/telescope.nvim
+
+Internal dependencies:
+  • telescope.actions (as 'actions')
+  • fluid.nvim (as 'nvim')
+
+==============================================================================
+CONFIGURATION                          *fluid-module-telescope-configuration*
+
+Default configuration:
+  • prompt_prefix = ' '
+  • selection_caret = ' '
+  • theme = ivy (applied to all pickers)
+
+Custom key mappings within telescope:
+  <Esc>             Close telescope
+  <C-h>             Move to top
+  <C-j>             Move selection down  
+  <C-k>             Move selection up
+  <C-l>             Move to bottom
+  <C-z>             Delete buffer (in buffer picker)
+
+==============================================================================
+KEYMAPS                                      *fluid-module-telescope-keymaps*
+
+File operations:
+  <leader>ff        Find files
+  <leader>fb        List buffers
+  <leader>b         List buffers (alias)
+  <leader>fo        Old files (recent files)
+  <leader>fh        Help tags
+
+Search operations:
+  <leader>fg        Live grep (search in files)
+  <leader>fr        Registers
+  <leader>fq        Quickfix list
+  <leader>fs        LSP document symbols
+
+Diagnostics:
+  <leader>fd        Current buffer diagnostics
+  <leader>fD        All diagnostics
+
+Git operations:
+  <leader>gb        Git branches
+  <leader>gc        Git commits
+  <C-p>             Git files
+  <leader>gf        Git files (alias)
+  <leader>gs        Git status
+  <leader>gS        Git stash
+
+Terminal mode:
+  <A-f>             Find files (from terminal)
+  <A-/>             Live grep (from terminal)
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-telescope-functionality*
+
+The telescope module provides:
+  • Fuzzy file finding with preview
+  • Live grep with real-time results
+  • Buffer management and switching
+  • Git integration (branches, commits, status)
+  • LSP symbol search and navigation
+  • Diagnostic browsing
+  • Help tag searching
+  • Register content viewing
+  • Quickfix list navigation
+
+All pickers use the ivy theme for consistent horizontal layout.
+
+vim:tw=78:ft=help:

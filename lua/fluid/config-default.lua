@@ -23,8 +23,8 @@ function M.setup(nvim)
 
   -- Tab settings
   nvim('expandtab', 'autoindent')
-      :set('tabstop', 2)
-      :set('shiftwidth', 2)
+      :set('tabstop', 4)
+      :set('shiftwidth', 4)
 
   -- Complete and Omnifunc
   nvim

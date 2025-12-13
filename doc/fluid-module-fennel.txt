@@ -1,0 +1,61 @@
+*fluid-module-fennel.txt* Fluid module for Fennel language support
+*fluid-module-fennel*
+
+==============================================================================
+INTRO                                                *fluid-module-fennel-intro*
+
+This module integrates bakpakin/fennel.vim to provide syntax highlighting
+and basic language support for Fennel, a Lisp dialect that compiles to Lua.
+Ideal for functional programming and Lua scripting with Lisp syntax.
+
+==============================================================================
+USAGE                                                *fluid-module-fennel-usage*
+
+Basic usage: >
+  require('fluid'):fennel()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-fennel-dependencies*
+
+Plugins installed:
+  • bakpakin/fennel.vim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-fennel-functionality*
+
+The fennel module provides:
+  • Syntax highlighting for Fennel code
+  • File type detection for .fnl files
+  • Basic indentation and formatting
+  • Integration with Neovim's Lua runtime
+  • Support for Fennel language constructs
+
+Fennel language features supported:
+  • S-expression syntax highlighting
+  • Lisp-style function definitions
+  • Macro definitions and expansions
+  • Pattern matching constructs
+  • Module and namespace syntax
+  • Comments and documentation strings
+
+File type support:
+  • .fnl files (Fennel source code)
+  • .fennel files (alternative extension)
+
+The module enables development in Fennel, which combines the power of
+Lisp with the simplicity and performance of Lua. Fennel is particularly
+useful for:
+  • Functional programming in Lua environments
+  • Neovim configuration with Lisp syntax
+  • Game development with LÖVE 2D
+  • Scripting with advanced macro capabilities
+  • Educational Lisp programming
+
+Fennel compiles directly to readable Lua code, making it an excellent
+choice for projects that need both the expressiveness of Lisp and the
+runtime performance of Lua.
+
+vim:tw=78:ft=help:

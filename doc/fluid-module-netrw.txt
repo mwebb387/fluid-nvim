@@ -1,0 +1,75 @@
+*fluid-module-netrw.txt* Fluid module for enhanced Netrw file explorer
+*fluid-module-netrw*
+
+==============================================================================
+INTRO                                                  *fluid-module-netrw-intro*
+
+This module enhances Vim's built-in netrw file explorer using
+prichrd/netrw.nvim for improved functionality and experience. Provides
+enhanced directory browsing with modern features and customization.
+
+==============================================================================
+USAGE                                                  *fluid-module-netrw-usage*
+
+Basic usage: >
+  require('fluid'):netrw()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-netrw-dependencies*
+
+Plugins installed:
+  • prichrd/netrw.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+CONFIGURATION                                *fluid-module-netrw-configuration*
+
+Netrw settings:
+  • Banner: disabled (g:netrw_banner = 0)
+  • Clean interface without header information
+
+==============================================================================
+KEYMAPS                                          *fluid-module-netrw-keymaps*
+
+File exploration:
+  <leader>e         Open file explorer (:Explore)
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-netrw-functionality*
+
+The netrw module provides:
+  • Enhanced netrw file explorer functionality
+  • Improved directory navigation
+  • Modern file explorer features
+  • Integration with Neovim workflows
+  • Clean, banner-free interface
+
+Enhanced netrw features:
+  • Better visual appearance
+  • Improved keyboard navigation
+  • Enhanced file operations
+  • Modern directory browsing
+  • Integration with other Neovim plugins
+
+File operations available:
+  • Directory navigation and browsing
+  • File opening and editing
+  • File creation and deletion
+  • Directory operations
+  • Remote file system access
+
+The module enhances the built-in netrw experience by:
+  • Removing distracting banner information
+  • Providing modern enhancements via netrw.nvim
+  • Offering convenient keybinding for quick access
+  • Maintaining compatibility with existing workflows
+
+Benefits over basic netrw:
+  • Improved visual experience
+  • Better integration with Neovim ecosystem
+  • Enhanced functionality while keeping simplicity
+  • Familiar netrw interface with modern improvements
+
+vim:tw=78:ft=help:

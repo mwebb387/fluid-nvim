@@ -1,0 +1,74 @@
+*fluid-module-fluidline.txt* Fluid module for custom statusline builder
+*fluid-module-fluidline*
+
+==============================================================================
+INTRO                                             *fluid-module-fluidline-intro*
+
+This module provides a custom statusline builder with highlighting support,
+formatted output, and various statusline components. Offers a programmatic
+approach to creating rich statuslines with custom highlight groups.
+
+==============================================================================
+USAGE                                             *fluid-module-fluidline-usage*
+
+Basic usage: >
+  local fluidline = require('fluid.modules.fluidline.init')
+  local line = fluidline:new()
+    :highlight('Normal')
+    :filename_tail()
+    :separator()
+    :current_line()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-fluidline-dependencies*
+
+Internal dependencies:
+  • None (pure Lua implementation)
+
+==============================================================================
+FUNCTIONALITY                             *fluid-module-fluidline-functionality*
+
+The fluidline module provides:
+  • Statusline component builder
+  • Custom highlight group management
+  • File and buffer information display
+  • Position and navigation indicators
+  • Flexible formatting and evaluation
+
+Core methods:
+  • new() - Create new statusline builder
+  • append(str) - Add string content
+  • highlight(hl) - Set highlight group
+  • separator() - Add alignment separator
+
+File information:
+  • filename_relative() - Relative file path
+  • filename_full() - Full file path  
+  • filename_tail() - File name only
+  • filetype() - File type indicator
+  • buffer_number() - Buffer number
+  • buffer_lines() - Total line count
+
+Position indicators:
+  • current_line() - Current line number
+  • current_column() - Current column number
+  • current_percent() - Percentage through file
+  • visible_percent() - Visible area percentage
+
+Status flags:
+  • flag_modified() - Modified file indicator
+  • flag_readonly() - Read-only flag
+  • flag_preview() - Preview window flag
+  • flag_quickfix() - Quickfix window flag
+
+Advanced features:
+  • eval(str) - Evaluate Vim expression
+  • eval_lua(str) - Evaluate Lua function
+  • format(str) - Format with width control
+  • truncate() - Add truncation point
+  • highlight_group() - Group with highlights
+
+The module enables creation of sophisticated statuslines with precise
+control over appearance, content, and highlighting.
+
+vim:tw=78:ft=help:

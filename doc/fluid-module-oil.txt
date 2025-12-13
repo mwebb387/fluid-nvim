@@ -1,0 +1,58 @@
+*fluid-module-oil.txt* Fluid module for oil file manager
+*fluid-module-oil*
+
+==============================================================================
+INTRO                                                  *fluid-module-oil-intro*
+
+This module integrates stevearc/oil.nvim to provide a buffer-based file
+manager. Oil treats directories as editable buffers, allowing you to modify
+the filesystem using familiar Neovim editing operations.
+
+==============================================================================
+USAGE                                                  *fluid-module-oil-usage*
+
+Basic usage: >
+  require('fluid'):oil()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-oil-dependencies*
+
+Plugins installed:
+  • stevearc/oil.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-oil-keymaps*
+
+Global mappings:
+  <leader>e         Open oil file manager
+  -                 Open oil file manager (alternative)
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-oil-functionality*
+
+The oil module provides:
+  • Directory browsing as editable buffers
+  • File operations using standard Vim editing commands
+  • Rename files by editing the buffer text
+  • Create files and directories by adding new lines
+  • Delete files by deleting lines from the buffer
+  • Move files by cut/paste operations
+  • Preview files without opening them
+  • Navigate directory trees efficiently
+
+Key features:
+  • Edit filesystem like a text buffer
+  • Bulk operations on multiple files
+  • Undo/redo support for file operations
+  • Integration with Neovim's native editing experience
+  • No complex file manager interface to learn
+  • Consistent with Vim's text manipulation paradigm
+
+The oil buffer shows directory contents as text, where each line represents
+a file or directory. You can edit this "text" to perform filesystem operations,
+then save the buffer to apply the changes.
+
+vim:tw=78:ft=help:

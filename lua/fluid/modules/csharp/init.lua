@@ -24,10 +24,16 @@ function M:init(fluid)
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
-
 end
 
 function M:setup(deps)
+  deps.nvim:autocmd('FileType', {
+    pattern = 'cs',
+    callback = function()
+      vim.cmd.compiler('dotnet')
+    end
+  })
+
   if self:has('lsp') then
     local lsp = {
       capabilities = deps.cmp.default_capabilities(),

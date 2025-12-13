@@ -1,0 +1,40 @@
+*fluid-module-whichkey.txt* Fluid module for key binding hints
+*fluid-module-whichkey*
+
+==============================================================================
+INTRO                                              *fluid-module-whichkey-intro*
+
+This module integrates folke/which-key.nvim to provide interactive key
+binding hints and documentation. Displays available key mappings and
+descriptions when typing key sequences.
+
+==============================================================================
+USAGE                                              *fluid-module-whichkey-usage*
+
+Basic usage: >
+  require('fluid'):whichkey()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-whichkey-dependencies*
+
+Plugins installed:
+  • folke/which-key.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-whichkey-functionality*
+
+The whichkey module provides:
+  • Interactive key binding hints
+  • Key mapping documentation and discovery
+  • Visual key sequence guidance
+  • Timeout-based hint display
+  • Customizable key binding groups
+
+The module loads which-key with default configuration, enhancing
+discoverability of key mappings and improving the overall user experience
+by providing contextual help for available commands.
+
+vim:tw=78:ft=help:

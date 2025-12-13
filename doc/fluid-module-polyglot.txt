@@ -1,0 +1,36 @@
+*fluid-module-polyglot.txt* Fluid module for multi-language syntax support
+*fluid-module-polyglot*
+
+==============================================================================
+INTRO                                              *fluid-module-polyglot-intro*
+
+This module integrates sheerun/vim-polyglot to provide syntax highlighting
+and language support for hundreds of programming languages. Offers
+comprehensive syntax coverage with minimal configuration.
+
+==============================================================================
+USAGE                                              *fluid-module-polyglot-usage*
+
+Basic usage: >
+  require('fluid'):polyglot()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-polyglot-dependencies*
+
+Plugins installed:
+  • sheerun/vim-polyglot
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-polyglot-functionality*
+
+The polyglot module provides:
+  • Syntax highlighting for 600+ languages
+  • Automatic language detection and support
+  • Comprehensive programming language coverage
+  • Zero-configuration syntax support
+  • Enhanced editing for diverse file types
+
+vim:tw=78:ft=help:

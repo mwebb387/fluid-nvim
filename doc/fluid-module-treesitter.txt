@@ -1,0 +1,116 @@
+*fluid-module-treesitter.txt* Fluid module for treesitter syntax highlighting
+*fluid-module-treesitter*
+
+==============================================================================
+INTRO                                        *fluid-module-treesitter-intro*
+
+This module integrates nvim-treesitter to provide advanced syntax 
+highlighting, code parsing, and language-aware features using tree-sitter
+parsers.
+
+==============================================================================
+USAGE                                        *fluid-module-treesitter-usage*
+
+Basic usage: >
+  require('fluid'):treesitter()
+
+With configuration: >
+  require('fluid'):treesitter()
+    :ensure_installed('lua', 'python', 'javascript')
+    :highlight(true)
+    :incremental_selection(true)
+    :indent(true)
+
+==============================================================================
+DEPENDENCIES                        *fluid-module-treesitter-dependencies*
+
+Plugins installed:
+  • nvim-treesitter/nvim-treesitter
+
+==============================================================================
+CONFIGURATION                      *fluid-module-treesitter-configuration*
+
+Available configuration methods:
+
+ensure_installed({lang})                    *treesitter:ensure_installed()*
+    Add a language parser to be automatically installed.
+    
+    Parameters: ~
+        {lang} (string) Language name (e.g., 'lua', 'python', 'rust')
+
+highlight({enable})                               *treesitter:highlight()*
+    Enable or disable treesitter-based syntax highlighting.
+    
+    Parameters: ~
+        {enable} (boolean) Whether to enable highlighting
+
+incremental_selection({enable})       *treesitter:incremental_selection()*
+    Enable or disable incremental selection based on syntax.
+    
+    Parameters: ~
+        {enable} (boolean) Whether to enable incremental selection
+
+indent({enable})                                   *treesitter:indent()*
+    Enable or disable treesitter-based smart indentation.
+    
+    Parameters: ~
+        {enable} (boolean) Whether to enable smart indentation
+
+folding({enable})                                 *treesitter:folding()*
+    Enable or disable treesitter-based code folding.
+    
+    Parameters: ~
+        {enable} (boolean) Whether to enable folding
+
+Default configuration:
+  • ensure_installed: [] (empty, parsers added via :ensure_installed())
+  • highlight: { enable = false } (must be explicitly enabled)
+  • incremental_selection: { enable = false }
+  • indent: { enable = false }
+
+==============================================================================
+FUNCTIONALITY                        *fluid-module-treesitter-functionality*
+
+The treesitter module provides:
+
+Syntax Highlighting:
+  • Accurate, context-aware syntax highlighting
+  • Better than traditional regex-based highlighting
+  • Language-specific highlighting rules
+  • Support for embedded languages
+
+Code Parsing:
+  • Abstract syntax tree (AST) generation
+  • Language-aware text objects
+  • Structural navigation capabilities
+  • Precise code understanding
+
+Incremental Selection:
+  • Expand selection based on syntax structure
+  • Select function parameters, function bodies, etc.
+  • Language-aware selection expansion
+
+Smart Indentation:
+  • Context-aware automatic indentation
+  • Proper handling of nested structures
+  • Language-specific indentation rules
+
+Code Folding:
+  • Fold based on syntax structure
+  • Fold functions, classes, blocks, etc.
+  • More accurate than indent-based folding
+
+Language Support:
+  Treesitter supports numerous languages including:
+  • Web: HTML, CSS, JavaScript, TypeScript
+  • Systems: C, C++, Rust, Go, Zig
+  • Dynamic: Python, Ruby, Lua, PHP
+  • Functional: Haskell, Elm, OCaml
+  • JVM: Java, Kotlin, Scala
+  • .NET: C#, F#
+  • Data: JSON, YAML, TOML, SQL
+  • Markup: Markdown, LaTeX, reStructuredText
+  • Config: Vim, Bash, Dockerfile
+  • And many more...
+
+vim:tw=78:ft=help:

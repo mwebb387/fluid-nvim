@@ -1,0 +1,79 @@
+*fluid-module-cmp.txt* Fluid module for completion engine
+*fluid-module-cmp*
+
+==============================================================================
+INTRO                                                *fluid-module-cmp-intro*
+
+This module integrates nvim-cmp to provide intelligent code completion with
+multiple sources including LSP, buffers, filesystem paths, command line, and
+code snippets.
+
+==============================================================================
+USAGE                                                *fluid-module-cmp-usage*
+
+Basic usage: >
+  require('fluid'):cmp()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-cmp-dependencies*
+
+Plugins installed:
+  • hrsh7th/nvim-cmp (main completion engine)
+  • hrsh7th/cmp-nvim-lsp (LSP completion source)
+  • hrsh7th/cmp-buffer (buffer word completion)
+  • hrsh7th/cmp-path (filesystem path completion)
+  • hrsh7th/cmp-cmdline (command line completion)
+  • hrsh7th/cmp-vsnip (snippet completion)
+  • hrsh7th/vim-vsnip (snippet engine)
+  • rafamadriz/friendly-snippets (snippet collection)
+
+==============================================================================
+KEYMAPS                                          *fluid-module-cmp-keymaps*
+
+Completion navigation:
+  <Tab>             Select next completion item
+  <S-Tab>           Select previous completion item
+  <CR>              Confirm selection
+
+Completion control:
+  <A-o>             Trigger completion manually
+  <C-e>             Abort completion
+
+Documentation scrolling:
+  <C-u>             Scroll documentation up
+  <C-d>             Scroll documentation down
+
+==============================================================================
+SOURCES                                          *fluid-module-cmp-sources*
+
+Completion sources are prioritized in this order:
+  1. LSP - Language server completions
+  2. vsnip - Code snippets
+  3. buffer - Words from current and other buffers
+  4. path - Filesystem paths
+
+Command line completion:
+  • / and ? - Uses buffer source for search
+  • : - Uses path and cmdline sources for commands
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-cmp-functionality*
+
+The completion module provides:
+  • Context-aware completions from multiple sources
+  • LSP-powered intelligent suggestions
+  • Snippet expansion with placeholders and jumps
+  • Buffer word completion across all open buffers
+  • Filesystem path completion
+  • Command line completion for Ex commands
+  • Documentation preview in completion popup
+  • Automatic completion triggering
+  • Manual completion on-demand
+
+Snippet features:
+  • Automatic snippet expansion
+  • Placeholder navigation with Tab/S-Tab
+  • Multi-cursor snippet editing
+  • Language-specific snippet collections
+
+vim:tw=78:ft=help:

@@ -1,0 +1,74 @@
+*fluid-module-graphql.txt* Fluid module for GraphQL development support
+*fluid-module-graphql*
+
+==============================================================================
+INTRO                                               *fluid-module-graphql-intro*
+
+This module provides GraphQL development support including syntax highlighting
+via treesitter and LSP integration with the GraphQL language server for
+schema validation, query completion, and enhanced editing capabilities.
+
+==============================================================================
+USAGE                                               *fluid-module-graphql-usage*
+
+Basic usage: >
+  require('fluid'):graphql()
+
+==============================================================================
+DEPENDENCIES                                 *fluid-module-graphql-dependencies*
+
+Plugins installed:
+  • None (uses built-in LSP and treesitter integration)
+
+Internal dependencies:
+  • fluid.modules.lsp (if LSP enabled)
+  • fluid.modules.lsp.util (if LSP enabled)
+  • cmp_nvim_lsp (if LSP enabled)
+
+==============================================================================
+CONFIGURATION                               *fluid-module-graphql-configuration*
+
+LSP Configuration (when LSP module is enabled):
+  • Server: graphql (GraphQL Language Server)
+  • Package: graphql-language-service-cli
+  • Manager: node
+  • CMP capabilities integration
+
+Treesitter Configuration (when treesitter module is enabled):
+  • Language: graphql
+
+==============================================================================
+FUNCTIONALITY                               *fluid-module-graphql-functionality*
+
+The graphql module provides:
+  • GraphQL syntax highlighting via treesitter
+  • LSP integration with GraphQL language server
+  • Schema validation and error checking
+  • Query and mutation autocompletion
+  • Field and type suggestions
+  • Documentation on hover
+  • Go-to-definition for types and fields
+
+GraphQL language server features:
+  • Schema-aware autocompletion
+  • Real-time validation of queries and mutations
+  • Type information and documentation
+  • Field suggestion based on schema
+  • Error detection and reporting
+  • Support for fragments and variables
+  • Integration with GraphQL config files
+
+Supported file types:
+  • .graphql files
+  • .gql files
+  • GraphQL embedded in JavaScript/TypeScript
+
+The module automatically configures the GraphQL language server when the
+LSP module is available, providing comprehensive GraphQL development
+support with modern tooling.
+
+Requirements:
+  • Node.js environment
+  • graphql-language-service-cli package
+
+vim:tw=78:ft=help:

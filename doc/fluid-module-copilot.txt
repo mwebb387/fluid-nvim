@@ -1,0 +1,42 @@
+*fluid-module-copilot.txt* Fluid module for GitHub Copilot integration
+*fluid-module-copilot*
+
+==============================================================================
+INTRO                                            *fluid-module-copilot-intro*
+
+This module integrates github/copilot.vim to provide AI-powered code
+completion and suggestions directly within Neovim. GitHub Copilot offers
+intelligent code generation based on context and comments.
+
+==============================================================================
+USAGE                                            *fluid-module-copilot-usage*
+
+Basic usage: >
+  require('fluid'):copilot()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-copilot-dependencies*
+
+Plugins installed:
+  • github/copilot.vim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-copilot-functionality*
+
+The copilot module provides:
+  • AI-powered code completion suggestions
+  • Context-aware code generation
+  • Integration with GitHub Copilot service
+  • Intelligent autocomplete based on surrounding code
+  • Support for multiple programming languages
+  • Code suggestions based on comments and function names
+
+The module loads the official GitHub Copilot plugin with default settings,
+enabling AI-assisted coding capabilities throughout your Neovim workflow.
+
+Note: Requires GitHub Copilot subscription and authentication setup.
+
+vim:tw=78:ft=help:

@@ -65,6 +65,15 @@ function M:init()
       update = 'upgrade',
       remove = 'uninstall'
     }
+
+    if self:has('pacman') then
+      self.config.sys = {
+        cmd = 'pacman',
+        install = '-S',
+        update = '-Syu',
+        remove = '-R',
+      }
+    end
   end
 
 

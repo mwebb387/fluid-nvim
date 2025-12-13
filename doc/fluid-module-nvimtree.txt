@@ -1,0 +1,39 @@
+*fluid-module-nvimtree.txt* Fluid module for nvim-tree file explorer
+*fluid-module-nvimtree*
+
+==============================================================================
+INTRO                                              *fluid-module-nvimtree-intro*
+
+This module integrates kyazdani42/nvim-tree.lua to provide a modern file
+explorer with tree structure. Offers comprehensive file management
+capabilities with icons, git integration, and customizable interface.
+
+==============================================================================
+USAGE                                              *fluid-module-nvimtree-usage*
+
+Basic usage: >
+  require('fluid'):nvimtree()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-nvimtree-dependencies*
+
+Plugins installed:
+  • kyazdani42/nvim-tree.lua
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-nvimtree-functionality*
+
+The nvimtree module provides:
+  • Modern file explorer with tree structure
+  • File and directory management operations  
+  • Git integration with status indicators
+  • File type icons and visual indicators
+  • Customizable tree navigation interface
+
+The module loads nvim-tree with default configuration, providing a
+comprehensive file management solution within Neovim.
+
+vim:tw=78:ft=help:

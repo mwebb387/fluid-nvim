@@ -1,0 +1,39 @@
+*fluid-module-rest.txt* Fluid module for REST API testing
+*fluid-module-rest*
+
+==============================================================================
+INTRO                                                    *fluid-module-rest-intro*
+
+This module integrates rest-nvim/rest.nvim to provide REST API testing
+capabilities within Neovim. Enables HTTP request execution and response
+viewing directly from buffer content.
+
+==============================================================================
+USAGE                                                    *fluid-module-rest-usage*
+
+Basic usage: >
+  require('fluid'):rest()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-rest-dependencies*
+
+Plugins installed:
+  • rest-nvim/rest.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                    *fluid-module-rest-functionality*
+
+The rest module provides:
+  • HTTP request execution from buffers
+  • REST API testing and development
+  • Response viewing and formatting
+  • Support for various HTTP methods
+  • Request and response management
+
+The module loads rest.nvim with default configuration, enabling API
+testing workflows directly within Neovim buffers.
+
+vim:tw=78:ft=help:

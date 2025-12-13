@@ -1,0 +1,45 @@
+*fluid-module-autopairs.txt* Fluid module for automatic bracket pairing
+*fluid-module-autopairs*
+
+==============================================================================
+INTRO                                            *fluid-module-autopairs-intro*
+
+This module integrates windwp/nvim-autopairs to automatically insert and
+manage paired characters like brackets, quotes, and parentheses. It provides
+intelligent pairing behavior that adapts to different file types and contexts.
+
+==============================================================================
+USAGE                                            *fluid-module-autopairs-usage*
+
+Basic usage: >
+  require('fluid'):autopairs()
+
+==============================================================================
+DEPENDENCIES                            *fluid-module-autopairs-dependencies*
+
+Plugins installed:
+  • windwp/nvim-autopairs
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-autopairs-functionality*
+
+The autopairs module provides:
+  • Automatic insertion of closing brackets, parentheses, and braces
+  • Smart quote pairing (single and double quotes)
+  • Context-aware pairing behavior
+  • Automatic deletion of pairs when backspacing
+  • Language-specific pairing rules
+  • Integration with completion engines
+  • Fast tag completion for HTML/XML-like languages
+
+Behavior:
+  • Typing '(' automatically inserts '()' and positions cursor inside
+  • Typing '"' automatically inserts '""' and positions cursor inside  
+  • Backspace removes both characters when deleting empty pairs
+  • Smart handling of existing closing characters
+  • Respects string literals and comments in programming languages
+
+vim:tw=78:ft=help:

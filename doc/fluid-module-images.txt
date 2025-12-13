@@ -1,0 +1,53 @@
+*fluid-module-images.txt* Fluid module for image viewing support
+*fluid-module-images*
+
+==============================================================================
+INTRO                                                *fluid-module-images-intro*
+
+This module integrates samodostal/image.nvim to provide image viewing
+capabilities within Neovim. Enables displaying images directly in buffers
+for enhanced multimedia editing workflows.
+
+==============================================================================
+USAGE                                                *fluid-module-images-usage*
+
+Basic usage: >
+  require('fluid'):images()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-images-dependencies*
+
+Plugins installed:
+  • samodostal/image.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-images-functionality*
+
+The images module provides:
+  • Image display within Neovim buffers
+  • Support for common image formats
+  • Integration with file browsers and explorers
+  • Enhanced multimedia file editing
+  • Image preview capabilities
+
+Image viewing features:
+  • Inline image display in buffers
+  • Support for PNG, JPEG, GIF formats
+  • Integration with terminal image protocols
+  • Automatic image detection and rendering
+  • Compatible image viewing experience
+
+The module enables a more visual editing experience by allowing images
+to be displayed directly within Neovim, making it suitable for:
+  • Documentation with embedded images
+  • Web development with image assets
+  • Multimedia project management
+  • Visual content editing workflows
+
+Note: Image display capabilities depend on terminal emulator support
+and system configuration for image rendering protocols.
+
+vim:tw=78:ft=help:

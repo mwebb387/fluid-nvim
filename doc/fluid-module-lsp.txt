@@ -1,0 +1,123 @@
+*fluid-module-lsp.txt* Fluid module for LSP configuration
+*fluid-module-lsp*
+
+==============================================================================
+INTRO                                                *fluid-module-lsp-intro*
+
+This module provides comprehensive Language Server Protocol (LSP) 
+configuration with server management, diagnostics, and extensive keybindings.
+Includes automatic server installation and management capabilities.
+
+==============================================================================
+USAGE                                                *fluid-module-lsp-usage*
+
+Basic usage: >
+  require('fluid'):lsp()
+
+With options: >
+  require('fluid'):lsp():options('icons', 'server_management')
+
+==============================================================================
+OPTIONS                                            *fluid-module-lsp-options*
+
+Available options:
+  icons               Enable diagnostic icons in signs
+  server_management   Enable server install/update/remove commands
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-lsp-dependencies*
+
+Plugins installed:
+  • neovim/nvim-lspconfig
+
+Internal dependencies:
+  • fluid.nvim (as 'nvim')
+  • fluid.modules.lsp.util (as 'lsp_util')
+  • fluid.modules.syspackman (as 'syspackman', if server_management enabled)
+
+==============================================================================
+CONFIGURATION                              *fluid-module-lsp-configuration*
+
+Server configuration:
+  • Root markers: .git
+  • Automatic attachment with comprehensive keymaps
+  • Diagnostic signs with icons (if enabled)
+
+Diagnostic icons (when 'icons' option is enabled):
+  Error:   
+  Warning: 
+  Info:    
+  Hint:    
+
+==============================================================================
+COMMANDS                                        *fluid-module-lsp-commands*
+
+Server management commands (when 'server_management' option is enabled):
+
+:FluidInstallLanguageServer {server|all}
+    Install a language server or all configured servers
+
+:FluidUpdateLanguageServer {server|all}  
+    Update a language server or all configured servers
+
+:FluidRemoveLanguageServer {server|all}
+    Remove a language server or all configured servers
+
+:FluidListLanguageServers
+    List all available language servers
+
+==============================================================================
+KEYMAPS                                          *fluid-module-lsp-keymaps*
+
+Navigation:
+  gD                Go to declaration
+  gd                Go to definition  
+  gi                Go to implementation
+  gr                Go to references
+
+Information:
+  K                 Show hover documentation
+  <C-k>             Show signature help
+
+Actions:
+  <leader>le        Rename symbol
+  <F2>              Rename symbol (alias)
+  <leader>la        Code action  
+  <leader>.         Code action (alias)
+  <C-.>             Code action (alias)
+
+Diagnostics:
+  <leader>ld        Open diagnostic float
+  <leader>ll        Add diagnostics to location list
+  <leader>lq        Add diagnostics to quickfix
+  [d                Go to previous diagnostic
+  ]d                Go to next diagnostic
+  [D                Go to previous error
+  ]D                Go to next error
+
+Formatting:
+  <leader>lf        Format document (normal mode)
+  <leader>lf        Format selection (visual mode)
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-lsp-functionality*
+
+The LSP module provides:
+  • Automatic language server setup and configuration
+  • Comprehensive diagnostic display with optional icons
+  • Hover documentation and signature help
+  • Code navigation (definitions, references, implementations)
+  • Code actions and refactoring
+  • Symbol renaming
+  • Document and range formatting
+  • Server management with install/update commands
+  • Integration with system package managers
+
+Server Management:
+  The module includes a server registry system that allows:
+  • Declarative server configuration
+  • Automatic installation via package managers
+  • Batch operations on multiple servers
+  • Version management and updates
+
+vim:tw=78:ft=help:

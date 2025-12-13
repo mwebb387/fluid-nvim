@@ -1,0 +1,69 @@
+*fluid-module-grepper.txt* Fluid module for enhanced search operations
+*fluid-module-grepper*
+
+==============================================================================
+INTRO                                                *fluid-module-grepper-intro*
+
+This module integrates mhinz/vim-grepper to provide enhanced search
+capabilities using ripgrep and other search tools. Offers powerful
+text searching with quickfix integration and buffer-specific searches.
+
+==============================================================================
+USAGE                                                *fluid-module-grepper-usage*
+
+Basic usage: >
+  require('fluid'):grepper()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-grepper-dependencies*
+
+Plugins installed:
+  • mhinz/vim-grepper
+
+External tools:
+  • rg (ripgrep) - primary search tool
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-grepper-keymaps*
+
+Search operations:
+  <leader>gg        Start grepper with ripgrep (with prompt)
+  <leader>G         Search current word under cursor (no prompt)
+  <leader>gb        Search in current buffer only
+  <leader>gB        Search in all open buffers
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-grepper-functionality*
+
+The grepper module provides:
+  • Enhanced text searching with multiple tools
+  • Ripgrep integration as primary search tool
+  • Quickfix list integration for search results
+  • Buffer-specific and multi-buffer searches
+  • Word-under-cursor searching
+  • Customizable search patterns and options
+
+Search capabilities:
+  • Project-wide text search using ripgrep
+  • Current buffer search functionality
+  • Multi-buffer search across open files
+  • Automatic word-under-cursor detection
+  • Pattern-based searching with prompts
+  • Results displayed in quickfix list
+
+Grepper features:
+  • Multiple search tool support (rg, ag, grep, etc.)
+  • Fast, asynchronous searching
+  • Configurable search options and flags
+  • Integration with Neovim's quickfix system
+  • Support for complex search patterns
+  • Efficient handling of large codebases
+
+The module uses ripgrep as the default search tool for optimal
+performance and modern search capabilities, making it ideal for
+large projects and codebases.
+
+vim:tw=78:ft=help:

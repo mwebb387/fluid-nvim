@@ -1,0 +1,53 @@
+*fluid-module-devicons.txt* Fluid module for file type icons
+*fluid-module-devicons*
+
+==============================================================================
+INTRO                                              *fluid-module-devicons-intro*
+
+This module integrates kyazdani42/nvim-web-devicons to provide file type
+icons throughout Neovim. Adds visual indicators for different file types
+in file explorers, statuslines, and other UI components.
+
+==============================================================================
+USAGE                                              *fluid-module-devicons-usage*
+
+Basic usage: >
+  require('fluid'):devicons()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-devicons-dependencies*
+
+Plugins installed:
+  • kyazdani42/nvim-web-devicons
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-devicons-functionality*
+
+The devicons module provides:
+  • File type icons for hundreds of file extensions
+  • Color-coded icons based on file type
+  • Integration with file managers and explorers
+  • Statusline and tabline icon support
+  • Customizable icon mappings
+  • Support for popular file types and languages
+
+Supported file types include:
+  • Programming languages (js, ts, py, lua, etc.)
+  • Configuration files (json, yaml, toml, etc.)
+  • Web technologies (html, css, scss, etc.)
+  • Documentation (md, txt, pdf, etc.)
+  • Images and media files
+  • Database and data files
+  • Many more file types and extensions
+
+The icons enhance visual navigation and file recognition throughout the
+Neovim interface, making it easier to identify different file types at
+a glance.
+
+Note: This module uses default configuration. Custom setup options are
+marked as TODO and may be added in future versions.
+
+vim:tw=78:ft=help:

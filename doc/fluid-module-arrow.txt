@@ -1,0 +1,57 @@
+*fluid-module-arrow.txt* Fluid module for arrow file bookmarks
+*fluid-module-arrow*
+
+==============================================================================
+INTRO                                                *fluid-module-arrow-intro*
+
+This module integrates otavioschwanck/arrow.nvim to provide fast file 
+navigation through bookmarks. Arrow allows you to bookmark frequently used
+files and quickly jump between them with simple key combinations.
+
+==============================================================================
+USAGE                                                *fluid-module-arrow-usage*
+
+Basic usage: >
+  require('fluid'):arrow()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-arrow-dependencies*
+
+Plugins installed:
+  • otavioschwanck/arrow.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+CONFIGURATION                              *fluid-module-arrow-configuration*
+
+Default configuration:
+  • show_icons = true
+  • leader_key = '\'
+  • buffer_leader_key = 'm'
+
+==============================================================================
+KEYMAPS                                        *fluid-module-arrow-keymaps*
+
+Global mappings:
+  \                 Open arrow file list (leader_key)
+
+Buffer-specific mappings:
+  m                 Buffer-specific arrow operations (buffer_leader_key)
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-arrow-functionality*
+
+The arrow module provides:
+  • Fast file bookmarking and navigation
+  • Persistent bookmarks across sessions
+  • Quick access to frequently used files
+  • Visual indicators with icons
+  • Buffer-specific bookmark management
+  • Lightweight alternative to complex project management
+
+Arrow creates a simple, fast way to bookmark and navigate between your most
+important files without the overhead of complex project management systems.
+
+vim:tw=78:ft=help:

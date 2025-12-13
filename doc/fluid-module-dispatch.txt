@@ -1,0 +1,61 @@
+*fluid-module-dispatch.txt* Fluid module for asynchronous build dispatch
+*fluid-module-dispatch*
+
+==============================================================================
+INTRO                                              *fluid-module-dispatch-intro*
+
+This module integrates tpope/vim-dispatch to provide asynchronous command
+execution and build automation. Dispatch allows running builds, tests, and
+other commands in the background without blocking the editor.
+
+==============================================================================
+USAGE                                              *fluid-module-dispatch-usage*
+
+Basic usage: >
+  require('fluid'):dispatch()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-dispatch-dependencies*
+
+Plugins installed:
+  • tpope/vim-dispatch
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-dispatch-functionality*
+
+The dispatch module provides:
+  • Asynchronous command execution
+  • Background build and test running
+  • Integration with quickfix list
+  • Compiler and makeprg support
+  • Job control and process management
+  • Terminal and tmux integration
+
+Core commands (when available):
+  • :Make - Run make asynchronously
+  • :Dispatch - Execute commands in background
+  • :Start - Start commands in new window/terminal
+  • :Copen - Open quickfix with async results
+
+Key features:
+  • Run builds without blocking editor
+  • Automatic quickfix integration for errors
+  • Support for various build systems
+  • Compiler integration for different languages
+  • Background job management
+  • Progress monitoring and result handling
+
+The dispatch system automatically detects available terminal multiplexers
+(tmux, screen) and terminal emulators to provide the best async execution
+environment for your system.
+
+Dispatch is particularly useful for:
+  • Running lengthy build processes
+  • Executing test suites in background
+  • Managing multiple concurrent jobs
+  • Integrating with external tools and scripts
+
+vim:tw=78:ft=help:

@@ -1,0 +1,52 @@
+*fluid-module-aerial.txt* Fluid module for aerial code outline
+*fluid-module-aerial*
+
+==============================================================================
+INTRO                                            *fluid-module-aerial-intro*
+
+This module integrates stevearc/aerial.nvim to provide a tree-like view of
+code symbols and enables navigation between them. Aerial creates a sidebar
+showing functions, classes, variables, and other code symbols.
+
+==============================================================================
+USAGE                                            *fluid-module-aerial-usage*
+
+Basic usage: >
+  require('fluid'):aerial()
+
+==============================================================================
+DEPENDENCIES                                *fluid-module-aerial-dependencies*
+
+Plugins installed:
+  • stevearc/aerial.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                        *fluid-module-aerial-keymaps*
+
+Buffer-local mappings (set when aerial attaches):
+  {                 Jump to previous symbol
+  }                 Jump to next symbol
+
+Global mappings:
+  <leader>a         Toggle aerial outline window
+
+==============================================================================
+FUNCTIONALITY                            *fluid-module-aerial-functionality*
+
+The aerial module provides:
+  • Sidebar with hierarchical code outline
+  • Navigation between code symbols
+  • Language-aware symbol parsing via treesitter/LSP
+  • Automatic symbol detection for supported languages
+
+The outline window shows:
+  • Functions and methods
+  • Classes and interfaces  
+  • Variables and constants
+  • Modules and namespaces
+  • Other language-specific symbols
+
+vim:tw=78:ft=help:

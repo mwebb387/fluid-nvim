@@ -1,0 +1,85 @@
+*fluid-module-fzf.txt* Fluid module for fzf fuzzy finding
+*fluid-module-fzf*
+
+==============================================================================
+INTRO                                                  *fluid-module-fzf-intro*
+
+This module integrates FZF (fuzzy finder) functionality into Neovim. It
+supports both fzf-lua for Lua-based integration and fzf.vim for Vimscript
+compatibility, providing fast fuzzy finding for files, buffers, and content.
+
+==============================================================================
+USAGE                                                  *fluid-module-fzf-usage*
+
+Basic usage: >
+  require('fluid'):fzf()
+
+==============================================================================
+DEPENDENCIES                                    *fluid-module-fzf-dependencies*
+
+Plugins installed:
+  • junegunn/fzf (always)
+  • ibhagwan/fzf-lua (if Lua support available)
+  • junegunn/fzf.vim (if Lua support not available)
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+CONFIGURATION                              *fluid-module-fzf-configuration*
+
+Default key bindings within fzf:
+  <C-f>             Preview page down
+  <C-b>             Preview page up
+
+==============================================================================
+KEYMAPS                                          *fluid-module-fzf-keymaps*
+
+File operations:
+  <C-p>             Git files (fzf-lua) / Git files (fzf.vim)
+  <M-p>             Args list (fzf-lua) / Files (fzf.vim)
+  <leader>ff        Find files (fzf-lua only)
+  <leader>fb        List buffers (fzf-lua only)
+  <leader>fh        Help tags (fzf-lua only)
+  <leader>fo        Old files (fzf-lua only)
+
+Search operations (fzf-lua):
+  <leader>fg        Live grep
+  <leader>fG        Repeat last grep
+  <leader>fg        Grep visual selection (visual mode)
+
+Search operations (fzf.vim):
+  <M-b>             Buffers
+  <leader>fg        RipGrep search
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-fzf-functionality*
+
+The fzf module provides:
+
+With fzf-lua (preferred when available):
+  • Fast fuzzy file finding with preview
+  • Live grep with real-time search results
+  • Buffer management and switching
+  • Help tag searching
+  • Recent files (oldfiles) access
+  • Git file integration
+  • Visual selection grep
+  • Enhanced preview capabilities
+
+With fzf.vim (fallback):
+  • Basic fuzzy file finding
+  • Git file integration  
+  • Buffer listing
+  • RipGrep integration for content search
+  • Classic fzf interface
+
+Preview controls:
+  • Scroll preview up/down with Ctrl+b/Ctrl+f
+  • Consistent preview navigation across all pickers
+
+The module automatically detects Lua support and uses the appropriate FZF
+integration, providing the best available fuzzy finding experience for your
+Neovim configuration.
+
+vim:tw=78:ft=help:

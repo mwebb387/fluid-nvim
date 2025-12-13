@@ -1,0 +1,47 @@
+*fluid-module-hop.txt* Fluid module for motion navigation
+*fluid-module-hop*
+
+==============================================================================
+INTRO                                                    *fluid-module-hop-intro*
+
+This module integrates phaazon/hop.nvim to provide fast motion navigation
+within buffers. Hop enables jumping to any location on screen using
+character hints and motion commands.
+
+==============================================================================
+USAGE                                                    *fluid-module-hop-usage*
+
+Basic usage: >
+  require('fluid'):hop()
+
+==============================================================================
+DEPENDENCIES                                      *fluid-module-hop-dependencies*
+
+Plugins installed:
+  • phaazon/hop.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                    *fluid-module-hop-functionality*
+
+The hop module provides:
+  • Character-based motion navigation
+  • Visual hints for jump targets
+  • Fast cursor positioning anywhere on screen
+  • Multiple motion types and patterns
+  • Efficient buffer navigation
+
+Hop navigation features:
+  • Jump to any word on screen
+  • Character-based targeting system
+  • Line-based navigation
+  • Pattern-based jumping
+  • Visual feedback with hint characters
+
+The module loads hop.nvim with default configuration, enabling enhanced
+motion capabilities throughout Neovim. Hop provides an alternative to
+traditional motion commands with visual targeting system.
+
+vim:tw=78:ft=help:

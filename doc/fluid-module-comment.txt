@@ -1,0 +1,56 @@
+*fluid-module-comment.txt* Fluid module for code commenting
+*fluid-module-comment*
+
+==============================================================================
+INTRO                                              *fluid-module-comment-intro*
+
+This module provides intelligent code commenting functionality through Neovim's
+built-in commenting capabilities. It offers language-aware commenting with
+convenient key mappings for both line and block comments.
+
+==============================================================================
+USAGE                                              *fluid-module-comment-usage*
+
+Basic usage: >
+  require('fluid'):comment()
+
+==============================================================================
+DEPENDENCIES                              *fluid-module-comment-dependencies*
+
+Plugins installed:
+  • None (uses Neovim built-in commenting)
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-comment-keymaps*
+
+Normal mode:
+  <C-_>             Toggle line comment (Ctrl+/)
+
+Visual mode:
+  <C-_>             Toggle comment for selected lines (Ctrl+/)
+
+Note: The keymaps use <C-_> which corresponds to Ctrl+/ in most terminals.
+
+==============================================================================
+FUNCTIONALITY                              *fluid-module-comment-functionality*
+
+The comment module provides:
+  • Language-aware commenting using Neovim's built-in capabilities
+  • Automatic detection of comment syntax for different file types
+  • Line commenting with gcl motion
+  • Block commenting with gc motion
+  • Convenient Ctrl+/ shortcut for quick commenting
+  • Proper indentation preservation
+  • Toggle functionality (comment/uncomment)
+
+Supported languages include all languages with defined comment syntax in
+Neovim, such as:
+  • Programming languages (Python, JavaScript, C, etc.)
+  • Configuration files (YAML, JSON, etc.) 
+  • Markup languages (HTML, XML, etc.)
+  • Shell scripts and more
+
+vim:tw=78:ft=help:

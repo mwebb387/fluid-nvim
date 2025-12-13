@@ -1,0 +1,45 @@
+*fluid-module-vimcompletesme.txt* Fluid module for simple completion
+*fluid-module-vimcompletesme*
+
+==============================================================================
+INTRO                                         *fluid-module-vimcompletesme-intro*
+
+This module integrates ackyshake/VimCompletesMe to provide simple,
+lightweight completion without complex configuration. Offers smart
+completion based on context with minimal setup.
+
+==============================================================================
+USAGE                                         *fluid-module-vimcompletesme-usage*
+
+Basic usage: >
+  require('fluid'):vimcompletesme()
+
+==============================================================================
+DEPENDENCIES                           *fluid-module-vimcompletesme-dependencies*
+
+Plugins installed:
+  • ackyshake/VimCompletesMe
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                   *fluid-module-vimcompletesme-keymaps*
+
+Insert mode:
+  <CR>              Accept completion when popup is visible
+
+==============================================================================
+FUNCTIONALITY                         *fluid-module-vimcompletesme-functionality*
+
+The vimcompletesme module provides:
+  • Lightweight, context-aware completion
+  • Smart completion source selection
+  • Minimal configuration requirements
+  • Enhanced Enter key behavior for completion
+  • Alternative to heavier completion engines
+
+The module configures intelligent Enter key handling that accepts
+completion when the popup menu is visible.
+
+vim:tw=78:ft=help:

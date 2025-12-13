@@ -1,0 +1,42 @@
+*fluid-module-portal.txt* Fluid module for enhanced jumplist navigation
+*fluid-module-portal*
+
+==============================================================================
+INTRO                                                *fluid-module-portal-intro*
+
+This module integrates cbochs/portal.nvim to provide enhanced jumplist
+navigation with visual indicators. Enables efficient navigation through
+editor history with improved user experience.
+
+==============================================================================
+USAGE                                                *fluid-module-portal-usage*
+
+Basic usage: >
+  require('fluid'):portal()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-portal-dependencies*
+
+Plugins installed:
+  • cbochs/portal.nvim
+
+Internal dependencies:
+  • fluid.nvim
+
+==============================================================================
+KEYMAPS                                          *fluid-module-portal-keymaps*
+
+Jumplist navigation:
+  <leader>o         Jump backward in jumplist
+  <leader>i         Jump forward in jumplist
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-portal-functionality*
+
+The portal module provides:
+  • Enhanced jumplist navigation
+  • Visual feedback for jump operations
+  • Improved editor history traversal
+  • Efficient cursor position management
+
+vim:tw=78:ft=help:

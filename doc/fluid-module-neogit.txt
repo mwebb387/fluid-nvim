@@ -1,0 +1,62 @@
+*fluid-module-neogit.txt* Fluid module for Neogit Git interface
+*fluid-module-neogit*
+
+==============================================================================
+INTRO                                                *fluid-module-neogit-intro*
+
+This module integrates TimUntersberger/neogit to provide a Magit-inspired
+Git interface within Neovim. Neogit offers a buffer-based Git workflow
+with interactive staging, committing, and repository management.
+
+==============================================================================
+USAGE                                                *fluid-module-neogit-usage*
+
+Basic usage: >
+  require('fluid'):neogit()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-neogit-dependencies*
+
+Plugins installed:
+  • TimUntersberger/neogit
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-neogit-functionality*
+
+The neogit module provides:
+  • Magit-inspired Git interface for Neovim
+  • Buffer-based Git operations
+  • Interactive staging and unstaging
+  • Commit creation and management
+  • Branch operations and navigation
+  • Git history browsing
+
+Neogit interface features:
+  • Status buffer with file staging controls
+  • Diff viewing with syntax highlighting
+  • Interactive commit message editing
+  • Branch management and switching
+  • Merge and rebase operations
+  • Stash management
+  • Remote repository operations
+
+Neogit commands (when available):
+  • :Neogit - Open Neogit status buffer
+  • :NeogitCommit - Open commit interface
+  • :NeogitResetState - Reset Neogit state
+
+Workflow benefits:
+  • Keyboard-driven Git operations
+  • Visual staging and file management
+  • Integrated diff viewing
+  • Simplified Git workflows
+  • Emacs Magit-like experience in Neovim
+
+The module loads Neogit with default configuration, providing a powerful
+alternative to command-line Git operations with an intuitive buffer-based
+interface designed for efficient version control workflows.
+
+vim:tw=78:ft=help:

@@ -1,0 +1,55 @@
+*fluid-module-dirbuf.txt* Fluid module for directory buffer editing
+*fluid-module-dirbuf*
+
+==============================================================================
+INTRO                                                *fluid-module-dirbuf-intro*
+
+This module integrates elihunter173/dirbuf.nvim to enable editing directories
+as if they were regular buffers. Allows file operations like renaming,
+creating, and deleting directly within a buffer interface.
+
+==============================================================================
+USAGE                                                *fluid-module-dirbuf-usage*
+
+Basic usage: >
+  require('fluid'):dirbuf()
+
+==============================================================================
+DEPENDENCIES                                  *fluid-module-dirbuf-dependencies*
+
+Plugins installed:
+  • elihunter173/dirbuf.nvim
+
+Internal dependencies:
+  • None
+
+==============================================================================
+FUNCTIONALITY                                *fluid-module-dirbuf-functionality*
+
+The dirbuf module provides:
+  • Edit directories like regular text buffers
+  • Rename files by editing filenames directly
+  • Create new files by adding lines
+  • Delete files by removing lines
+  • Batch file operations through text editing
+  • Undo/redo support for file operations
+
+File operations:
+  • Rename files: Edit the filename in the buffer
+  • Create files: Add new lines with desired filenames
+  • Delete files: Remove lines containing filenames
+  • Move files: Change directory paths in filenames
+  • Batch operations: Multiple changes in one edit session
+
+The buffer interface makes complex file operations intuitive by treating
+the directory listing as editable text. Changes are applied when the
+buffer is saved, making file management as simple as text editing.
+
+Features:
+  • Visual file management through text editing
+  • Support for complex batch operations
+  • Familiar Vim editing commands for file operations
+  • Integration with Neovim's undo system
+  • Safe operation with confirmation prompts
+
+vim:tw=78:ft=help:
