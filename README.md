@@ -15,38 +15,38 @@ With a full time job and a family my time is limited, but I hope to improve this
 
 - **Fluent API**: Chainable syntax for readable configuration
 - **Modular Architecture**: 71 opt-in modules for different functionality
-- **Automatic Plugin Management**: Handles plugin installation and updates
+- **Automatic Plugin Management**: Handles plugin installation and updates (currently using paq.nvim)
 - **Dependency Resolution**: Automatic resolution between modules
-- **Clean Separation**: Each module is self-contained with clear interfaces
 
 ## Installation
 
 1. Clone to your Neovim configuration directory:
 ```bash
-git clone https://github.com/yourusername/fluid-nvim ~/.config/nvim/pack/config/opt/fluid
+git clone https://github.com/mwebb387/fluid-nvim ~/.config/nvim/pack/config/opt/fluid
 ```
 
 2. Add to your `init.lua`:
 ```lua
-vim.opt.rtp:prepend('~/.config/nvim/pack/config/opt/fluid')
-
-local fluid = require('fluid')
-fluid:setup(function(f)
+vim.cmd.packadd 'fluid'
+require('fluid'):setup(function(f, nvim)
   -- Your configuration here
   f:telescope()
     :lsp():options('icons', 'server_management')
     :treesitter()
     :cmp()
+
+  nvim('hidden', 'number')
+    -- Set Neovim options
+    :set('tabstop', 4)
+    :set('shiftwidth', 4)
+    -- Other Neovim settings...
 end)
 ```
-
-## Usage
 
 The fluent syntax supports multiple operators for chaining:
 
 ```lua
-local fluid = require('fluid')
-fluid:setup(function(f)
+require('fluid'):setup(function(f, nvim)
   -- Function call syntax
   f:telescope():lsp():treesitter()
   
@@ -60,6 +60,17 @@ fluid:setup(function(f)
   f:lsp() - 'unwanted_option'
 end)
 ```
+
+If you want the default neovim settngs that I use, you can simply call `:setup()` without any arguments:
+
+```lua
+vim.cmd.packadd 'fluid'
+require 'fluid'
+  -- Other module calls...
+  :setup()
+```
+
+The default settings can be found in the `lua/fluid/config-default.lua` file for reference. These settings are subject to change as I update my personal configuration, but I will be working to add sane defaults here soon and make them more stable.
 
 ## Documentation
 

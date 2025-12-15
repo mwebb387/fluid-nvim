@@ -33,15 +33,13 @@ INSTALLATION                                        *fluid-nvim-installation*
 
 1. Clone fluid-nvim to your Neovim configuration directory: >
 
-    git clone https://github.com/yourusername/fluid-nvim \
+    git clone https://github.com/mwebb387/fluid-nvim \
       ~/.config/nvim/pack/config/opt/fluid
 
 2. Add fluid-nvim to your init.lua: >
 
-    vim.opt.rtp:prepend('~/.config/nvim/pack/config/opt/fluid')
-    
-    local fluid = require('fluid')
-    fluid:setup(function(f)
+    vim.cmd.packadd 'fluid'
+    require('fluid'):setup(function(f, nvim)
       -- Your configuration here
     end)
 
@@ -52,10 +50,16 @@ USAGE                                                        *fluid-nvim-usage*
 Basic usage involves calling modules and options using fluid's chainable API: >
 
     local fluid = require('fluid')
-    fluid:setup(function(f)
+    fluid:setup(function(f, nvim)
       f:telescope()
         :lsp()
         :treesitter()
+
+      nvim('hidden', 'number')
+        -- Set Neovim options
+        :set('tabstop', 4)
+        :set('shiftwidth', 4)
+        -- Other Neovim settings...
     end)
 
 Modules can be configured with options: >
@@ -68,8 +72,8 @@ The fluent syntax supports multiple operators:
   • Addition: `f + module`  
   • Modulo: `f % module`
   • Division: `f / module`
-  • Multiplication for options: `f * option`
-  • Subtraction for options: `f - option`
+  • Multiplication for options: `f * 'option'`
+  • Subtraction for options: `f - 'option'`
 
 
 ==============================================================================
@@ -86,8 +90,9 @@ Each module can define:
   • `options` - Available configuration options  
   • `dependencies` - Required modules or packages
 
-Default configuration is applied from `config-default.lua` which sets up
-basic Neovim options like split behavior, line numbers, and completion.
+If no fluid function is defined and passed to the setup call, then default
+configuration is applied from `config-default.lua` which sets up basic
+Neovim options like split behavior, line numbers, and completion.
 
 
 ==============================================================================
@@ -173,7 +178,7 @@ Available modules:
 
 
 ==============================================================================
-API                                                          *fluid-nvim-api*
+Fluid API                                                    *fluid-nvim-api*
 
 The fluid API provides methods for configuring Neovim and managing modules.
 
@@ -182,8 +187,9 @@ fluid:setup({config})
     Initialize fluid-nvim with the given configuration function or table.
     
     Parameters: ~
-        {config} (function|table) Configuration function that receives the
-                 fluid instance, or a table with an `init` function.
+        {config} (function|table) Configuration function, or a table with
+                 an `init` function, that receives the fluid instance and
+                 `nvim` module.
 
                                                              *fluid:module()*
 fluid:module({name})
@@ -214,6 +220,151 @@ fluid:options({...})
         
     Returns: ~
         fluid instance for chaining
+
+
+==============================================================================
+Fluid Module API                                       *fluid-nvim-module-api*
+
+Modules in fluid-nvim are enhanced with additional methods through a metatable
+that provides dependency management and option checking capabilities. When a
+module is loaded, it automatically receives these methods.
+
+Module Structure ~
+
+Each module should be structured as a Lua table that can include:
+
+    • `init(fluid)` - Called during init phase to declare dependencies
+    • `setup(deps)` - Called after plugin installation with resolved dependencies
+    • `options` - Table of available configuration options
+    • `dependencies` - Table of module dependencies (auto-managed)
+
+Module Methods ~
+
+These methods are automatically available to all fluid modules via metatable:
+
+                                                               *module:has()*
+module:has({option})
+    Check if a specific option is enabled for this module. These are options
+    added by the user via `fluid:option()` or `fluid:options()`.
+    
+    Parameters: ~
+        {option} (string) The option name to check.
+        
+    Returns: ~
+        (boolean) true if option is enabled, false otherwise.
+        
+    Example: >
+        function M:setup(deps)
+          if self:has('icons') then
+            -- Configure icons
+          end
+        end
+<
+
+                                                        *module:depends_on()*
+module:depends_on({dependency})
+    Declare a dependency on another module or package. Returns a chainable
+    API for specifying the plugin source and alias name.
+    
+    Parameters: ~
+        {dependency} (string) The dependency package name.
+        
+    Returns: ~
+        Dependency API with `from()` and `as()` methods.
+        NOTE: Dependency table methods must be called with
+              a `.`, not `:`.
+        
+    Example: >
+        function M:init(fluid)
+          self:depends_on('plenary.nvim')
+            :from('nvim-lua/plenary.nvim')
+          
+          self:depends_on('telescope.nvim')
+            :from('nvim-telescope/telescope.nvim')
+            :as('telescope')
+        end
+<
+
+                                                    *dependency-api:from()*
+dependency.from({plugin_spec})
+    Specify the plugin specification for a dependency. This adds the plugin
+    to the plugin manager for installation.
+    
+    Parameters: ~
+        {plugin_spec} (string|table) Plugin specification (repo URL or table).
+        
+    Returns: ~
+        Dependency API for further chaining.
+
+                                                      *dependency-api:as()*
+dependency.as({name})
+    Specify an alias name for the dependency. This is the name that will be
+    used as the key in the `deps` table passed to `setup()`.
+    
+    Parameters: ~
+        {name} (string) The alias name for this dependency.
+        
+    Returns: ~
+        Dependency API for further chaining.
+
+                                                             *module:use()*
+module:use({...})
+    Add plugins to the plugin manager without creating named dependencies.
+    Useful for plugins that don't need to be accessed in setup.
+    
+    Parameters: ~
+        {...} (string|table) Variable number of plugin specifications.
+        
+    Returns: ~
+        The module instance for chaining.
+        
+    Example: >
+        function M:init(fluid)
+          self:use(
+            'kylechui/nvim-surround',
+            { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+          )
+        end
+<
+
+Module Lifecycle ~
+
+1. **Creation**: Module is loaded via `require('fluid.modules.name')`
+2. **Enhancement**: Metatable is applied, adding API methods
+3. **Init Phase**: `init(fluid)` called to declare dependencies and plugins
+4. **Plugin Installation**: All declared plugins are installed
+5. **Setup Phase**: `setup(deps)` called with resolved dependencies
+
+Example Module ~
+>
+    local M = {}
+    
+    function M:init(fluid)
+      -- Declare dependencies with plugin sources
+      self:depends_on('plenary.nvim')
+        .from('nvim-lua/plenary.nvim')
+      
+      self:depends_on('telescope.nvim')
+        .from('nvim-telescope/telescope.nvim')
+        .as('telescope')
+      
+      -- Add plugins without named dependencies
+      self:use('nvim-tree/nvim-web-devicons')
+    end
+    
+    function M:setup(deps)
+      local telescope = deps.telescope
+      
+      telescope.setup({
+        defaults = {
+          -- Configure based on enabled options
+          preview = { enable = self:has('preview') }
+        }
+      })
+    end
+    
+    return M
+<
 
 
 vim:tw=78:ft=help:

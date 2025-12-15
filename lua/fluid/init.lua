@@ -117,16 +117,17 @@ local M = {
     -- Bootstrap the plugin manager
     plugman.bootstrap()
 
+    local nvim = require('fluid.nvim')
+
     -- Handle custom config (if supplied)
     if config and type(config) == 'function' then
-      config(self)
+      config(self, nvim)
     elseif config and type(config) == 'table' and config.init and type(config.init) == 'function' then
-      config.init(self)
+      config.init(self, nvim)
+    else
+        -- Setup base config
+        require('fluid.config-default').setup(nvim)
     end
-
-    -- Setup base config
-    local nvim = require('fluid.nvim')
-    require('fluid.config-default').setup(nvim)
 
     -- Run module init methods
     for _, mod in ipairs(self.config.modules) do
