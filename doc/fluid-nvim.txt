@@ -69,11 +69,17 @@ Modules can be configured with options: >
 
 The fluent syntax supports multiple operators:
   • Function call: `f:module()`
-  • Addition: `f + module`  
-  • Modulo: `f % module`
-  • Division: `f / module`
+  • Modulo: `f % 'module`'
+  • Division: `f / 'module`'
+  • Addition for options: `f + 'option'  
   • Multiplication for options: `f * 'option'`
-  • Subtraction for options: `f - 'option'`
+
+NOTE: Lua syntax does not allow for using function calls and operators cleanly
+so the cleanest way to use the other operators is to use operators only
+without function calls. 
+
+    f /'lsp' +'icons' +'server_management'
+      /'telescope'
 
 
 ==============================================================================
@@ -89,11 +95,6 @@ Each module can define:
   • `setup(deps)` - Called after plugins are installed with resolved deps
   • `options` - Available configuration options  
   • `dependencies` - Required modules or packages
-
-If no fluid function is defined and passed to the setup call, then default
-configuration is applied from `config-default.lua` which sets up basic
-Neovim options like split behavior, line numbers, and completion.
-
 
 ==============================================================================
 MODULES                                                  *fluid-nvim-modules*
@@ -277,11 +278,11 @@ module:depends_on({dependency})
     Example: >
         function M:init(fluid)
           self:depends_on('plenary.nvim')
-            :from('nvim-lua/plenary.nvim')
+            .from('nvim-lua/plenary.nvim')
           
           self:depends_on('telescope.nvim')
-            :from('nvim-telescope/telescope.nvim')
-            :as('telescope')
+            .from('nvim-telescope/telescope.nvim')
+            .as('telescope')
         end
 <
 

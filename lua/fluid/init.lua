@@ -124,9 +124,6 @@ local M = {
       config(self, nvim)
     elseif config and type(config) == 'table' and config.init and type(config.init) == 'function' then
       config.init(self, nvim)
-    else
-        -- Setup base config
-        require('fluid.config-default').setup(nvim)
     end
 
     -- Run module init methods
@@ -164,11 +161,7 @@ local fluid_meta = {
   end,
 
   __add = function(self, mod)
-    return self:module(mod)
-  end,
-
-  __sub = function(self, opt)
-    return self:option(opt)
+    return self:option(mod)
   end,
 
   __mod = function(self, mod)

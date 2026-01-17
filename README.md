@@ -14,7 +14,7 @@ With a full time job and a family my time is limited, but I hope to improve this
 ## Key Features
 
 - **Fluent API**: Chainable syntax for readable configuration
-- **Modular Architecture**: 71 opt-in modules for different functionality
+- **Modular Architecture**: opt-in modules for different functionality
 - **Automatic Plugin Management**: Handles plugin installation and updates (currently using paq.nvim)
 - **Dependency Resolution**: Automatic resolution between modules
 
@@ -50,27 +50,16 @@ require('fluid'):setup(function(f, nvim)
   -- Function call syntax
   f:telescope():lsp():treesitter()
   
-  -- Alternative operators
-  f + telescope + lsp + treesitter  -- Addition
-  f % telescope % lsp % treesitter  -- Modulo
-  f / telescope / lsp / treesitter  -- Division
+  -- Alternative operators (just because you can)
+  -- Modules can be set using modulo or division
+  f % 'telescope' % 'lsp' % 'treesitter'
+  f / 'telescope' / 'lsp' / 'treesitter'
   
-  -- Options can be added with multiplication or subtraction
+  -- Options can be added with multiplication or addition
   f:lsp() * 'icons' * 'server_management'
-  f:lsp() - 'unwanted_option'
+  f:lsp() + 'icons' + 'server_management'
 end)
 ```
-
-If you want the default neovim settngs that I use, you can simply call `:setup()` without any arguments:
-
-```lua
-vim.cmd.packadd 'fluid'
-require 'fluid'
-  -- Other module calls...
-  :setup()
-```
-
-The default settings can be found in the `lua/fluid/config-default.lua` file for reference. These settings are subject to change as I update my personal configuration, but I will be working to add sane defaults here soon and make them more stable.
 
 ## Documentation
 
@@ -80,7 +69,7 @@ Complete documentation is available via Neovim's help system:
 
 ## Available Modules
 
-Fluid includes 71 modules covering various aspects of Neovim functionality:
+Fluid includes many modules covering various aspects of Neovim functionality:
 
 ### Core Development
 - **lsp** - Language Server Protocol with server management
@@ -179,89 +168,90 @@ Fluid includes 71 modules covering various aspects of Neovim functionality:
 ## Configuration Examples
 
 ### Real-World Configuration
-Here's a comprehensive example based on an actual Fluid configuration:
+Here's an example based on the Fluid configuration I use:
 
 ```lua
 vim.cmd.packadd 'fluid'
-require 'fluid'
--- UI
-  :theme()
-    :option('rose-pine')
-  :devicons()
-  :dressing()
-  :statusline()
-  :winbar()
+require('fluid'):setup(function(f, nvim)
+  f
+  -- UI
+    :theme()
+      :option('rose-pine')
+    :devicons()
+    :dressing()
+    :statusline()
+    :winbar()
 
--- Nvim
-  :quickfix()
+  -- Nvim
+    :quickfix()
 
--- Editor
-  :comment()
-  :autopairs()
-  :cmp()
-  :fluidfiles()
-  :lsp()
-    :options('icons', 'server_management')
-  :surround()
-  :treesitter()
-    :option('highlight', 'indent')
-  :qbuf()
-  :undotree()
-  :vimslash()
-  :ai()
+  -- Editor
+    :comment()
+    :autopairs()
+    :cmp()
+    :fluidfiles()
+    :lsp()
+      :options('icons', 'server_management')
+    :surround()
+    :treesitter()
+      :option('highlight', 'indent')
+    :qbuf()
+    :undotree()
+    :vimslash()
+    :ai()
 
--- Motion
-  :aerial()
-  :fluidmotion()
-    :options('win', 'log')
-  :leap()
+  -- Motion
+    :aerial()
+    :fluidmotion()
+      :options('win', 'log')
+    :leap()
 
--- Languages
-  :csharp()
-    :options('treesitter', 'lsp', 'fold')
-  :css()
-    :options('treesitter', 'lsp')
-  :emmet()
-  :fsharp()
-    :options('lsp')
-  :html()
-  :lualang()
-    :options('lsp')
-  :markdown()
-  :typescript()
-    :options('treesitter', 'lsp')
-  :tailwindcss()
+  -- Languages
+    :csharp()
+      :options('treesitter', 'lsp', 'fold')
+    :css()
+      :options('treesitter', 'lsp')
+    :emmet()
+    :fsharp()
+      :options('lsp')
+    :html()
+    :lualang()
+      :options('lsp')
+    :markdown()
+    :typescript()
+      :options('treesitter', 'lsp')
+    :tailwindcss()
 
--- Tools
-  :copilot()
-  :dispatch()
-  
-  -- Git
-  :gitsigns()
-  :fugitive()
-  
-  -- System
-  :syspackman()
-    :options('scoop')
-  
-  -- File Management
-  :oil()
-  
-  -- Search
-  :fzf()
-  :grepper()
-  
-  -- Database
-  :dadbod()
-    :options('ui', 'completion')
-  
-  -- Terminal
-  :fterm()
-
-  :setup()
+  -- Tools
+    :copilot()
+    :dispatch()
+    
+    -- Git
+    :gitsigns()
+    :fugitive()
+    
+    -- System
+    :syspackman()
+      :options('scoop')
+    
+    -- File Management
+    :oil()
+    
+    -- Search
+    :fzf()
+    :grepper()
+    
+    -- Database
+    :dadbod()
+      :options('ui', 'completion')
+    
+    -- Terminal
+    :fterm()
+end)
 ```
 
 ### Basic Setup
+You can also call modules directly if you don't need other custom configuration:
 ```lua
 vim.cmd.packadd 'fluid'
 require 'fluid'
@@ -269,27 +259,6 @@ require 'fluid'
   :treesitter()
   :cmp()
   :telescope()
-  :setup()
-```
-
-### Language Development Setup
-```lua
-vim.cmd.packadd 'fluid'
-require 'fluid'
-  :lsp():options('icons', 'server_management')
-  :treesitter():option('highlight', 'indent')
-  :cmp()
-  
-  -- Language support
-  :typescript():options('treesitter', 'lsp')
-  :csharp():options('treesitter', 'lsp', 'fold')
-  :css():options('treesitter', 'lsp')
-  :html()
-  
-  -- Tools
-  :copilot()
-  :gitsigns()
-  :oil()
   :setup()
 ```
 
