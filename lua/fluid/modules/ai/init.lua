@@ -9,7 +9,30 @@ function M:init(fluid)
 end
 
 function M:setup(deps)
-  deps.codecompanion.setup()
+  local config = {
+    adapters = {
+      http = {
+        anthropic = "anthropic",
+        openai = "openai_responses",
+      },
+      acp = {},
+    },
+    interactions = {
+      chat = {
+        adapter = "openai",
+      },
+    },
+  }
+
+  if self:has('claude_code') then
+    config.adapters.acp.claude_code = "claude_code"
+  end
+
+  if self:has('opencode') then
+    config.adapters.acp.opencode = "opencode"
+  end
+
+  deps.codecompanion.setup(config)
 end
 
 return M
