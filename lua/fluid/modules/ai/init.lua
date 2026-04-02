@@ -33,6 +33,31 @@ function M:setup(deps)
   end
 
   deps.codecompanion.setup(config)
+
+  -- Startup warnings for missing environment
+  local function warn(msg)
+    vim.notify('[fluid.ai] ' .. msg, vim.log.levels.WARN)
+  end
+
+  if not os.getenv('OPENAI_API_KEY') then
+    warn('OPENAI_API_KEY not set — OpenAI adapter will not work')
+  end
+
+  if not os.getenv('ANTHROPIC_API_KEY') then
+    warn('ANTHROPIC_API_KEY not set — Anthropic adapter will not work')
+  end
+
+  if self:has('claude_code') then
+    if vim.fn.executable('claude-agent-acp') == 0 then
+      warn('claude-agent-acp not found on $PATH — Claude Code ACP will not work')
+    end
+  end
+
+  if self:has('opencode') then
+    if vim.fn.executable('opencode') == 0 then
+      warn('opencode not found on $PATH — OpenCode ACP will not work')
+    end
+  end
 end
 
 return M
