@@ -10,26 +10,23 @@ end
 
 function M:setup(deps)
   local config = {
-    adapters = {
-      http = {
-        anthropic = "anthropic",
-        openai = "openai_responses",
-      },
-      acp = {},
-    },
     interactions = {
       chat = {
-        adapter = "openai",
+        adapter = "openai_responses",
       },
     },
   }
 
-  if self:has('claude_code') then
-    config.adapters.acp.claude_code = "claude_code"
-  end
+  if self:has('claude_code') or self:has('opencode') then
+    config.adapters = { acp = {} }
 
-  if self:has('opencode') then
-    config.adapters.acp.opencode = "opencode"
+    if self:has('claude_code') then
+      config.adapters.acp.claude_code = "claude_code"
+    end
+
+    if self:has('opencode') then
+      config.adapters.acp.opencode = "opencode"
+    end
   end
 
   deps.codecompanion.setup(config)
