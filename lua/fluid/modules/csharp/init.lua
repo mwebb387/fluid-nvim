@@ -1,17 +1,15 @@
 local M = {}
 
+-- @param fluid any
+-- @return nil
+-- Initializes the module with the provided fluid configuration and registers necessary components.
 function M:init(fluid)
-  -- vim.print("Registering csharp module")
-  -- vim.print("Options: ")
-  -- vim.print(self.options)
-
   self
     -- Plugins
     :use('jlcrochet/vim-razor')
     :depends_on('fluid.nvim').as('nvim')
 
   if self:has('treesitter') then -- also check module registration
-    -- vim.print("Registering csharp treesitter")
     fluid:treesitter():option('lang:c_sharp')
   else
     self:use('OrangeT/vim-csharp')
@@ -26,6 +24,8 @@ function M:init(fluid)
   end
 end
 
+--@param deps table Dependencies table containing necessary components.
+--@return nil
 function M:setup(deps)
   deps.nvim:autocmd('FileType', {
     pattern = 'cs',

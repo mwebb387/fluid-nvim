@@ -49,6 +49,7 @@ function M:setup(deps)
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
       { name = 'path' },
+      -- { name = 'minuet' },
       { name = 'neorg' } -- TODO: Only set this up if Neorg is set to be used
     }, {
       { name = 'buffer' },
