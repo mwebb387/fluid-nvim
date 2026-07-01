@@ -114,9 +114,6 @@ local M = {
   end,
 
   setup = function(self, config)
-    -- Bootstrap the plugin manager
-    plugman.bootstrap()
-
     local nvim = require('fluid.nvim')
 
     -- Handle custom config (if supplied)

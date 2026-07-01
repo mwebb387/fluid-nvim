@@ -15,7 +15,7 @@ With a full time job and a family my time is limited, but I hope to improve this
 
 - **Fluent API**: Chainable syntax for readable configuration
 - **Modular Architecture**: opt-in modules for different functionality
-- **Automatic Plugin Management**: Handles plugin installation and updates (currently using paq.nvim)
+- **Automatic Plugin Management**: Handles plugin installation and updates (using `vim.pack`)
 - **Dependency Resolution**: Automatic resolution between modules
 
 ## Installation

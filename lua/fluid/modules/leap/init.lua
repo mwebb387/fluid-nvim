@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init()
-  self:depends_on('leap').from('ggandor/leap.nvim')
+  self:depends_on('leap').from('https://codeberg.org/andyg/leap.nvim')
 end
 
 function M:setup(deps)
