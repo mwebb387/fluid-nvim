@@ -10,10 +10,6 @@ local function resolve_deps(mod)
   return deps
 end
 
-local function plugin_name(plugin)
-  return plugin.name or plugin.src:match('([^/]+)$'):gsub('%.git$', '')
-end
-
 -- Create trigger stubs for a lazy module; the first trigger to fire loads
 -- the module's plugins, tears down the other stubs, and runs setup()
 local function wire_lazy_module(mod)
@@ -30,9 +26,8 @@ local function wire_lazy_module(mod)
 
     local paths = {}
     for _, plugin in ipairs(mod.plugins) do
-      local name = plugin_name(plugin)
-      local path = lazyload.path_of(name)
-      if lazyload.load(name) then
+      local path = lazyload.path_of(plugin.src)
+      if lazyload.load(plugin.src) then
         paths[#paths + 1] = path
       end
     end
@@ -43,6 +38,17 @@ local function wire_lazy_module(mod)
     end
 
     return paths
+  end
+
+  -- Requiring any lua module this module provides (or any lua module found
+  -- inside its pending plugins) also triggers the full load
+  for _, dep in ipairs(mod.dependencies) do
+    if dep.provided then
+      lazyload.require_map[dep.package] = on_trigger
+    end
+  end
+  for _, plugin in ipairs(mod.plugins) do
+    lazyload.owners[plugin.src] = on_trigger
   end
 
   local triggers = mod.lazy_triggers
@@ -58,7 +64,7 @@ local function wire_lazy_module(mod)
   if triggers.ft then
     -- Filetypes of unloaded plugins must be detectable for the stub to fire
     for _, plugin in ipairs(mod.plugins) do
-      local path = lazyload.path_of(plugin_name(plugin))
+      local path = lazyload.path_of(plugin.src)
       if path then
         lazyload.ftdetect(path)
       end
@@ -87,8 +93,8 @@ local module_meta = {
     end
 
     for kind, value in pairs(triggers) do
-      if kind ~= 'cmd' and kind ~= 'event' and kind ~= 'ft' and kind ~= 'keys' then
-        error("lazy(): unknown trigger '" .. tostring(kind) .. "' (expected cmd, event, ft, keys)", 2)
+      if kind ~= 'cmd' and kind ~= 'event' and kind ~= 'ft' and kind ~= 'keys' and kind ~= 'require' then
+        error("lazy(): unknown trigger '" .. tostring(kind) .. "' (expected cmd, event, ft, keys, require)", 2)
       end
       self.lazy_triggers[kind] = value
     end
@@ -156,7 +162,9 @@ local module_meta = {
       if not plugin then
         error("providing() only applies to plugin specs; chain .as(...) to alias the dependency instead", 2)
       end
-      dep = { package = path, name = path }
+      -- provided marks the require path as owned by this module's plugin,
+      -- which feeds require-triggered lazy loading
+      dep = { package = path, name = path, provided = true }
       table.insert(self.dependencies, dep)
       return chain
     end
