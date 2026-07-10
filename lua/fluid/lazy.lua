@@ -29,9 +29,27 @@ local function resolve_chunk(modname)
   local rel = 'lua/' .. modname:gsub('%.', '/')
   local file = vim.api.nvim_get_runtime_file(rel .. '.lua', false)[1]
     or vim.api.nvim_get_runtime_file(rel .. '/init.lua', false)[1]
-  if file then
-    local chunk, err = loadfile(file)
-    return chunk or error(err)
+  if not file then
+    return
+  end
+
+  local chunk, err = loadfile(file)
+  if not chunk then
+    error(err)
+  end
+
+  -- The trigger may already have loaded this module (e.g. a plugin config
+  -- requiring its own provided path); never execute the file twice.
+  -- NOTE: require() marks in-progress loads with a private sentinel in
+  -- package.loaded before calling this loader — only value types a
+  -- completed require can produce count as "already loaded".
+  return function(...)
+    local cached = package.loaded[modname]
+    local t = type(cached)
+    if t == 'table' or t == 'function' or t == 'string' or t == 'boolean' then
+      return cached
+    end
+    return chunk(...)
   end
 end
 
