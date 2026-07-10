@@ -1,5 +1,71 @@
 local plugman = require'fluid.plugin-manager'
+local lazyload = require'fluid.lazy'
 local util = require'fluid.util'
+
+local function resolve_deps(mod)
+  local deps = {}
+  for _, dep in ipairs(mod.dependencies) do
+    deps[dep.name] = require(dep.package)
+  end
+  return deps
+end
+
+local function plugin_name(plugin)
+  return plugin.name or plugin.src:match('([^/]+)$'):gsub('%.git$', '')
+end
+
+-- Create trigger stubs for a lazy module; the first trigger to fire loads
+-- the module's plugins, tears down the other stubs, and runs setup()
+local function wire_lazy_module(mod)
+  local deleters = {}
+
+  local function on_trigger()
+    if mod._lazy_paths then
+      return mod._lazy_paths
+    end
+
+    for _, del in ipairs(deleters) do
+      del()
+    end
+
+    local paths = {}
+    for _, plugin in ipairs(mod.plugins) do
+      local name = plugin_name(plugin)
+      local path = lazyload.path_of(name)
+      if lazyload.load(name) then
+        paths[#paths + 1] = path
+      end
+    end
+    mod._lazy_paths = paths
+
+    if mod.setup then
+      mod:setup(resolve_deps(mod))
+    end
+
+    return paths
+  end
+
+  local triggers = mod.lazy_triggers
+  if triggers.cmd then
+    deleters[#deleters + 1] = lazyload.stub_cmd(triggers.cmd, on_trigger)
+  end
+  if triggers.event then
+    deleters[#deleters + 1] = lazyload.stub_event(triggers.event, on_trigger)
+  end
+  if triggers.keys then
+    deleters[#deleters + 1] = lazyload.stub_keys(triggers.keys, on_trigger)
+  end
+  if triggers.ft then
+    -- Filetypes of unloaded plugins must be detectable for the stub to fire
+    for _, plugin in ipairs(mod.plugins) do
+      local path = lazyload.path_of(plugin_name(plugin))
+      if path then
+        lazyload.ftdetect(path)
+      end
+    end
+    deleters[#deleters + 1] = lazyload.stub_ft(triggers.ft, on_trigger)
+  end
+end
 
 local module_meta = {
   has = function(self, option)
@@ -9,6 +75,25 @@ local module_meta = {
         return opt == option
       end
     ) ~= nil
+  end,
+
+  -- Defer this module's plugins and setup() until a trigger fires:
+  -- lazy{ cmd = 'Telescope', event = 'InsertEnter', ft = 'cs', keys = '<leader>x' }
+  -- Each trigger accepts a single value or a list; keys entries may be
+  -- {mode, lhs} tables (mode defaults to 'n').
+  lazy = function(self, triggers)
+    if type(triggers) ~= 'table' then
+      error("lazy() expects a table of triggers: { cmd = ..., event = ..., ft = ..., keys = ... }", 2)
+    end
+
+    for kind, value in pairs(triggers) do
+      if kind ~= 'cmd' and kind ~= 'event' and kind ~= 'ft' and kind ~= 'keys' then
+        error("lazy(): unknown trigger '" .. tostring(kind) .. "' (expected cmd, event, ft, keys)", 2)
+      end
+      self.lazy_triggers[kind] = value
+    end
+
+    return self
   end,
 
   -- use('owner/repo' | 'url' | {src=..., version=...}) registers a plugin;
@@ -27,7 +112,7 @@ local module_meta = {
       end
 
       for _, plugin in ipairs(spec) do
-        plugman:add_plugin(plugin)
+        table.insert(self.plugins, plugman:add_plugin(plugin))
       end
 
       local sealed = {}
@@ -54,6 +139,7 @@ local module_meta = {
       table.insert(self.dependencies, dep)
     else
       plugin = plugman:add_plugin(spec)
+      table.insert(self.plugins, plugin)
     end
 
     local chain = {}
@@ -105,6 +191,14 @@ local function create_fluid_module(m, name)
     m.dependencies = {}
   end
 
+  if not m.plugins then
+    m.plugins = {}
+  end
+
+  if not m.lazy_triggers then
+    m.lazy_triggers = {}
+  end
+
   -- print('Metatable: ')
   -- vim.pretty_print(getmetatable(m))
 
@@ -148,6 +242,16 @@ local M = {
     return self
   end,
 
+  -- Make the current module lazy from user config: f:telescope():lazy{ cmd = 'Telescope' }
+  lazy = function(self, triggers)
+    if not self.current_module.lazy_triggers then
+      error("lazy() requires a module; register one first (e.g. f:telescope():lazy{...})", 2)
+    end
+
+    module_meta.lazy(self.current_module, triggers)
+    return self
+  end,
+
   -- For debugging
   reset = function(self)
     self.config = {
@@ -175,18 +279,34 @@ local M = {
       end
     end
 
+    -- Mark plugins belonging to lazy modules; a plugin shared with an
+    -- eager module must stay eager
+    for _, mod in ipairs(self.config.modules) do
+      if next(mod.lazy_triggers) ~= nil then
+        for _, plugin in ipairs(mod.plugins) do
+          plugin.data = plugin.data or {}
+          plugin.data.fluid_lazy = true
+        end
+      end
+    end
+    for _, mod in ipairs(self.config.modules) do
+      if next(mod.lazy_triggers) == nil then
+        for _, plugin in ipairs(mod.plugins) do
+          if plugin.data then
+            plugin.data.fluid_lazy = nil
+          end
+        end
+      end
+    end
+
     -- Install plugins
     plugman:install_plugins(function()
-      -- Run module setup methods
+      -- Wire lazy modules to their triggers; set up eager modules now
       for _, mod in ipairs(self.config.modules) do
-        if mod.setup then
-          local deps = {}
-          for _, dep in ipairs(mod.dependencies) do
-            -- TODO: what if this is a plugin
-            deps[dep.name] = require(dep.package)
-          end
-
-          mod:setup(deps)
+        if next(mod.lazy_triggers) ~= nil then
+          wire_lazy_module(mod)
+        elseif mod.setup then
+          mod:setup(resolve_deps(mod))
         end
       end
     end)

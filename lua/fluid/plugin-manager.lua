@@ -45,7 +45,26 @@ function M:add_plugin(plugin)
 end
 
 function M:install_plugins(callback)
-  vim.pack.add(self.plugins)
+  local eager, lazy = {}, {}
+  for _, plugin in ipairs(self.plugins) do
+    if plugin.data and plugin.data.fluid_lazy then
+      table.insert(lazy, plugin)
+    else
+      table.insert(eager, plugin)
+    end
+  end
+
+  if #eager > 0 then
+    vim.pack.add(eager)
+  end
+
+  if #lazy > 0 then
+    -- vim.pack installs but delegates loading to fluid; the plugin stays
+    -- off the runtimepath until a lazy trigger packadds it
+    local lazyload = require('fluid.lazy')
+    vim.pack.add(lazy, { load = lazyload.register })
+  end
+
   callback()
 end
 
