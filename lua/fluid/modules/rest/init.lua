@@ -3,9 +3,9 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('rest-nvim')
+    :use('rest-nvim/rest.nvim')
+      .providing('rest-nvim')
       .as('rest')
-      .from('rest-nvim/rest.nvim')
 end
 
 function M:setup(deps)

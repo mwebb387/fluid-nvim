@@ -5,8 +5,10 @@ function M:init(fluid)
 
   fluid:fluidline()
   self
-    :depends_on('fluid.modules.fluidline').as('fluidline')
-    :depends_on('nvim-web-devicons').as('icons')
+    :use('fluid.modules.fluidline').as('fluidline')
+    :use('kyazdani42/nvim-web-devicons')
+      .providing('nvim-web-devicons')
+      .as('icons')
 end
 
 function M:setup(deps)

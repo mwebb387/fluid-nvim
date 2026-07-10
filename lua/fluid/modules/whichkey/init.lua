@@ -2,9 +2,9 @@ local M = {}
 
 function M:init()
   self
-    :depends_on('which-key')
+    :use('folke/which-key.nvim')
+      .providing('which-key')
       .as('wk')
-      .from('folke/which-key.nvim')
 end
 
 function M:setup(deps)

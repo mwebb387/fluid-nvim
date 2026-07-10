@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init()
-  self:depends_on('image').from('samodostal/image.nvim')
+  self:use('samodostal/image.nvim').providing('image')
 end
 
 function M:setup(deps)

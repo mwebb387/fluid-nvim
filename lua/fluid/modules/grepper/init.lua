@@ -2,7 +2,7 @@ local M = {}
 
 function M:init()
   self:use('mhinz/vim-grepper')
-  self:depends_on('fluid.nvim').as('nvim')
+  self:use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

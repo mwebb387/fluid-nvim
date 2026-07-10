@@ -7,9 +7,9 @@ function M:init()
 
   if self:has('lsp') then -- also check module registration
     self
-      :depends_on('fluid.modules.lsp').as('lsp')
-      :depends_on('fluid.modules.lsp.util').as('lsp_util')
-      :depends_on('cmp_nvim_lsp').as('cmp') -- opt-in completion?
+      :use('fluid.modules.lsp').as('lsp')
+      :use('fluid.modules.lsp.util').as('lsp_util')
+      :use('cmp_nvim_lsp').as('cmp') -- opt-in completion?
   end
 end
 

@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('netrw').from('prichrd/netrw.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('prichrd/netrw.nvim').providing('netrw')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

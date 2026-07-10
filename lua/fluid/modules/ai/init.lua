@@ -97,17 +97,17 @@ end
 
 function M:init()
   if self:has('codecompanion') then
-    self:depends_on('codecompanion').from('olimorris/codecompanion.nvim')
+    self:use('olimorris/codecompanion.nvim').providing('codecompanion')
   end
 
   if self:has('opencode') then
-    self:depends_on('opencode').from('sudo-tee/opencode.nvim')
+    self:use('sudo-tee/opencode.nvim').providing('opencode')
   end
 
   -- Supermaven
   if self:has('supermaven') then
-    self:depends_on('supermaven-nvim')
-        .from('supermaven-inc/supermaven-nvim')
+    self:use('supermaven-inc/supermaven-nvim')
+        .providing('supermaven-nvim')
         .as('supermaven')
   end
 end

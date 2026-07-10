@@ -9,11 +9,11 @@ local M = {
 
 function M:init()
   self
-    :depends_on('telescope')
-      .from('nvim-telescope/telescope.nvim')
-    :depends_on('telescope.actions')
-      .as('actions')
-    :depends_on('fluid.nvim')
+    :use('nvim-telescope/telescope.nvim')
+      .providing('telescope')
+      .providing('telescope.actions')
+        .as('actions')
+    :use('fluid.nvim')
       .as('nvim')
 end
 

@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('harpoon').from({'ThePrimeagen/harpoon', branch = 'harpoon2'})
-    :depends_on('fluid.nvim').as('nvim')
+    :use('ThePrimeagen/harpoon').at('harpoon2').providing('harpoon')
+    :use('fluid.nvim').as('nvim')
 end
   -- :nullls()
 

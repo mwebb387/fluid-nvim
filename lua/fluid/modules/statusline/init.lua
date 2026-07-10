@@ -14,7 +14,7 @@ function M:init(fluid)
   -- print('init for statusline')
 
   fluid:fluidline()
-  self:depends_on('fluid.modules.fluidline').as('fluidline')
+  self:use('fluid.modules.fluidline').as('fluidline')
 end
 
 function M:setup(deps)

@@ -3,10 +3,10 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('render-markdown')
-      .from('MeanderingProgrammer/render-markdown.nvim')
+    :use('MeanderingProgrammer/render-markdown.nvim')
+      .providing('render-markdown')
       .as('markdown')
-    :depends_on('fluid.nvim')
+    :use('fluid.nvim')
       .as('nvim')
 end
 

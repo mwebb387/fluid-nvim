@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init()
-  self:depends_on('neogit').from('TimUntersberger/neogit')
+  self:use('TimUntersberger/neogit').providing('neogit')
 end
 
 function M:setup(deps)

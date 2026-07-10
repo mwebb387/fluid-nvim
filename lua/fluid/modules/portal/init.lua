@@ -2,8 +2,8 @@ local M = {}
 
 function M:init()
   self
-    :depends_on('portal').from('cbochs/portal.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('cbochs/portal.nvim').providing('portal')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

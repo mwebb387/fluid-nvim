@@ -3,7 +3,7 @@ local M = {}
 function M:init()
   self
     :use('ackyshake/VimCompletesMe')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('fluid.nvim').as('nvim')
 
 end
 

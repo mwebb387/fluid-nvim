@@ -1,4 +1,13 @@
-local  gh = function(x) return 'https://github.com/' .. x end
+local gh = function(x) return 'https://github.com/' .. x end
+
+-- Sources that must not be rewritten to a GitHub URL: full URLs of any
+-- protocol, scp-style git addresses, and local paths
+local function is_explicit_source(src)
+  return src:find('://', 1, true) ~= nil
+    or src:match('^git@') ~= nil
+    or src:match('^[~/]') ~= nil
+    or src:match('^%a:[/\\]') ~= nil
+end
 
 local M = {
   plugins = {
@@ -9,17 +18,30 @@ local M = {
 }
 
 function M:add_plugin(plugin)
-  -- detect of 'plugin' is a string or a table
   if type(plugin) == 'string' then
     plugin = { src = plugin }
   end
 
-  local prefix = 'https'
-  if string.sub(plugin.src, 1, #prefix) ~= prefix then
+  if type(plugin) ~= 'table' or type(plugin.src) ~= 'string' then
+    error("fluid: invalid plugin spec — expected an 'owner/repo' string, a URL, or a table with a src field", 2)
+  end
+
+  if not is_explicit_source(plugin.src) then
     plugin.src = gh(plugin.src)
   end
 
+  -- Modules may register the same plugin; keep one spec per src so vim.pack
+  -- does not reject the list, and merge refinements into the first spec
+  for _, existing in ipairs(self.plugins) do
+    if existing.src == plugin.src then
+      existing.version = existing.version or plugin.version
+      existing.name = existing.name or plugin.name
+      return existing
+    end
+  end
+
   table.insert(self.plugins, plugin)
+  return plugin
 end
 
 function M:install_plugins(callback)

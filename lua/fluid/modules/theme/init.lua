@@ -3,16 +3,17 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :use(
+    :use{
       'catppuccin/nvim',
       'rebelot/kanagawa.nvim',
       'EdenEast/nightfox.nvim',
       'talha-akram/noctis.nvim',
       'maxmx03/fluoromachine.nvim',
-      'folke/tokyonight.nvim',
-      'rose-pine/neovim')
+      'folke/tokyonight.nvim'}
 
-    :depends_on('rose-pine').as('rosepine')
+    :use('rose-pine/neovim')
+      .providing('rose-pine')
+      .as('rosepine')
 end
 
 function M:setup(deps)

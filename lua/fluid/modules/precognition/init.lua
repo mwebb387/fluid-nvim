@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('precognition').from('tris203/precognition.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('tris203/precognition.nvim').providing('precognition')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

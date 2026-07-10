@@ -3,7 +3,7 @@ local M = {}
 function M:init()
   self
     :use('skywind3000/asyncrun.vim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

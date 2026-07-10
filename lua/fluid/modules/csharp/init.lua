@@ -7,7 +7,7 @@ function M:init(fluid)
   self
     -- Plugins
     :use('jlcrochet/vim-razor')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('fluid.nvim').as('nvim')
 
   if self:has('treesitter') then -- also check module registration
     fluid:treesitter():option('lang:c_sharp')
@@ -15,11 +15,10 @@ function M:init(fluid)
 
   if self:has('lsp') then -- also check module registration
     self
-      :use('Hoffs/omnisharp-extended-lsp.nvim')
-      :depends_on('omnisharp_extended')
-      :depends_on('fluid.modules.lsp').as('lsp')
-      :depends_on('fluid.modules.lsp.util').as('lsp_util')
-      :depends_on('cmp_nvim_lsp').as('cmp')
+      :use('Hoffs/omnisharp-extended-lsp.nvim').providing('omnisharp_extended')
+      :use('fluid.modules.lsp').as('lsp')
+      :use('fluid.modules.lsp.util').as('lsp_util')
+      :use('cmp_nvim_lsp').as('cmp')
   end
 end
 

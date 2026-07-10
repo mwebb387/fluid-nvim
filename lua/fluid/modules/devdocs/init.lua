@@ -1,8 +1,8 @@
 local M = {}
 
 function M:init()
-  self:depends_on('nvim-devdocs')
-    .from('luckasRanarison/nvim-devdocs')
+  self:use('luckasRanarison/nvim-devdocs')
+    .providing('nvim-devdocs')
     .as('devdocs')
 end
 

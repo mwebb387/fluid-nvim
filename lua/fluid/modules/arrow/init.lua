@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('arrow').from('otavioschwanck/arrow.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('otavioschwanck/arrow.nvim').providing('arrow')
+    :use('fluid.nvim').as('nvim')
 end
   -- :nullls()
 

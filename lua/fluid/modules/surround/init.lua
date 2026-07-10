@@ -1,9 +1,9 @@
 local M = {}
 
 function M:init()
-  self:depends_on('nvim-surround')
+  self:use('kylechui/nvim-surround')
+    .providing('nvim-surround')
     .as('surround')
-    .from('kylechui/nvim-surround')
 end
 
 function M:setup(deps)

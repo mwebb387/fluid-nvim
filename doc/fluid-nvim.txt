@@ -287,71 +287,84 @@ module:has({option})
         end
 <
 
-                                                        *module:depends_on()*
-module:depends_on({dependency})
-    Declare a dependency on another module or package. Returns a chainable
-    API for specifying the plugin source and alias name.
-    
-    Parameters: ~
-        {dependency} (string) The dependency package name.
-        
-    Returns: ~
-        Dependency API with `from()` and `as()` methods.
-        NOTE: Dependency table methods must be called with
-              a `.`, not `:`.
-        
-    Example: >
-        function M:init(fluid)
-          self:depends_on('plenary.nvim')
-            .from('nvim-lua/plenary.nvim')
-          
-          self:depends_on('telescope.nvim')
-            .from('nvim-telescope/telescope.nvim')
-            .as('telescope')
-        end
-<
-
-                                                    *dependency-api:from()*
-dependency.from({plugin_spec})
-    Specify the plugin specification for a dependency. This adds the plugin
-    to the plugin manager for installation.
-    
-    Parameters: ~
-        {plugin_spec} (string|table) Plugin specification (repo URL or table).
-        
-    Returns: ~
-        Dependency API for further chaining.
-
-                                                      *dependency-api:as()*
-dependency.as({name})
-    Specify an alias name for the dependency. This is the name that will be
-    used as the key in the `deps` table passed to `setup()`.
-    
-    Parameters: ~
-        {name} (string) The alias name for this dependency.
-        
-    Returns: ~
-        Dependency API for further chaining.
-
                                                              *module:use()*
-module:use({...})
-    Add plugins to the plugin manager without creating named dependencies.
-    Useful for plugins that don't need to be accessed in setup.
-    
+module:use({spec})
+    The single entry point for registering plugins and declaring
+    dependencies. The meaning is determined by the shape of {spec}:
+
+    • string containing `/` — a plugin source; an `owner/repo` shorthand
+      is expanded to the GitHub URL, full URLs (any protocol), scp-style
+      `git@` addresses, and local paths are used as-is.
+    • string without `/` — a Lua require path declared as a dependency,
+      resolved and passed to `setup(deps)` under its own name (rename
+      with `.as()`).
+    • table with a `src` field — a native |vim.pack| plugin spec
+      ({src=..., version=..., name=...}), passed through.
+    • list table — a batch of plugin specs (strings or spec tables);
+      batch registrations cannot be refined with chain methods.
+
+    Returns a chainable refinement API. Chain methods must be called with
+    a `.`, not `:`. Module methods remain reachable from the chain with `:`.
+
     Parameters: ~
-        {...} (string|table) Variable number of plugin specifications.
-        
+        {spec} (string|table) Plugin source, require path, vim.pack spec,
+               or list of plugin specs.
+
     Returns: ~
-        The module instance for chaining.
-        
+        Refinement API with `at()`, `providing()`, and `as()` methods.
+
     Example: >
         function M:init(fluid)
-          self:use(
-            'kylechui/nvim-surround',
-            { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-          )
+          self
+            -- Plugin only
+            :use('kylechui/nvim-surround')
+
+            -- Plugin pinned to a branch, exposing two require paths
+            :use('nvim-telescope/telescope.nvim')
+              .providing('telescope')
+              .providing('telescope.actions').as('actions')
+
+            -- Dependency only (no plugin): a require path has no '/'
+            :use('fluid.nvim').as('nvim')
+
+            -- Batch install (not refinable)
+            :use{
+              'hrsh7th/cmp-buffer',
+              { src = 'folke/tokyonight.nvim', version = 'v4.11.0' },
+            }
         end
 <
+
+                                                            *use-chain:at()*
+use-chain.at({version})
+    Pin the plugin registered by the preceding `use()` to a version — a
+    branch name, tag, or |vim.version.range()| — mapped to the vim.pack
+    spec's `version` field. Errors when the preceding `use()` declared a
+    dependency rather than a plugin.
+
+    Example: >
+        self:use('ThePrimeagen/harpoon').at('harpoon2')
+          .providing('harpoon')
+<
+
+                                                     *use-chain:providing()*
+use-chain.providing({path})
+    Declare that the plugin registered by the preceding `use()` provides a
+    require-able Lua module, exposing it in the `deps` table passed to
+    `setup()`. May be called multiple times for one plugin. The dependency
+    key defaults to {path}; rename it with `.as()`.
+
+    Parameters: ~
+        {path} (string) Lua require path provided by the plugin.
+
+                                                            *use-chain:as()*
+use-chain.as({name})
+    Rename the most recent dependency — either the require path passed to
+    `use()` directly, or the last `.providing()` — so it appears in the
+    `deps` table under {name}.
+
+    Parameters: ~
+        {name} (string) The alias used as the key in `deps`.
 
 Module Lifecycle ~
 
@@ -364,18 +377,15 @@ Module Lifecycle ~
 Example Module ~
 >
     local M = {}
-    
+
     function M:init(fluid)
-      -- Declare dependencies with plugin sources
-      self:depends_on('plenary.nvim')
-        .from('nvim-lua/plenary.nvim')
-      
-      self:depends_on('telescope.nvim')
-        .from('nvim-telescope/telescope.nvim')
-        .as('telescope')
-      
-      -- Add plugins without named dependencies
-      self:use('nvim-tree/nvim-web-devicons')
+      -- Declare plugins, exposing require paths as dependencies
+      self
+        :use('nvim-telescope/telescope.nvim')
+          .providing('telescope')
+
+        -- Add plugins without named dependencies
+        :use('nvim-tree/nvim-web-devicons')
     end
     
     function M:setup(deps)

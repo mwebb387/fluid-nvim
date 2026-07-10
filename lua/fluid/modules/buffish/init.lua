@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('buffish').from('mong8se/buffish.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('mong8se/buffish.nvim').providing('buffish')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('aerial').from('stevearc/aerial.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('stevearc/aerial.nvim').providing('aerial')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

@@ -106,8 +106,8 @@ local M = {
 
 function M:init()
   self
-    :depends_on('minuet').from('milanglacier/minuet-ai.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('milanglacier/minuet-ai.nvim').providing('minuet')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

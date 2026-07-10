@@ -21,7 +21,7 @@ local M = {
 function M:init(fluid)
   self
     :use('nvim-neorg/neorg')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('fluid.nvim').as('nvim')
 
   -- Neorg treesitter parsers
   fluid:treesitter():options('lang:norg', 'lang:norg_meta')

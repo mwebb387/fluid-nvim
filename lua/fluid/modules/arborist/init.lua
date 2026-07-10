@@ -6,7 +6,7 @@ local M = {
 }
 
 function M:init()
-  self:depends_on('arborist').from('arborist-ts/arborist.nvim')
+  self:use('arborist-ts/arborist.nvim').providing('arborist')
 
   -- Get ensured languages
   for _, op in ipairs(self.options) do

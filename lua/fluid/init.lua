@@ -11,36 +11,81 @@ local module_meta = {
     ) ~= nil
   end,
 
-  depends_on = function(self, dep)
-    local dependency = {
-      package = dep,
-      name = dep,
-    }
-
-    table.insert(self.dependencies, dependency)
-
-    -- TODO: Are there other dep types?
-    local depends_api = {}
-    function depends_api.from(plugin_spec)
-      plugman:add_plugin(plugin_spec)
-      return depends_api
-    end
-    function depends_api.as(name)
-      dependency.name = name
-      return depends_api
+  -- use('owner/repo' | 'url' | {src=..., version=...}) registers a plugin;
+  -- use('lua.require.path') declares a dependency exposed in setup(deps);
+  -- use({ spec, spec, ... }) registers a batch of plugins (not refinable).
+  -- Chain refinements: .at(version), .providing(path), .as(alias)
+  use = function(self, spec, extra)
+    if extra ~= nil then
+      error("use() takes a single spec; pass a list table to register multiple plugins", 2)
     end
 
-    setmetatable(depends_api, { __index = self })
+    -- Batch list of plain plugin specs
+    if type(spec) == 'table' and spec.src == nil then
+      if spec[1] == nil or spec.version ~= nil or spec.branch ~= nil or spec.name ~= nil then
+        error("fluid: invalid plugin spec — a table must be { src = ..., version = ... } or a list of specs", 2)
+      end
 
-    return depends_api
-  end,
+      for _, plugin in ipairs(spec) do
+        plugman:add_plugin(plugin)
+      end
 
-  use = function(self, ...)
-    for _, plugin in ipairs({...}) do
-      plugman:add_plugin(plugin)
+      local sealed = {}
+      local function no_refine(name)
+        return function()
+          error(name .. "() cannot refine a multi-plugin use(); call use() once per plugin to chain", 2)
+        end
+      end
+      sealed.at = no_refine('at')
+      sealed.providing = no_refine('providing')
+      sealed.as = no_refine('as')
+
+      setmetatable(sealed, { __index = self })
+
+      return sealed
     end
 
-    return self
+    local plugin = nil
+    local dep = nil
+
+    if type(spec) == 'string' and not spec:find('/', 1, true) then
+      -- No slash: a require path, not a plugin source
+      dep = { package = spec, name = spec }
+      table.insert(self.dependencies, dep)
+    else
+      plugin = plugman:add_plugin(spec)
+    end
+
+    local chain = {}
+
+    function chain.at(version)
+      if not plugin then
+        error("at() only applies to plugin specs; '" .. tostring(spec) .. "' is a dependency", 2)
+      end
+      plugin.version = version
+      return chain
+    end
+
+    function chain.providing(path)
+      if not plugin then
+        error("providing() only applies to plugin specs; chain .as(...) to alias the dependency instead", 2)
+      end
+      dep = { package = path, name = path }
+      table.insert(self.dependencies, dep)
+      return chain
+    end
+
+    function chain.as(alias)
+      if not dep then
+        error("as() requires a dependency; call providing() first", 2)
+      end
+      dep.name = alias
+      return chain
+    end
+
+    setmetatable(chain, { __index = self })
+
+    return chain
   end,
 }
 

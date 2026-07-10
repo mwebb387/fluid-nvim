@@ -13,7 +13,7 @@ local M = {
 }
 
 function M:init()
-  self:use(
+  self:use{
    'hrsh7th/cmp-nvim-lsp',
    'hrsh7th/cmp-buffer',
    'hrsh7th/cmp-path',
@@ -21,8 +21,8 @@ function M:init()
    'hrsh7th/cmp-vsnip',
    'hrsh7th/vim-vsnip',
    'rafamadriz/friendly-snippets'
-  )
-  self:depends_on('cmp').from('hrsh7th/nvim-cmp')
+  }
+  self:use('hrsh7th/nvim-cmp').providing('cmp')
 end
 
 function M:setup(deps)

@@ -28,8 +28,8 @@ local M = {
 
 function M:init()
   self
-    :depends_on('fluid.nvim').as('nvim')
-    :depends_on('FTerm').from('numToStr/FTerm.nvim')
+    :use('fluid.nvim').as('nvim')
+    :use('numToStr/FTerm.nvim').providing('FTerm')
 end
 
 function M:setup(deps)

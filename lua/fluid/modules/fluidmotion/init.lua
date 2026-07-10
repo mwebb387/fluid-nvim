@@ -42,7 +42,7 @@ function M:init()
 
   if self:has('log') then self.log = true end
 
-  self:depends_on('fluid.nvim').as('nvim')
+  self:use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

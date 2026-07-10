@@ -17,14 +17,14 @@ function M:init()
   self:use('junegunn/fzf')
 
   if self:has('lua') then
-    self:depends_on('fzf-lua')
-      .from('ibhagwan/fzf-lua')
+    self:use('ibhagwan/fzf-lua')
+      .providing('fzf-lua')
       .as('fzf_lua')
   else
     self:use('junegunn/fzf.vim')
   end
 
-  self:depends_on('fluid.nvim').as('nvim')
+  self:use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

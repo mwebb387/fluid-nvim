@@ -66,7 +66,7 @@ end
 function M:init()
   self
     -- Dependencies
-    :depends_on('fluid.nvim').as('nvim')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)

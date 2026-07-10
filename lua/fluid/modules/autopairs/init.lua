@@ -2,8 +2,8 @@ local M = {}
 
 function M:init()
   self
-    :depends_on('nvim-autopairs')
-      .from('windwp/nvim-autopairs')
+    :use('windwp/nvim-autopairs')
+      .providing('nvim-autopairs')
       .as('ap')
 end
 

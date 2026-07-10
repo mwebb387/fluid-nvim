@@ -44,12 +44,10 @@ function M:init()
 
   self
     -- Plugins
-    -- :use({'nvim-treesitter/nvim-treesitter', branch = 'master'})
-
-    -- Dependencies
-    :depends_on('nvim-treesitter.configs')
+    :use('nvim-treesitter/nvim-treesitter')
+      .at('master')
+      .providing('nvim-treesitter.configs')
       .as('treesitter')
-      .from({'nvim-treesitter/nvim-treesitter', branch = 'master'})
 
 
     -- Config based on opts

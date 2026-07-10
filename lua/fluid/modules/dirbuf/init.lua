@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init()
-  self:depends_on('dirbuf').from('elihunter173/dirbuf.nvim')
+  self:use('elihunter173/dirbuf.nvim').providing('dirbuf')
 end
 
 function M:setup(deps)

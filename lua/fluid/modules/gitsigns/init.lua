@@ -1,7 +1,7 @@
 local M = {}
 
 function M:init()
-  self:depends_on('gitsigns').from('lewis6991/gitsigns.nvim')
+  self:use('lewis6991/gitsigns.nvim').providing('gitsigns')
 end
 
 function M:setup(deps)

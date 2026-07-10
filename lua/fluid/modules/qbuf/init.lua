@@ -3,8 +3,8 @@ local M = {}
 function M:init()
   self
     -- Plugins
-    :depends_on('qbuf').from('ayoubelmhamdi/qbuf.nvim')
-    :depends_on('fluid.nvim').as('nvim')
+    :use('ayoubelmhamdi/qbuf.nvim').providing('qbuf')
+    :use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)
