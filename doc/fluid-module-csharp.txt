@@ -24,6 +24,7 @@ Plugins installed:
 
 Internal dependencies:
   • fluid.nvim
+  • fluid.modules.lsp (if LSP enabled)
   • fluid.modules.lsp.util (if LSP enabled)
   • cmp_nvim_lsp (if LSP enabled)
   • omnisharp_extended (if LSP enabled)
@@ -36,6 +37,8 @@ LSP Configuration (when LSP module is enabled):
   • Roslyn analyzers enabled
   • CMP capabilities integration
   • Automatic server startup
+  • Server installable via |:FluidInstallLanguageServer| (omnisharp-roslyn,
+    installed as the `omnisharp` package via scoop)
 
 Folding Configuration (when fold option is enabled):
   • Method: marker-based folding

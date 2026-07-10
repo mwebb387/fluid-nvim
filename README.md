@@ -49,7 +49,16 @@ The fluent syntax supports multiple operators for chaining:
 require('fluid'):setup(function(f, nvim)
   -- Function call syntax
   f:telescope():lsp():treesitter()
-  
+
+  -- Options can be passed directly to module calls
+  f:lsp('icons', 'server_management')
+
+  -- Table arguments deep-merge into the module's plugin config
+  f:telescope({ defaults = { prompt_prefix = '> ' } })
+
+  -- Strings and tables can be mixed in a single call
+  f:treesitter('highlight', { indent = { enable = true } })
+
   -- Alternative operators (just because you can)
   -- Modules can be set using modulo or division
   f % 'telescope' % 'lsp' % 'treesitter'

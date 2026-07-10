@@ -67,6 +67,17 @@ Modules can be configured with options: >
     f:lsp():options('icons', 'server_management')
       :telescope()
 
+Options can also be passed directly to the module call: >
+
+    f:lsp('icons', 'server_management')
+      :telescope()
+
+Table arguments are deep-merged into the module's plugin configuration, and
+can be mixed freely with string options in the same call: >
+
+    f:telescope({ defaults = { prompt_prefix = '> ' } })
+      :treesitter('highlight', { indent = { enable = true } })
+
 The fluent syntax supports multiple operators:
   • Function call: `f:module()`
   • Modulo: `f % 'module`'
@@ -199,6 +210,20 @@ fluid:module({name})
     Parameters: ~
         {name} (string) The module name to load.
         
+    Returns: ~
+        fluid instance for chaining
+
+                                                           *fluid:{module}()*
+fluid:{module}({...})
+    Load and configure a module by calling its name directly on the fluid
+    instance, e.g. `f:telescope()`. Arguments are optional: string arguments
+    are added as options for the module (as with |fluid:options()|), and
+    table arguments are deep-merged into the module's plugin configuration.
+    Strings and tables can be mixed in a single call.
+
+    Parameters: ~
+        {...} (string|table) Optional option names and/or config overrides.
+
     Returns: ~
         fluid instance for chaining
 

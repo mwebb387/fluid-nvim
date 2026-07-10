@@ -14,6 +14,36 @@ USAGE                                            *fluid-module-syspackman-usage*
 Basic usage: >
   require('fluid'):syspackman()
 
+The default system package manager is chosen by platform: winget on Windows,
+homebrew on macOS, and apt on Linux. Options can override the default: >
+
+  -- Prefer scoop over winget on Windows
+  f:syspackman('scoop')
+
+  -- Explicitly keep winget (wins over scoop if both are enabled)
+  f:syspackman('winget')
+
+  -- Prefer pacman or homebrew over apt on Linux
+  f:syspackman('pacman')
+  f:syspackman('homebrew')
+
+A custom system manager can also be supplied directly via config: >
+
+  f:syspackman({ sys = {
+    cmd = 'choco',
+    install = 'install',
+    update = 'upgrade',
+    remove = 'uninstall'
+  } })
+
+==============================================================================
+OPTIONS                                        *fluid-module-syspackman-options*
+
+  • `winget`   - Use winget as the system manager (Windows)
+  • `scoop`    - Use scoop as the system manager (Windows)
+  • `homebrew` - Use homebrew as the system manager (Linux; macOS default)
+  • `pacman`   - Use pacman as the system manager (Linux)
+
 ==============================================================================
 DEPENDENCIES                              *fluid-module-syspackman-dependencies*
 
@@ -31,11 +61,16 @@ The syspackman module provides:
 
 Supported package managers:
   • Windows: winget, scoop
-  • Linux: apt, pacman
+  • macOS: homebrew
+  • Linux: apt, pacman, homebrew
   • Node.js: npm
   • .NET: dotnet tool
 
 The module automatically detects the platform and available package
 managers, providing unified interface for system package operations.
+
+All managers are also addressable by name regardless of the platform
+default, e.g. `install('ripgrep', 'homebrew')` or `install('typescript',
+'node')`.
 
 vim:tw=78:ft=help:

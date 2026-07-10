@@ -17,6 +17,7 @@ function M:init(fluid)
     self
       :use('Hoffs/omnisharp-extended-lsp.nvim')
       :depends_on('omnisharp_extended')
+      :depends_on('fluid.modules.lsp').as('lsp')
       :depends_on('fluid.modules.lsp.util').as('lsp_util')
       :depends_on('cmp_nvim_lsp').as('cmp')
   end
@@ -37,6 +38,12 @@ function M:setup(deps)
       capabilities = deps.cmp.default_capabilities(),
       enable_roslyn_analyzers = true,
     }
+
+    deps.lsp:addServerConfig({
+      name = 'omnisharp',
+      package = 'omnisharp',
+      manager = 'scoop'
+    })
 
     vim.lsp.config('omnisharp', lsp)
     vim.lsp.enable('omnisharp')

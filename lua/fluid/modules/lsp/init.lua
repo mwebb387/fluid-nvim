@@ -62,12 +62,12 @@ end
 function M:removeServer(name, syspackman)
   if name == 'all' then
     for _, value in ipairs(self.servers) do
-      syspackman:remove(value.package, value.manager)
+      syspackman:uninstall(value.package, value.manager)
     end
   else
     local server = self:findServer(name)
     if (server ~= nil) then
-      syspackman:remove(server.package, server.manager)
+      syspackman:uninstall(server.package, server.manager)
     end
   end
 end

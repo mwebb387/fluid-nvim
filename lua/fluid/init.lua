@@ -152,8 +152,25 @@ local M = {
 -- Type checking
 local fluid_meta = {
   __index = function(self, mod)
-    return function()
-      return self:module(mod)
+    return function(first, ...)
+      self:module(mod)
+
+      local args = { ... }
+      -- Support both colon and dot call syntax
+      if first ~= nil and first ~= self then
+        table.insert(args, 1, first)
+      end
+
+      for _, arg in ipairs(args) do
+        if type(arg) == 'table' then
+          self.current_module.config =
+            vim.tbl_deep_extend('force', self.current_module.config or {}, arg)
+        else
+          self:option(arg)
+        end
+      end
+
+      return self
     end
   end,
 
