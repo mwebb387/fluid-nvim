@@ -67,27 +67,39 @@ Start-Process -WindowStyle Hidden -FilePath "llama-server" -ArgumentList @(
 end
 
 function M:setup_codecompanion(deps)
-  start_llama()
-  deps.codecompanion.setup(self.config)
+  deps.nvim:map('n', '<leader>Lcc', function()
+    print('Loading Opencode...')
 
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "CodeCompanionRequest*",
-    callback = function(args)
-      if args.match == "CodeCompanionRequestStarted" then
-        vim.g.codecompanion_status = 'started'
-      elseif args.match == "CodeCompanionRequestFinished" then
-        vim.g.codecompanion_status = ''
-      end
-      vim.cmd("redrawstatus")
-    end,
-  })
+    deps.lazy.codecompanion.setup(self.config)
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "CodeCompanionRequest*",
+      callback = function(args)
+        if args.match == "CodeCompanionRequestStarted" then
+          vim.g.codecompanion_status = 'started'
+        elseif args.match == "CodeCompanionRequestFinished" then
+          vim.g.codecompanion_status = ''
+        end
+        vim.cmd("redrawstatus")
+      end,
+    })
+
+    print('CodeCompanion loaded.')
+  end, { desc = 'Load CodeCompanion' })
+  start_llama()
 end
 
 function M:setup_opencode(deps)
   if vim.fn.executable('opencode') == 0 then
     warn('opencode not found on $PATH — OpenCode ACP will not work')
   else
-    deps.opencode.setup({})
+    deps.nvim:map('n', '<leader>Loc', function()
+      print('Loading Opencode...')
+
+      deps.lazy.opencode.setup({})
+
+      print('Opencode loaded.')
+    end, { desc = 'Load Opencode' })
   end
 end
 
@@ -97,11 +109,11 @@ end
 
 function M:init()
   if self:has('codecompanion') then
-    self:use('olimorris/codecompanion.nvim').providing('codecompanion')
+    self:use('olimorris/codecompanion.nvim').opt().providing('codecompanion')
   end
 
   if self:has('opencode') then
-    self:use('sudo-tee/opencode.nvim').providing('opencode')
+    self:use('sudo-tee/opencode.nvim').opt().providing('opencode')
   end
 
   -- Supermaven
@@ -110,6 +122,8 @@ function M:init()
         .providing('supermaven-nvim')
         .as('supermaven')
   end
+
+  self:use('fluid.nvim').as('nvim')
 end
 
 function M:setup(deps)
