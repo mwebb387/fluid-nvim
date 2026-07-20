@@ -5,8 +5,14 @@ local M = {
   }
 }
 
+function M:ensure_installed(lang)
+  table.insert(self.config.ensure_installed, lang)
+  return self
+end
+
 function M:init()
-  self:use('arborist-ts/arborist.nvim').providing('arborist')
+  self:use('arborist-ts/arborist.nvim').opt().providing('arborist')
+  self:use('fluid.nvim').as('nvim')
 
   -- Get ensured languages
   for _, op in ipairs(self.options) do
@@ -19,7 +25,11 @@ function M:init()
 end
 
 function M:setup(deps)
-  deps.arborist.setup(self.config)
+  deps.nvim:autocmd('VimEnter', {
+    callback = function()
+      deps.lazy.arborist.setup(self.config)
+    end
+  })
 end
 
 return M

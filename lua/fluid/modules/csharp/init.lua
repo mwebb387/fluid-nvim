@@ -33,19 +33,24 @@ function M:setup(deps)
   })
 
   if self:has('lsp') then
-    local lsp = {
-      capabilities = deps.cmp.default_capabilities(),
-      enable_roslyn_analyzers = true,
-    }
+    deps.nvim:autocmd('FileType', {
+      pattern = 'cs',
+      callback = function()
+        local lsp = {
+          capabilities = deps.cmp.default_capabilities(),
+          enable_roslyn_analyzers = true,
+        }
 
-    deps.lsp:addServerConfig({
-      name = 'omnisharp',
-      package = 'omnisharp',
-      manager = 'scoop'
+        deps.lsp:addServerConfig({
+          name = 'omnisharp',
+          package = 'omnisharp',
+          manager = 'scoop'
+        })
+
+        vim.lsp.config('omnisharp', lsp)
+        vim.lsp.enable('omnisharp')
+      end
     })
-
-    vim.lsp.config('omnisharp', lsp)
-    vim.lsp.enable('omnisharp')
   end
 
   if self:has('fold') then
