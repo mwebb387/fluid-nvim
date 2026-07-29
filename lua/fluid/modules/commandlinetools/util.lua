@@ -51,6 +51,33 @@ function M.open_floating_terminal(cmd, opts)
   vim.cmd.startinsert()
 end
 
+function M.open_terminal_buffer(cmd, opts)
+  opts = opts or {}
+
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_set_current_buf(bufnr)
+
+  vim.fn.jobstart(cmd, {
+    term = true,
+    cwd = opts.cwd,
+    on_exit = function()
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(bufnr) then
+          vim.api.nvim_buf_set_keymap(
+            bufnr,
+            'n',
+            'q',
+            '<cmd>bd!\r',
+            { noremap = true, silent = true }
+          )
+        end
+      end)
+    end,
+  })
+
+  vim.cmd.startinsert()
+end
+
 function M.complete_map(args, map)
   if #args > 0 and type(map) == 'table' and map[args[1]] then
     return M.complete_map(vim.list_slice(args, 2), map[args[1]])

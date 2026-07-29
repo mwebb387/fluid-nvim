@@ -10,6 +10,10 @@ function M:setup()
     require('fluid.modules.commandlinetools.ionic').setup()
   end
 
+  if self:has('ios') then
+    require('fluid.modules.commandlinetools.ios').setup()
+  end
+
   if self:has('npm') then
     require('fluid.modules.commandlinetools.npm').setup()
   end

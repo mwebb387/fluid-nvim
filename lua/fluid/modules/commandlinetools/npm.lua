@@ -1,15 +1,21 @@
 local util = require('fluid.modules.commandlinetools.util')
+local M = {}
 
-local function complete_script()
+function M.get_package()
   local package = vim.fs.find({'package.json'}, { upward = true, type = 'file' })
+  local json = vim.fn.json_decode(table.concat(vim.fn.readfile(package[1]), '\n'))
+  return json
+end
 
-  if not package or #package == 0 then
-    vim.notify('No package.json found', vim.log.levels.ERROR)
+function M.complete_script()
+  local package = M.get_package()
+
+  if not package or not package.scripts then
+    vim.notify('No package.json or no scripts found', vim.log.levels.ERROR)
     return {}
   end
 
-  local json = vim.fn.json_decode(table.concat(vim.fn.readfile(package[1]), '\n'))
-  local scripts = vim.tbl_keys(json.scripts or {})
+  local scripts = vim.tbl_keys(package.scripts or {})
 
   table.sort(scripts)
 
@@ -39,14 +45,12 @@ local function run_script(args)
 end
 
 local completeMap = {
-  ['Run'] = complete_script,
+  ['Run'] = M.complete_script,
 }
 
 local runMap = {
   ['Run'] = run_script,
 }
-
-local M = {}
 
 function M.setup()
   --
