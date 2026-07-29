@@ -19,56 +19,60 @@ local M = {
       --   model = "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q5_K_M"
       --   -- model = "Qwen2_5_1-Coder-7B-Instruct-Q5_K_M"
       -- },
-      inline = {
-        adapter = "llama.cpp",
-        model = "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q5_K_M"
-        -- model = "Qwen2_5_1-Coder-7B-Instruct-Q5_K_M"
-      },
+      -- inline = {
+      --   adapter = "llama.cpp",
+      --   model = "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q5_K_M"
+      --   -- model = "Qwen2_5_1-Coder-7B-Instruct-Q5_K_M"
+      -- },
       chat = {
         adapter = {
           name = "ollama",
-          model = "gemma4:e2b",
+          -- model = "gemma4:e2b",
+          -- model = "minimax-m3:cloud",
+          model = "gpt-oss:20b-cloud",
         },
       },
-      -- inline = {
-      --   adapter = {
-      --     name = "ollama",
-      --     model = "qwen2.5-coder:7b",
-      --   },
-      -- },
+      inline = {
+        adapter = {
+          name = "ollama",
+          model = "qwen2.5-coder:7b",
+        },
+      },
     },
   }
 }
 
 local started = false
-local function start_llama()
-  if started then
-    return
-  end
-  started = true
-  vim.system({
-    "powershell",
-    "-NoProfile",
-    "-Command",
-    [[
-Start-Process -WindowStyle Hidden -FilePath "llama-server" -ArgumentList @(
-"-hf", "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q5_K_M",
-"--host", "127.0.0.1",
-"--port", "8080",
-"-ngl", "99",
-"-c", "2048",
-"-fa",
-"-b", "512",
-"-ub", "256",
-"-t", "16"
-)
-    ]],
-  }, { detach = true })
-end
+-- local function start_llama()
+--   if started then
+--     return
+--   end
+--   started = true
+--   vim.system({
+--     "powershell",
+--     "-NoProfile",
+--     "-Command",
+--     [[
+-- Start-Process -WindowStyle Hidden -FilePath "llama-server" -ArgumentList @(
+-- "-hf", "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF:Q5_K_M",
+-- "--host", "127.0.0.1",
+-- "--port", "8080",
+-- "-ngl", "99",
+-- "-c", "2048",
+-- "-fa",
+-- "-b", "512",
+-- "-ub", "256",
+-- "-t", "16"
+-- )
+--     ]],
+--   }, { detach = true })
+-- end
 
 function M:setup_codecompanion(deps)
-  deps.nvim:map('n', '<leader>Lcc', function()
-    print('Loading Opencode...')
+  --deps.nvim:map('n', '<leader>Lcc', function()
+    -- print('Loading CodeCompanion...')
+
+    -- start_llama()
 
     deps.lazy.codecompanion.setup(self.config)
 
@@ -84,9 +88,8 @@ function M:setup_codecompanion(deps)
       end,
     })
 
-    print('CodeCompanion loaded.')
-  end, { desc = 'Load CodeCompanion' })
-  start_llama()
+    -- print('CodeCompanion loaded.')
+  --end, { desc = 'Load CodeCompanion' })
 end
 
 function M:setup_opencode(deps)
@@ -109,7 +112,9 @@ end
 
 function M:init()
   if self:has('codecompanion') then
-    self:use('olimorris/codecompanion.nvim').opt().providing('codecompanion')
+    self:use('olimorris/codecompanion.nvim')
+      --.opt()
+      .providing('codecompanion')
   end
 
   if self:has('opencode') then

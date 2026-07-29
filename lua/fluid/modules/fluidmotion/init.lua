@@ -58,6 +58,31 @@ function M:setup(deps)
     :map('n', '<s-CR>', '<c-w>W')
     :map('n', '<BS>', ':b#<CR>')
 
+    :map('n', '<a-h>', '<c-w>h', { noremap = true })
+    :map('n', '<a-j>', '<c-w>j', { noremap = true })
+    :map('n', '<a-k>', '<c-w>k', { noremap = true })
+    :map('n', '<a-l>', '<c-w>l', { noremap = true })
+    :map('n', '<a-q>', '<c-w>q', { noremap = true })
+
+    :map('n', '<a-H>', '<c-w>H', { noremap = true })
+    :map('n', '<a-J>', '<c-w>J', { noremap = true })
+    :map('n', '<a-K>', '<c-w>K', { noremap = true })
+    :map('n', '<a-L>', '<c-w>L', { noremap = true })
+
+    :map('i', '<a-h>', '<c-w>h', { noremap = true })
+    :map('i', '<a-j>', '<c-w>j', { noremap = true })
+    :map('i', '<a-k>', '<c-w>k', { noremap = true })
+    :map('i', '<a-l>', '<c-w>l', { noremap = true })
+    :map('n', '<a-q>', '<c-w>q', { noremap = true })
+
+
+    :map('t', '<a-h>', '<c-\\><c-n><c-w>h', { noremap = true })
+    :map('t', '<a-j>', '<c-\\><c-n><c-w>j', { noremap = true })
+    :map('t', '<a-k>', '<c-\\><c-n><c-w>k', { noremap = true })
+    :map('t', '<a-l>', '<c-\\><c-n><c-w>l', { noremap = true })
+    :map('t', '<a-q>', '<c-\\><c-n><c-w>q', { noremap = true })
+    :map('t', '<a-n>', '<c-\\><c-n>', { noremap = true })
+
   -- ; Next/Previous maps
     :map('n', ']b', function() self:set_and_run_cmd('bnext', 'bprevious') end)
     :map('n', '[b', function() self:set_and_run_cmd('bnext', 'bprevious', true) end)

@@ -11,25 +11,22 @@ local function on_attach(client, bufnr)
   -- buf_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
   local opts = {buffer = true, noremap = true, silent = true}
-  buf_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_keymap("n", "grD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_keymap("n", "grd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_keymap("n", "gri", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   buf_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_keymap("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_keymap("n", "<leader>ls", "<cmd>lua vim.lsp.buf.workspace_sumbol()<CR>", opts)
   buf_keymap("n", "<leader>lwa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   buf_keymap("n", "<leader>lwr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   buf_keymap("n", "<leader>lwl", "<cmd>lua vim.pretty_print(vim.lsp.buf.list_workspace_folders())<CR>", opts)
-  buf_keymap("n", "<leader>lD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_keymap("n", "<leader>le", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_keymap("n", "<leader>.", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_keymap("n", "<C-.>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_keymap("i", "<C-l>", "<cmd>lua vim.lsp.buf.completion()<CR>", opts)
-  buf_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   buf_keymap("n", "<leader>ld", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  buf_keymap("n", "grk", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   buf_keymap("n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
 
@@ -59,25 +56,24 @@ local function on_attach(client, bufnr)
   end
 
   if client.name == 'omnisharp' then
-    print('loading omnisharp stuff from on_attach')
-
-    buf_keymap("n", "gd", "<cmd>lua require('omnisharp_extended').lsp_definition()<cr>", opts)
-    buf_keymap("n", "gr", "<cmd>lua require('omnisharp_extended').lsp_references()<cr>", opts)
-    buf_keymap("n", "gr", "<cmd>lua require('omnisharp_extended').lsp_implementation()<cr>", opts)
+    buf_keymap("n", "grd", "<cmd>lua require('omnisharp_extended').lsp_definition()<cr>", opts)
+    buf_keymap("n", "grr", "<cmd>lua require('omnisharp_extended').lsp_references()<cr>", opts)
+    buf_keymap("n", "gri", "<cmd>lua require('omnisharp_extended').lsp_implementation()<cr>", opts)
 
     client.server_capabilities.semanticTokensProvider.full = vim.empty_dict()
     client.server_capabilities.semanticTokensProvider.range = true
 
-    local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-    for i, v in ipairs(tokenModifiers) do
-      local tmp = string.gsub(v, ' ', '_')
-      tokenModifiers[i] = string.gsub(tmp, '-_', '')
-    end
-    local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-    for i, v in ipairs(tokenTypes) do
-      local tmp = string.gsub(v, ' ', '_')
-      tokenTypes[i] = string.gsub(tmp, '-_', '')
-    end
+    -- TODO: See if this is needed
+    -- local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+    -- for i, v in ipairs(tokenModifiers) do
+    --   local tmp = string.gsub(v, ' ', '_')
+    --   tokenModifiers[i] = string.gsub(tmp, '-_', '')
+    -- end
+    -- local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+    -- for i, v in ipairs(tokenTypes) do
+    --   local tmp = string.gsub(v, ' ', '_')
+    --   tokenTypes[i] = string.gsub(tmp, '-_', '')
+    -- end
   end
 end
 
