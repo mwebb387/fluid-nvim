@@ -26,17 +26,26 @@ local M = {
       -- },
       chat = {
         adapter = {
-          name = "ollama",
-          -- model = "gemma4:e2b",
-          -- model = "minimax-m3:cloud",
-          model = "gpt-oss:20b-cloud",
+          name = "llama.cpp",
+          model = "granite-4.1-3b",
         },
+        -- adapter = {
+        --   name = "ollama",
+        --   -- model = "gemma4:e2b",
+        --   -- model = "minimax-m3:cloud",
+        --   model = "gpt-oss:20b-cloud",
+        -- },
       },
       inline = {
         adapter = {
-          name = "ollama",
-          model = "qwen2.5-coder:7b",
+          name = "llama.cpp",
+          model = "granite-4.2-3b",
         },
+
+        -- adapter = {
+        --   name = "ollama",
+        --   model = "qwen2.5-coder:7b",
+        -- },
       },
     },
   }
@@ -68,27 +77,52 @@ local started = false
 --   }, { detach = true })
 -- end
 
+-- Setup CodeCompanion with the given dependencies.
+-- @param deps Table containing dependency functions (e.g., `deps.nvim:map`).
+-- @return void
 function M:setup_codecompanion(deps)
   --deps.nvim:map('n', '<leader>Lcc', function()
-    -- print('Loading CodeCompanion...')
+  -- print('Loading CodeCompanion...')
 
-    -- start_llama()
+  if self:has('codecompanion:skills') then
+    self.config.extensions = self.config.extensions or {}
+    self.config.extensions.agentskills = {
+      opts = {
+        paths = {
+          -- Global, agent-agnostic/shared sources
+          { "~/.agents/skills", recursive = true },
+          { "~/.pi/agent/skills", recursive = true },
+          { "~/.claude/skills", recursive = true },
+          { "~/.codex/skills", recursive = true },
+          { "~/.config/opencode/skills", recursive = true },
 
-    deps.lazy.codecompanion.setup(self.config)
+          -- Project-scoped sources
+          { ".agents/skills", recursive = true },
+          { ".pi/skills", recursive = true },
+          { ".claude/skills", recursive = true },
+          { ".codex/skills", recursive = true },
+          { ".opencode/skills", recursive = true },
+        },
+        make_slash_commands = true,
+      }
+    }
+  end
 
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "CodeCompanionRequest*",
-      callback = function(args)
-        if args.match == "CodeCompanionRequestStarted" then
-          vim.g.codecompanion_status = 'started'
-        elseif args.match == "CodeCompanionRequestFinished" then
-          vim.g.codecompanion_status = ''
-        end
-        vim.cmd("redrawstatus")
-      end,
-    })
+  deps.lazy.codecompanion.setup(self.config)
 
-    -- print('CodeCompanion loaded.')
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "CodeCompanionRequest*",
+    callback = function(args)
+      if args.match == "CodeCompanionRequestStarted" then
+        vim.g.codecompanion_status = 'started'
+      elseif args.match == "CodeCompanionRequestFinished" then
+        vim.g.codecompanion_status = ''
+      end
+      vim.cmd("redrawstatus")
+    end,
+  })
+
+  -- print('CodeCompanion loaded.')
   --end, { desc = 'Load CodeCompanion' })
 end
 
@@ -107,7 +141,13 @@ function M:setup_opencode(deps)
 end
 
 function M:setup_supermaven(deps)
-  deps.supermaven.setup({})
+  deps.supermaven.setup({
+    keymaps = {
+      accept_suggestion = "<C-l>",
+      -- clear_suggestion = "<C-]>",
+      -- accept_word = "<C-j>",
+    },
+  })
 end
 
 function M:init()
@@ -115,6 +155,10 @@ function M:init()
     self:use('olimorris/codecompanion.nvim')
       --.opt()
       .providing('codecompanion')
+  end
+
+  if self:has('codecompanion:skills') then
+    self:use('cairijun/codecompanion-agentskills.nvim')
   end
 
   if self:has('opencode') then

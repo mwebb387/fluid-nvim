@@ -6,6 +6,8 @@ local function get_listener_app_path()
 end
 
 local function run_logtail(args)
+  vim.notify('Make sure you have installed and started ios_webkit_debug_proxy')
+
   local listener_app_path = get_listener_app_path()
   if not listener_app_path then
     vim.notify('listener_app_path not found', vim.log.levels.ERROR)
